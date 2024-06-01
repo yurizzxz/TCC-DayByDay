@@ -1,35 +1,28 @@
 <?php
 session_start();
 
-// Verifica se o usuário está logado
 if (!isset($_SESSION['idUsuario'])) {
     header('Location: login.php');
     exit();
 }
 
-// Verifica se o ID da nota foi fornecido
 if (!isset($_GET['nota_id'])) {
     header('Location: index.php');
     exit();
 }
 
-// Obtém o ID do usuário da sessão
 $id_usuario = $_SESSION['idUsuario'];
 
-// Obtém o ID da nota da query string
 $nota_id = $_GET['nota_id'];
 
-// Conexão com o banco de dados
 $conn = mysqli_connect('127.0.0.1', 'root', '', 'tcc');
 if ($conn->connect_error) {
     die("Erro de conexão: " . $conn->connect_error);
 }
 
-// Consulta para obter os detalhes da nota
 $sql = "SELECT * FROM nota WHERE id_usuario = '$id_usuario' AND id = '$nota_id'";
 $result = $conn->query($sql);
 
-// Verifica se a nota existe e pertence ao usuário logado
 if ($result->num_rows == 1) {
     $row = $result->fetch_assoc();
     $titulo = $row['titulo'];
@@ -37,7 +30,6 @@ if ($result->num_rows == 1) {
     $conteudo = $row['conteudo'];
     $cor = $row['cor'];
 } else {
-    // Se a nota não existir ou não pertencer ao usuário, redireciona para a página de notas
     header('Location: index.php');
     exit();
 }
@@ -56,27 +48,19 @@ $conn->close();
     <style>
         .color-checkbox {
             display: none;
-            /* Escondendo os checkboxes */
         }
 
-        /* Estilo base para o círculo */
         .color-option {
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            /* Formato de círculo */
             cursor: pointer;
-            /* Mudança de cursor para indicar interatividade */
             border: 2px solid #fff;
-            /* Borda branca para destacar */
             margin: 5px;
-            /* Espaçamento entre os círculos */
         }
 
-        /* Estilo quando o círculo está selecionado */
         .color-checkbox:checked+label .color-option {
             border: 2px solid #000;
-            /* Borda preta para indicar seleção */
         }
 
         #colors-dropdown {
@@ -88,7 +72,6 @@ $conn->close();
 
 <body>
 
-    <!-- Adicione aqui o formulário de edição da nota -->
     <div class="container w-50" style="margin-top: 20vh">
         <h2>Editar Nota</h2>
         <div class="form-container">

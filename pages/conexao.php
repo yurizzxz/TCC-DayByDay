@@ -15,7 +15,6 @@ function conectar() {
     return $conexao;
 }
 
-// Chamando a função conectar() para obter a conexão com o banco de dados
 $conn = conectar();
 
 ?>

@@ -157,16 +157,13 @@
                 die("Erro de conexão: " . $conn->connect_error);
             }
 
-            // Recupera o ID do usuário da sessão
             $id_usuario = $_SESSION['idUsuario'];
 
-            // Consulta SQL para selecionar todas as notas do usuário atual
             $sql = "SELECT * FROM nota WHERE id_usuario = '$id_usuario'";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    // Exibe as notas
                     echo "<div class='card mb-3 mt-3' id='card-layout-note'>";
                     echo "<div class='row'>";
                     echo "<div class='col-sm-1'>";
@@ -180,18 +177,18 @@
 
                     echo "</div>";
                     echo "</div>";
-                    // Mini menu no canto extremo direito
+                    // menu no canto extremo direito
                     echo "<div class='col-sm-5 d-flex justify-content-end' id='trespontos' style='margin-top: 20px'>";
                     echo "<div class='mini-menu'>";
                     echo "<input type='checkbox' id='toggle-" . $row['id'] . "'>";
                     echo "<label for='toggle-" . $row['id'] . "'><ion-icon name='ellipsis-vertical-outline'></ion-icon></label>";
                     echo "<div class='menu'>";
-                    // Botão de edição
+                    // botão de edição
                     echo "<form method='get' action='editar_nota.php'>";
                     echo "<input type='hidden' name='nota_id' value='" . $row['id'] . "'>";
                     echo "<button type='submit' class='btn'>Editar</button>";
                     echo "</form>";
-                    // Botão de exclusão
+                    // botão de excluir
                     echo "<form method='post' action='excluir_nota.php'>";
                     echo "<input type='hidden' name='nota_id' value='" . $row['id'] . "'>";
                     echo "<button type='submit' class='btn'>Excluir</button>";

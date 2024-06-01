@@ -199,7 +199,7 @@
 </div>
 
 <script>
-    // Função para limitar o número de caracteres
+    // limitar o número de caracteres
     function limitarCaracteres() {
         var btn = document.getElementById("modal-btn");
         var texto = btn.textContent;

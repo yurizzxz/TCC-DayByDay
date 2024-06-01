@@ -158,27 +158,19 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
 
     .color-checkbox {
         display: none;
-        /* Escondendo os checkboxes */
     }
 
-    /* Estilo base para o círculo */
     .color-option {
         width: 30px;
         height: 30px;
         border-radius: 50%;
-        /* Formato de círculo */
         cursor: pointer;
-        /* Mudança de cursor para indicar interatividade */
         border: 2px solid #fff;
-        /* Borda branca para destacar */
         margin: 5px;
-        /* Espaçamento entre os círculos */
     }
 
-    /* Estilo quando o círculo está selecionado */
     .color-checkbox:checked+label .color-option {
         border: 2px solid #000;
-        /* Borda preta para indicar seleção */
     }
 
     #colors-dropdown {
@@ -387,7 +379,7 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // Event listener para os checkboxes
+        // event listener para os checkbox
         var colorCheckboxes = document.querySelectorAll(".color-checkbox");
         colorCheckboxes.forEach(function(checkbox) {
             checkbox.addEventListener("click", function() {
