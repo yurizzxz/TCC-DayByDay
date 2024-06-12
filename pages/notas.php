@@ -53,7 +53,6 @@
     }
 
 
-
     /* 3 pontos */
     .mini-menu {
         position: relative;

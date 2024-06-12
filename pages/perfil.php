@@ -74,14 +74,16 @@
             color: white;
         }
 
-        #input-user-info {}
+        
     </style>
 </head>
 
 <body>
     <div class="container justify-content-center align-items-center" id="perfil-all">
         <div class="container-fluid">
-            .
+            <div class="button-close" style="padding-top: 30px">
+                <a href="index.php?p=notas" class="fw-bold" ><ion-icon name="close-outline" style="color: black; font-size: 30px"></ion-icon></a>
+            </div>
             <div class="profile-content justify-content-center align-items-center">
                 <div class="user-pic">
                     <input type="file" class="d-none"><img src="" class="profile-pic-user" alt="">
@@ -113,5 +115,6 @@
         </div>
     </div>
 </body>
-
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <? include_once 'scripts.php' ?>

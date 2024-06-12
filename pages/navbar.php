@@ -183,7 +183,8 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
     <div class="container-fluid">
         <div class="bg">
             <button id="open_btn">
-                <ion-icon id="open_btn_icon" name="reorder-three-outline" style="font-size: 35px; margin-bottom: -5px"></ion-icon>
+                <ion-icon id="open_btn_icon" name="reorder-three-outline"
+                    style="font-size: 35px; margin-bottom: -5px"></ion-icon>
             </button>
             <a href="?p=notas"><img src="../img/logopng.png" style="margin-top:-15px" height="25" alt=""></a>
         </div>
@@ -200,7 +201,8 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                 <!-- MODAL NOTA --><!-- MODAL NOTA --><!-- MODAL NOTA --><!-- MODAL NOTA -->
                 <!-- MODAL NOTA --><!-- MODAL NOTA --><!-- MODAL NOTA --><!-- MODAL NOTA -->
                 <!-- MODAL NOTA --><!-- MODAL NOTA --><!-- MODAL NOTA --><!-- MODAL NOTA -->
-                <div class="modal fade align-items-center justify-content-center mt-5" id="modalNota" tabindex="-1" aria-labelledby="modalNotaLabel" aria-hidden="true">
+                <div class="modal fade align-items-center justify-content-center mt-5" id="modalNota" tabindex="-1"
+                    aria-labelledby="modalNotaLabel" aria-hidden="true">
                     <div class="container">
                         <div class="modal-dialog">
 
@@ -213,43 +215,106 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                                     <div class="modal-body  flex-column">
 
                                         <div class="d-flex justify-content-between" style="margin-top: 0px">
-                                            <input type="text" class="form-control txt-lg" name="txttitulo" id="form-control" required placeholder="Insira um título">
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-right: 20px; margin-top: 15px;"></button>
+                                            <input type="text" class="form-control txt-lg" name="txttitulo"
+                                                id="form-control" required placeholder="Insira um título">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"
+                                                style="margin-right: 20px; margin-top: 15px;"></button>
                                         </div>
-                                        <input type="text" class="form-control txt-lg" name="txtsubtitulo" id="form-control" placeholder="Insira um subtítulo">
-                                        <textarea resize class="form-control" name="txtconteudo" id="form-control" cols="30" style="resize: none;" required rows="10" placeholder="Começe aqui..."></textarea>
+                                        <input type="text" class="form-control txt-lg" name="txtsubtitulo"
+                                            id="form-control" placeholder="Insira um subtítulo">
+                                        <textarea resize class="form-control" name="txtconteudo" id="form-control"
+                                            cols="30" style="resize: none;" required rows="10"
+                                            placeholder="Começe aqui..."></textarea>
                                     </div>
                                     <div class="modal-footer d-flex" style="border: none;margin-top: 80px">
 
                                         <div class="icons" style="margin-right: auto;">
-                                            <a href="" class="icon-nota"><ion-icon name="calendar-outline"></ion-icon></a>
-                                            <button type="button" class="icon-nota" style="border: none; background: transparent" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <a href="" class="icon-nota"><ion-icon
+                                                    name="calendar-outline"></ion-icon></a>
+                                            <button type="button" class="icon-nota"
+                                                style="border: none; background: transparent" data-bs-toggle="dropdown"
+                                                aria-expanded="false">
                                                 <ion-icon name="color-palette-outline"></ion-icon>
                                             </button>
-                                            <ul class="dropdown-menu" id="colors-dropdown" style="height: 15vh; width: 30vh">
+                                            <ul class="dropdown-menu" id="colors-dropdown"
+                                                style="height: 17vh; width: 33vh; border: none">
                                                 <div class="container p-3">
                                                     <div class="title-colors text-align-center">
                                                         <h4 style="font-size: 20px">Selecione a cor de sua nota</h4>
                                                     </div>
                                                     <div class="container justify-content-center align-items-center">
-                                                        <input type="radio" class="color-checkbox" id="color1" value="#ff0000" name="cor_selecionada"><label for="color1">
-                                                            <div class="color-option" style="background-color: #ff0000;">
+                                                        
+                                                        <input type="radio" class="color-checkbox" id="color1"
+                                                            value="#F95B99" name="cor_selecionada"><label for="color1">
+                                                            <div class="color-option"
+                                                                style="background-color: #F95B99;">
                                                             </div>
                                                         </label>
-                                                        <input type="radio" class="color-checkbox" id="color2" value="#00ff00" name="cor_selecionada"><label for="color2">
-                                                            <div class="color-option" style="background-color: #00ff00;">
+                                                        <input type="radio" class="color-checkbox" id="color2"
+                                                            value="#CB6CE6" name="cor_selecionada"><label for="color2">
+                                                            <div class="color-option"
+                                                                style="background-color: #CB6CE6;">
                                                             </div>
                                                         </label>
-                                                        <input type="radio" class="color-checkbox" id="color3" value="#0000ff" name="cor_selecionada"><label for="color3">
-                                                            <div class="color-option" style="background-color: #0000ff;">
+                                                        <input type="radio" class="color-checkbox" id="color3"
+                                                            value="#8C52FF" name="cor_selecionada"><label for="color3">
+                                                            <div class="color-option"
+                                                                style="background-color: #8C52FF;">
                                                             </div>
                                                         </label>
-                                                        <input type="radio" class="color-checkbox" id="color4" value="#ffff00" name="cor_selecionada"><label for="color4">
-                                                            <div class="color-option" style="background-color: #ffff00;">
+                                                        <input type="radio" class="color-checkbox" id="color4"
+                                                            value="#AA8DE4" name="cor_selecionada"><label for="color4">
+                                                            <div class="color-option"
+                                                                style="background-color: #AA8DE4;">
                                                             </div>
                                                         </label>
-                                                        <input type="radio" class="color-checkbox" id="color5" value="#ff00ff" name="cor_selecionada"><label for="color5">
-                                                            <div class="color-option" style="background-color: #ff00ff;">
+                                                        <input type="radio" class="color-checkbox" id="color5"
+                                                            value="#FF5757" name="cor_selecionada"><label for="color5">
+                                                            <div class="color-option"
+                                                                style="background-color: #FF5757;">
+                                                            </div>
+                                                        </label>
+                                                        <input type="radio" class="color-checkbox" id="color6"
+                                                            value="#ffff00" name="cor_selecionada"><label for="color6">
+                                                            <div class="color-option"
+                                                                style="background-color: #ffff00;">
+                                                            </div>
+                                                        </label>
+                                                        <input type="radio" class="color-checkbox" id="color7"
+                                                            value="#FFCF52" name="cor_selecionada"><label for="color7">
+                                                            <div class="color-option"
+                                                                style="background-color: #FFCF52;">
+                                                            </div>
+                                                        </label>
+                                                        <input type="radio" class="color-checkbox" id="color8"
+                                                            value="#FF914D" name="cor_selecionada"><label for="color8">
+                                                            <div class="color-option"
+                                                                style="background-color: #FF914D;">
+                                                            </div>
+                                                        </label>
+                                                        <input type="radio" class="color-checkbox" id="color9"
+                                                            value="#36DF32" name="cor_selecionada"><label for="color9">
+                                                            <div class="color-option"
+                                                                style="background-color: #36DF32;">
+                                                            </div>
+                                                        </label>
+                                                        <input type="radio" class="color-checkbox" id="color10"
+                                                            value="#397D1D" name="cor_selecionada"><label for="color10">
+                                                            <div class="color-option"
+                                                                style="background-color: #397D1D;">
+                                                            </div>
+                                                        </label>
+                                                        <input type="radio" class="color-checkbox" id="color11"
+                                                            value="#000" name="cor_selecionada"><label for="color11">
+                                                            <div class="color-option"
+                                                                style="background-color: #000;">
+                                                            </div>
+                                                        </label>
+                                                        <input type="radio" class="color-checkbox" id="color12"
+                                                            value="#bababa" name="cor_selecionada"><label for="color12">
+                                                            <div class="color-option"
+                                                                style="background-color: #bababa">
                                                             </div>
                                                         </label>
                                                     </div>
@@ -257,13 +322,15 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                                             </ul>
                                             <label class="icon-nota" for="input-arquivo" style="cursor: pointer">
                                                 <ion-icon name="folder-outline" style="font-size: 20px;"></ion-icon>
-                                                <input type="file" id="input-arquivo" class="visually-hidden" style="width: 20px;">
+                                                <input type="file" id="input-arquivo" class="visually-hidden"
+                                                    style="width: 20px;">
                                             </label>
                                             <a href="" class="icon-nota"><ion-icon name="text-outline"></ion-icon></a>
                                         </div>
                                         <input type="hidden" name="txtcor" id="txtcor">
                                         <input type="hidden" id="userid" name="userid" value="<?php echo $userid; ?>">
-                                        <input type="submit" class="btn" id="postar-nota" name="btnconfirmar" style="margin-left: 90px" value="Salvar Nota">
+                                        <input type="submit" class="btn" id="postar-nota" name="btnconfirmar"
+                                            style="margin-left: 90px" value="Salvar Nota">
 
                                 </form>
                             </div>
@@ -276,14 +343,17 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
         <!--PERFIL + NOTIFICAÇAO--><!--PERFIL + NOTIFICAÇAO--><!--PERFIL + NOTIFICAÇAO--><!--PERFIL + NOTIFICAÇAO-->
         <!--PERFIL + NOTIFICAÇAO--><!--PERFIL + NOTIFICAÇAO--><!--PERFIL + NOTIFICAÇAO--><!--PERFIL + NOTIFICAÇAO-->
         <div class="perfil-noti d-flex">
-            <a id="notifications" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-                <ion-icon name="notifications-outline" style="z-index: 99; font-size: 25px; margin-top: 08px; color: #252525">
+            <a id="notifications" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+                aria-controls="offcanvasWithBothOptions">
+                <ion-icon name="notifications-outline"
+                    style="z-index: 99; font-size: 25px; margin-top: 08px; color: #252525">
                 </ion-icon>
             </a>
             <div class="dropdown">
-                <img src="../img/5.jpeg" class="profile-img" height="40" class="" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="../img/5.jpeg" class="mini-profile-img" height="40" class="" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
                 </img>
-                <ul class="dropdown-menu bg-light">
+                <ul class="dropdown-menu menu-user-navbar bg-light">
                     <div class="container text-center">
 
                         <!--USER--> <!--USER--> <!--USER--> <!--USER--> <!--USER--> <!--USER-->
@@ -291,12 +361,14 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                         <!--USER--> <!--USER--> <!--USER--> <!--USER--> <!--USER--> <!--USER-->
                         <!--USER--> <!--USER--> <!--USER--> <!--USER--> <!--USER--> <!--USER-->
                         <div class="modal-head d-flex mt-3">
-                            <img src="../img/5.jpeg" class="profile-img" height="80" class="" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="../img/5.jpeg" class="profile-img" height="80" class="" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
 
                             <div class="d-flex flex-column" style="margin-left: 10px">
                                 <div class="d-flex align-items-center" style="width: 23vh">
                                     <h4 class="user-name mt-2" id="username"><?php echo $nomeUsuario; ?></h4>
-                                    <a href="logout.php" class="logout-btn-dropdown" style="margin-left: auto; text-decoration: none;">Logout</a>
+                                    <a href="logout.php" class="logout-btn-dropdown"
+                                        style="margin-left: auto; text-decoration: none;">Logout</a>
                                 </div>
                                 <!--EMAIL USER--><!--EMAIL USER--><!--EMAIL USER--><!--EMAIL USER-->
                                 <!--EMAIL USER--><!--EMAIL USER--><!--EMAIL USER--><!--EMAIL USER-->
@@ -310,7 +382,8 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
 
                         <li class="d-flex">
                             <div class="container">
-                                <div class="img d-flex justify-content-center align-items-center" style="margin-left: 50px; margin-top: 10px">
+                                <div class="img d-flex justify-content-center align-items-center"
+                                    style="margin-left: 50px; margin-top: 10px">
                                     <div class="a me-5">
                                         <img src="../img/1.jpeg" class="profile-img" height="50" class="" type="button">
                                         <p>20</p>
@@ -327,7 +400,8 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                                 </div>
                             </div>
                         </li>
-                        <button type="button" class="btn mt-0" id="change-info-btn" data-bs-toggle="modal" data-bs-target="#modalChanges">Alterar Informações
+                        <button type="button" class="btn mt-0" id="change-info-btn" data-bs-toggle="modal"
+                            data-bs-target="#modalChanges">Alterar Informações
                         </button>
                     </div>
                 </ul>
@@ -335,16 +409,24 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
 
             <!-- MUDAR INFORMAÇÕES --><!-- MUDAR INFORMAÇÕES --><!-- MUDAR INFORMAÇÕES --><!-- MUDAR INFORMAÇÕES -->
             <!-- MUDAR INFORMAÇÕES --><!-- MUDAR INFORMAÇÕES --><!-- MUDAR INFORMAÇÕES --><!-- MUDAR INFORMAÇÕES -->
-            <div class="modal fade" id="modalChanges" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalChanges" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
                 <div class="modal-dialog d-flex justify-content-center align-items-center" style="min-height: 90vh;">
-                    <div class=" modal-content">
-
+                    <div class=" modal-content" style="margin-left: -15px">
+                        <div class="container">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                style="margin-right: 20px; margin-top: 15px;"></button>
+                        </div>
                         <div class="modal-body text-center justify-content-center align-items-center">
-                            <h5>Insira sua senha para prosseguir</h6>
-                            <input type="password" class="form-control mt-3 mb-3" style="margin-left: -6px">
-                            <div class="btn-confirmar-senha">
-                                <button type="button" class="btn btn-primary text-dark" id="change-info-btn" style="border:none">Prosseguir</button>
-                            </div>
+                            <h5 style="margin-top: -15px;">Insira sua senha para prosseguir</h6>
+                                <input type="password" class="form-control mt-3 mb-3" style="margin-left: -6px">
+                                <div class="btn-confirmar-senha">
+                                    <button type="button" class="btn btn-primary text-dark" id="change-info-btn"
+                                        style="border:none">Prosseguir</button>
+                                </div>
+                                <div class="forgot-pass mt-3">
+                                    <a href="#" class="text-dark">Esqueceu a senha?</a>
+                                </div>
                         </div>
 
                     </div>
@@ -353,7 +435,8 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
             <!--SIDEBAR NOTIFICAÇAO--><!--SIDEBAR NOTIFICAÇAO--><!--SIDEBAR NOTIFICAÇAO--><!--SIDEBAR NOTIFICAÇAO--><!--SIDEBAR NOTIFICAÇAO-->
             <!--SIDEBAR NOTIFICAÇAO--><!--SIDEBAR NOTIFICAÇAO--><!--SIDEBAR NOTIFICAÇAO--><!--SIDEBAR NOTIFICAÇAO--><!--SIDEBAR NOTIFICAÇAO-->
 
-            <div class="offcanvas offcanvas-end offcanvas-noti bg-light" data-bs-scroll="true" tabindex="0" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+            <div class="offcanvas offcanvas-end offcanvas-noti bg-light" data-bs-scroll="true" tabindex="0"
+                id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
                 <div class="container">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Notificações</h5>
@@ -365,7 +448,8 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                             <div class="card-body">
                                 <h5 class="card-title">Titulo notificação</h5>
                                 <p class="card-text">Evento [nome] se aproximando</p>
-                                <a href="" class="btn btn-primary text-dark" id="change-info-btn" style="border:none">Ir até lá</a>
+                                <a href="" class="btn btn-primary text-dark" id="change-info-btn" style="border:none">Ir
+                                    até lá</a>
                             </div>
                         </div>
                         </p>
@@ -378,11 +462,11 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
 </nav>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         // event listener para os checkbox
         var colorCheckboxes = document.querySelectorAll(".color-checkbox");
-        colorCheckboxes.forEach(function(checkbox) {
-            checkbox.addEventListener("click", function() {
+        colorCheckboxes.forEach(function (checkbox) {
+            checkbox.addEventListener("click", function () {
 
                 if (checkbox.checked) {
 
@@ -392,7 +476,7 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
 
                     document.getElementById("cor-selecionada").value = selectedColor;
 
-                    colorCheckboxes.forEach(function(otherCheckbox) {
+                    colorCheckboxes.forEach(function (otherCheckbox) {
                         if (otherCheckbox !== checkbox) {
                             otherCheckbox.checked = false;
                         }
@@ -402,8 +486,8 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
         });
     });
 
-    document.querySelectorAll('.color-checkbox').forEach(function(checkbox) {
-        checkbox.addEventListener('change', function() {
+    document.querySelectorAll('.color-checkbox').forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
             if (this.checked) {
                 var color = this.value;
                 document.getElementById('color-preview').style.backgroundColor = color;

@@ -115,7 +115,7 @@
         margin-right: 15px;
     }
 
-    .dropdown-menu {
+    .menu-user-navbar {
         top: auto;
         bottom: 0;
         width: 350px;
@@ -137,6 +137,58 @@
         animation: slideFromLeft 0.3s forwards;
         border: none;
     }
+
+
+    /* toggle button */
+
+    #chk {
+        display: none;
+    }
+
+    .switch {
+        position: relative;
+        background-color: #777;
+        width: 50px;
+        height: 25px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        transition: all .5s ease-in-out;
+        cursor: pointer;
+    }
+
+    .slider {
+        position: absolute;
+        background-color: white;
+        border-radius: 5px;
+        width: 20px;
+        height: 20px;
+        transition: all .5s ease-in-out;
+    }
+
+    #chk:checked~.switch {
+        background-color: blueviolet;
+    }
+
+    #chk:checked~.switch .slider {
+        transform: translateX(18.5px);
+    }
+
+    #sidebar.open-sidebar .switch{
+        width: 50px;
+    }
+
+    .dark-mode-layout {
+        width: 24.5vh;
+        padding-top: 0px;
+        height: 1vh;
+    }
+
+    .dark-mode-layout ion-icon {
+        font-size: 20px;
+        padding-top: 03px;
+    }
 </style>
 
 
@@ -146,7 +198,7 @@
 <!--SIDEBAR--><!--SIDEBAR--><!--SIDEBAR--><!--SIDEBAR--><!--SIDEBAR--><!--SIDEBAR--><!--SIDEBAR-->
 <!--SIDEBAR--><!--SIDEBAR--><!--SIDEBAR--><!--SIDEBAR--><!--SIDEBAR--><!--SIDEBAR--><!--SIDEBAR-->
 
-<div class=" sidebar d-flex">
+<div class="sidebar d-flex">
     <nav class="bg-light" id="sidebar">
         <div id="sidebar_content">
 
@@ -154,7 +206,8 @@
             <ul id="side_items">
                 <li class="side-item active">
                     <a href="?p=calendar ">
-                        <ion-icon name="calendar-outline" style="z-index: 99; font-size: 25px; color: #8C52FF"></ion-icon>
+                        <ion-icon name="calendar-outline"
+                            style="z-index: 99; font-size: 25px; color: #8C52FF"></ion-icon>
                         <span class="item-description">
                             Calendário
                         </span>
@@ -163,7 +216,8 @@
 
                 <li class="side-item">
                     <a href="?p=notas">
-                        <ion-icon name="document-text-outline" style=" z-index: 99; font-size: 25px; color: #8C52FF"></ion-icon>
+                        <ion-icon name="document-text-outline"
+                            style=" z-index: 99; font-size: 25px; color: #8C52FF"></ion-icon>
                         <span class="item-description">
                             Notas
                         </span>
@@ -171,32 +225,60 @@
                 </li>
 
                 <li class="side-item">
-                    <a class="dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">
-                        <ion-icon name="settings-outline" style=" z-index: 99; color: #8C52FF"></ion-icon>
+                    <a id="settingsItem" class="dropdown" type="button" href="#">
+                        <ion-icon name="settings-outline" style="z-index: 99; font-size: 25px; color: #8C52FF"></ion-icon>
                         <span class="item-description">
                             Configurações
                         </span>
-
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item">Modo Noturno</a></li>
-                        <li><input type="radio"></li>
-                    </ul>
+                    <!-- DROPDOWN -->
+                    <div id="myDropdown" class="dropdown-menu " style="border:none; margin-left: 65px; margin-top: -42px" aria-labelledby="settingsItem">
+                        <div class="form-check dark-mode-layout d-flex">
+                            <ion-icon name="moon-outline"></ion-icon>
+                            <p style="padding-left: 10px; padding-right: 22px">Modo Escuro</p>
+                            <input type="checkbox" id="chk" />
+                            <label for="chk" class="switch">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
+
+                    </div>
                 </li>
             </ul>
-
-        </div>
-
-        <div id="logout" class="d-none">
-            <button id="logout_btn">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                <span class="item-description">
-                    Logout
-                </span>
-            </button>
         </div>
     </nav>
+
 </div>
+
+<div id="logout" class="d-none">
+    <button id="logout_btn">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span class="item-description">
+            Logout
+        </span>
+    </button>
+</div>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var settingsItem = document.getElementById('settingsItem');
+        var dropdownMenu = document.getElementById('myDropdown');
+
+        settingsItem.addEventListener('click', function () {
+            dropdownMenu.classList.toggle('show');
+        });
+
+        // fecha o dropdown quando clicar fora dele
+        window.addEventListener('click', function (event) {
+            if (!dropdownMenu.contains(event.target) && !settingsItem.contains(event.target)) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
+    });
+</script>
 
 <script>
     // limitar o número de caracteres
@@ -212,14 +294,14 @@
         }
     }
 
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         limitarCaracteres();
         window.addEventListener("resize", limitarCaracteres);
     });
 </script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         var currentPage = new URLSearchParams(window.location.search).get('p');
 
         if (!currentPage) {
@@ -228,7 +310,7 @@
 
         var menuItems = document.querySelectorAll('.side-item');
 
-        menuItems.forEach(function(item) {
+        menuItems.forEach(function (item) {
             if (item.querySelector('a').getAttribute('href').indexOf('?p=' + currentPage) !== -1) {
                 item.classList.add('active');
             } else {
@@ -239,7 +321,7 @@
 </script>
 
 <script>
-    document.getElementById('open_btn').addEventListener('click', function() {
+    document.getElementById('open_btn').addEventListener('click', function () {
         document.getElementById('sidebar').classList.toggle('open-sidebar');
     });
 </script>
