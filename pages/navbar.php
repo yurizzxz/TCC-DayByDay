@@ -9,177 +9,9 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
     exit;
 }
 ?>
-<style>
-    .modal {
-        border: none;
-        outline: none;
-    }
 
-    .modal-body input[name="txttitulo"] {
-        font-size: 30px;
-        font-weight: bold;
-        border: none;
-        margin-bottom: 10px;
-    }
 
-    .modal-body input[name="txtsubtitulo"] {
-        font-size: 21px;
-        margin-bottom: 10px;
-        border: none;
-    }
-
-    .modal-body textarea[name="txtconteudo"] {
-        font-size: 16px;
-        border: none;
-    }
-
-    .modal-body input[name="txttitulo"]:focus {
-        font-size: 30px;
-        font-weight: bold;
-        border: none;
-        box-shadow: none;
-        outline: none;
-        margin-bottom: 10px;
-    }
-
-    .modal-body input[name="txtsubtitulo"]:focus {
-        border: none;
-        box-shadow: none;
-        outline: none;
-        margin-bottom: 10px;
-    }
-
-    .modal-body textarea[name="txtdescricao"]:focus {
-        box-shadow: none;
-        outline: none;
-        border: none;
-    }
-
-    .modal-width {
-        width: 100%;
-        height: 60vh;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .create-note .modal-header button[name="modal-close"]:focus {
-        box-shadow: none;
-        outline: none;
-        border: none;
-    }
-
-    .offcanvas-backdrop.show {
-        opacity: .0;
-    }
-
-    .offcanvas.offcanvas-end {
-        border-left: none;
-    }
-
-    .offcanvas-noti {
-        height: 94.1vh;
-        margin-top: auto
-    }
-
-    #postar-nota {
-        display: block;
-        text-align: center;
-        padding: 0.4rem 1.2rem;
-        font-size: var(--bs-nav-link-font-size);
-        font-weight: bold;
-        color: black;
-        text-decoration: none;
-        background: #e8e8e8;
-        transition: 0.3s ease-in-out;
-    }
-
-    #postar-nota:hover {
-        background: #cfcfcf;
-        transition: 0.3s ease-in-out;
-    }
-
-    #change-info-btn {
-        background: #e8e8e8;
-        transition: 0.3s ease-in-out;
-    }
-
-    #change-info-btn:hover {
-        background: #cfcfcf;
-        transition: 0.3s ease-in-out;
-    }
-
-    @keyframes slideFromTop {
-        from {
-            transform: translateY(-100%);
-        }
-
-        to {
-            transform: translateY(0);
-        }
-    }
-
-    :root {
-        --color-bar-nota: #00ff00;
-    }
-
-    .color-bar-nota {
-        background-color: var(--color-bar-nota);
-    }
-
-    @media (min-width: 601px) {
-        .color-bar-nota {
-            width: 30%;
-            height: 580px;
-            margin-top: -12px;
-            margin-bottom: -570px;
-        }
-
-        .modal-body {
-            margin-left: 15px;
-        }
-    }
-
-    @media (max-width: 600px) {
-        .color-bar-nota {
-            width: 100%;
-            height: 20px;
-        }
-
-        .modal-body {
-            margin-left: 0px;
-        }
-    }
-
-    .icon-nota {
-        color: black;
-        margin-left: 30px;
-        font-size: 25px;
-    }
-
-    .color-checkbox {
-        display: none;
-    }
-
-    .color-option {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        cursor: pointer;
-        border: 2px solid #fff;
-        margin: 5px;
-    }
-
-    .color-checkbox:checked+label .color-option {
-        border: 2px solid #000;
-    }
-
-    #colors-dropdown {
-        margin-left: 0px;
-        margin-top: -20px
-    }
-</style>
-
-<nav class="navbar bg-light">
+<nav class="navbar">
     <div class="container-fluid">
         <div class="bg">
             <button id="open_btn">
@@ -212,18 +44,17 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                                     <div class="color-bar-nota"></div>
                                 </div>
                                 <form action="salvar_nota.php" method="post">
-                                    <div class="modal-body  flex-column">
-
+                                    <div class="modal-body flex-column">
                                         <div class="d-flex justify-content-between" style="margin-top: 0px">
-                                            <input type="text" class="form-control txt-lg" name="txttitulo"
-                                                id="form-control" required placeholder="Insira um título">
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            <input type="text" class="form-control text-info" name="txttitulo"
+                                               required placeholder="Insira um título">
+                                            <button type="button" class="btn-close close-button" data-bs-dismiss="modal"
                                                 aria-label="Close"
                                                 style="margin-right: 20px; margin-top: 15px;"></button>
                                         </div>
-                                        <input type="text" class="form-control txt-lg" name="txtsubtitulo"
-                                            id="form-control" placeholder="Insira um subtítulo">
-                                        <textarea resize class="form-control" name="txtconteudo" id="form-control"
+                                        <input type="text" class="form-control text-info" name="txtsubtitulo"
+                                             placeholder="Insira um subtítulo">
+                                        <textarea resize class="form-control text-info" name="txtconteudo" 
                                             cols="30" style="resize: none;" required rows="10"
                                             placeholder="Começe aqui..."></textarea>
                                     </div>
@@ -244,7 +75,7 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                                                         <h4 style="font-size: 20px">Selecione a cor de sua nota</h4>
                                                     </div>
                                                     <div class="container justify-content-center align-items-center">
-                                                        
+
                                                         <input type="radio" class="color-checkbox" id="color1"
                                                             value="#F95B99" name="cor_selecionada"><label for="color1">
                                                             <div class="color-option"
@@ -307,14 +138,12 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                                                         </label>
                                                         <input type="radio" class="color-checkbox" id="color11"
                                                             value="#000" name="cor_selecionada"><label for="color11">
-                                                            <div class="color-option"
-                                                                style="background-color: #000;">
+                                                            <div class="color-option" style="background-color: #000;">
                                                             </div>
                                                         </label>
                                                         <input type="radio" class="color-checkbox" id="color12"
                                                             value="#bababa" name="cor_selecionada"><label for="color12">
-                                                            <div class="color-option"
-                                                                style="background-color: #bababa">
+                                                            <div class="color-option" style="background-color: #bababa">
                                                             </div>
                                                         </label>
                                                     </div>
@@ -330,7 +159,7 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                                         <input type="hidden" name="txtcor" id="txtcor">
                                         <input type="hidden" id="userid" name="userid" value="<?php echo $userid; ?>">
                                         <input type="submit" class="btn" id="postar-nota" name="btnconfirmar"
-                                            style="margin-left: 90px" value="Salvar Nota">
+                                            value="Salvar Nota">
 
                                 </form>
                             </div>
@@ -346,15 +175,15 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
             <a id="notifications" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
                 aria-controls="offcanvasWithBothOptions">
                 <ion-icon name="notifications-outline"
-                    style="z-index: 99; font-size: 25px; margin-top: 08px; color: #252525">
+                    style="z-index: 99; font-size: 25px; margin-top: 08px; ">
                 </ion-icon>
             </a>
             <div class="dropdown">
                 <img src="../img/5.jpeg" class="mini-profile-img" height="40" class="" type="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
                 </img>
-                <ul class="dropdown-menu menu-user-navbar bg-light">
-                    <div class="container text-center">
+                <ul class="dropdown-menu menu-user-navbar">
+                    <div class="container">
 
                         <!--USER--> <!--USER--> <!--USER--> <!--USER--> <!--USER--> <!--USER-->
                         <!--USER--> <!--USER--> <!--USER--> <!--USER--> <!--USER--> <!--USER-->
@@ -368,7 +197,7 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                                 <div class="d-flex align-items-center" style="width: 23vh">
                                     <h4 class="user-name mt-2" id="username"><?php echo $nomeUsuario; ?></h4>
                                     <a href="logout.php" class="logout-btn-dropdown"
-                                        style="margin-left: auto; text-decoration: none;">Logout</a>
+                                        style="margin-left: auto; text-decoration: none; color:#8C52FF">Logout</a>
                                 </div>
                                 <!--EMAIL USER--><!--EMAIL USER--><!--EMAIL USER--><!--EMAIL USER-->
                                 <!--EMAIL USER--><!--EMAIL USER--><!--EMAIL USER--><!--EMAIL USER-->
@@ -380,28 +209,21 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                             </div>
                         </div>
 
-                        <li class="d-flex">
+                        <li class="d-flex mt-3">
                             <div class="container">
-                                <div class="img d-flex justify-content-center align-items-center"
-                                    style="margin-left: 50px; margin-top: 10px">
+                                <div class="" style="margin-top: 10px">
                                     <div class="a me-5">
-                                        <img src="../img/1.jpeg" class="profile-img" height="50" class="" type="button">
-                                        <p>20</p>
-
-                                    </div>
-                                    <div class="a me-5">
-                                        <img src="../img/1.jpeg" class="profile-img" height="50" class="" type="button">
-                                        <p>80</p>
-                                    </div>
-                                    <div class="a me-5">
-                                        <img src="../img/1.jpeg" class="profile-img" height="50" class="" type="button">
-                                        <p>50</p>
+                                        <ion-icon name="help-outline" style="padding-right: 10px"></ion-icon> <a
+                                            href="#">Ajuda</a>
                                     </div>
                                 </div>
                             </div>
                         </li>
-                        <button type="button" class="btn mt-0" id="change-info-btn" data-bs-toggle="modal"
-                            data-bs-target="#modalChanges">Alterar Informações
+                        <hr style="opacity: 0.1">
+                        <button type="button" class="btn mt-0 change-infos" data-bs-toggle="modal"
+                            data-bs-target="#modalChanges"><ion-icon name="settings-outline"
+                                style="padding-right: 10px"></ion-icon>Alterar
+                            Informações
                         </button>
                     </div>
                 </ul>
@@ -421,12 +243,13 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                             <h5 style="margin-top: -15px;">Insira sua senha para prosseguir</h6>
                                 <input type="password" class="form-control mt-3 mb-3" style="margin-left: -6px">
                                 <div class="btn-confirmar-senha">
+                                    <div class="forgot-pass mb-3 mt-3">
+                                        <a href="#" class="text-dark">Esqueceu a senha?</a>
+                                    </div>
                                     <button type="button" class="btn btn-primary text-dark" id="change-info-btn"
                                         style="border:none">Prosseguir</button>
                                 </div>
-                                <div class="forgot-pass mt-3">
-                                    <a href="#" class="text-dark">Esqueceu a senha?</a>
-                                </div>
+
                         </div>
 
                     </div>
@@ -435,7 +258,7 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
             <!--SIDEBAR NOTIFICAÇAO--><!--SIDEBAR NOTIFICAÇAO--><!--SIDEBAR NOTIFICAÇAO--><!--SIDEBAR NOTIFICAÇAO--><!--SIDEBAR NOTIFICAÇAO-->
             <!--SIDEBAR NOTIFICAÇAO--><!--SIDEBAR NOTIFICAÇAO--><!--SIDEBAR NOTIFICAÇAO--><!--SIDEBAR NOTIFICAÇAO--><!--SIDEBAR NOTIFICAÇAO-->
 
-            <div class="offcanvas offcanvas-end offcanvas-noti bg-light" data-bs-scroll="true" tabindex="0"
+            <div class="offcanvas offcanvas-end offcanvas-noti" data-bs-scroll="true" tabindex="0"
                 id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
                 <div class="container">
                     <div class="offcanvas-header">
@@ -448,7 +271,7 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                             <div class="card-body">
                                 <h5 class="card-title">Titulo notificação</h5>
                                 <p class="card-text">Evento [nome] se aproximando</p>
-                                <a href="" class="btn btn-primary text-dark" id="change-info-btn" style="border:none">Ir
+                                <a href="" class="btn btn-primary" id="change-info-btn" style="border:none">Ir
                                     até lá</a>
                             </div>
                         </div>

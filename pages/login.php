@@ -110,8 +110,10 @@
         /* outline */
         .outline-btn-transition {
             border: 1px solid white;
-            color: white;
+            background-color: white;
+            color: #A843F6;
             padding: 15px 20px;
+            border-radius: 10px;
             font-size: 35px;
             text-decoration: none;
             font-weight: bold;
@@ -126,6 +128,7 @@
         .mobile-aviso {
             display: NONE;
         }
+
     </style>
 </head>
 
@@ -171,14 +174,14 @@
                                     </div>
                                 </div>
                                 <div class="forgot-password container mb-3">
-                                    <a href="#" style="margin-left: auto">Esqueceu a senha?</a>
+                                    <a href="#" class="text-muted" style="margin-left: auto">Esqueceu a senha?</a>
                                 </div>
                                 <!--enviar-->
                                 <div class="container text-center" style="margin-bottom: 35px">
                                     <input type="submit" class="btn btn-btn-login fullWidth" name="btnlogar"
                                         value="Entrar" />
                                 </div>
-                                <div class="container text-center">
+                                <div class="container text-center d-none">
                                     <p class="d-none" style="margin-bottom: 2px">powered by:</p>
                                     <img src="../img/logopng.png" height="25" alt="">
                                 </div>
@@ -248,7 +251,7 @@
                                     <input type="submit" class="btn btn-btn-login fullWidth" name="btnsalvar"
                                         value="Criar Conta" />
                                 </div>
-                                <div class="container text-center">
+                                <div class="container text-center d-none">
                                     <p class="d-none" style="margin-bottom: 2px">powered by:</p>
                                     <img src="../img/logopng.png" height="25" alt="">
                                 </div>

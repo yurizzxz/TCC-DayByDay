@@ -1,107 +1,4 @@
-<style>
-    #select-note {
-        width: 22vh;
-    }
 
-    :root {
-        --color-bar-nota: #00ff00;
-    }
-
-    .color-bar {
-        background-color: var(--color-bar-nota);
-    }
-
-    #content-card-note {
-        margin-left: -5%
-    }
-
-
-
-    @media (min-width: 601px) {
-        .color-bar {
-            width: 30%;
-            height: 150px;
-        }
-
-        #note-ctner {
-            margin-left: 10px;
-        }
-
-        #card-layout-note {
-            width: 100%;
-            max-width: 160vh;
-            margin: 0 auto;
-        }
-    }
-
-    @media (max-width: 600px) {
-        .color-bar {
-            width: 100%;
-            height: 100px;
-        }
-    }
-
-    @media (max-width: 575px) {
-        .color-bar {
-            width: 100%;
-            height: 20px;
-        }
-
-        #content-card-note {
-            margin-left: 0%
-        }
-    }
-
-
-    /* 3 pontos */
-    .mini-menu {
-        position: relative;
-
-    }
-
-    #trespontos {
-        margin-right: 20px;
-        margin-left: auto;
-        margin-top: 10px
-    }
-
-    .menu {
-        position: absolute;
-        margin-right: 30px;
-        width: 13vh;
-        top: 10%;
-        right: 0;
-        background-color: #fff;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        padding: 5px 0;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        display: none;
-    }
-
-    .menu a {
-        display: block;
-        padding: 5px 10px;
-        color: #333;
-        text-decoration: none;
-    }
-
-    .menu a:hover {
-        background-color: #f0f0f0;
-    }
-
-    input[type="checkbox"] {
-        display: none;
-    }
-
-    input[type="checkbox"]+label {
-        cursor: pointer;
-    }
-
-    input[type="checkbox"]:checked+label+.menu {
-        display: block;
-    }
-</style>
 
 <div class="container mt-4" id="note-ctner">
     <div class="container">
@@ -151,10 +48,7 @@
 
 
             // Conexão com o banco de dados
-            $conn = mysqli_connect('127.0.0.1', 'root', '', 'tcc');
-            if ($conn->connect_error) {
-                die("Erro de conexão: " . $conn->connect_error);
-            }
+            include_once 'conexao.php';
 
             $id_usuario = $_SESSION['idUsuario'];
 
@@ -172,7 +66,7 @@
                     echo "<div class='card-body' style='margin-top: 7px'>";
                     echo "<h5 class='card-title fw-bold fs-4'>" . $row['titulo'] . "</h5>";
                     echo "<p class='card-text'  style='font-size: 18px'>" . $row['subtitulo'] . "</p>";
-                    echo "<p class='card-text text-muted'>" . $row['conteudo'] . "</p>";
+                    echo "<p class='card-text textmuted'>" . $row['conteudo'] . "</p>";
 
                     echo "</div>";
                     echo "</div>";
@@ -185,12 +79,12 @@
                     // botão de edição
                     echo "<form method='get' action='editar_nota.php'>";
                     echo "<input type='hidden' name='nota_id' value='" . $row['id'] . "'>";
-                    echo "<button type='submit' class='btn'>Editar</button>";
+                    echo "<button type='submit' class='btn mini-menu-action'>Editar</button>";
                     echo "</form>";
                     // botão de excluir
                     echo "<form method='post' action='excluir_nota.php'>";
                     echo "<input type='hidden' name='nota_id' value='" . $row['id'] . "'>";
-                    echo "<button type='submit' class='btn'>Excluir</button>";
+                    echo "<button type='submit' class='btn mini-menu-action'>Excluir</button>";
                     echo "</form>";
                     echo "</div>";
                     echo "</div>";
@@ -199,7 +93,7 @@
                     echo "</div>";
                 }
             } else {
-                echo "<div class='mt-2'>Nenhuma nota encontrada.";
+                echo "<div class='mt-2 no-note'>Nenhuma nota encontrada.";
             }
 
             $conn->close();
