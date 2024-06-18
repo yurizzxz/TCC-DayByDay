@@ -1,147 +1,129 @@
-<style>
-    #select-note {
-        width: 22vh;
-    }
-
-    :root {
-        --color-bar-nota: #00ff00;
-    }
-
-    .color-bar {
-        background-color: var(--color-bar-nota);
-    }
-
-    #content-card-note {
-        margin-left: -5%
-    }
-
-
-
-    @media (min-width: 601px) {
-        .color-bar {
-            width: 30%;
-            height: 150px;
-        }
-
-        #note-ctner {
-            margin-left: 10px;
-        }
-
-        #card-layout-note {
-            width: 100%;
-            max-width: 160vh;
-            margin: 0 auto;
-        }
-    }
-
-    @media (max-width: 600px) {
-        .color-bar {
-            width: 100%;
-            height: 100px;
-        }
-    }
-
-    @media (max-width: 575px) {
-        .color-bar {
-            width: 100%;
-            height: 20px;
-        }
-
-        #content-card-note {
-            margin-left: 0%
-        }
-    }
-
-
-
-    /* 3 pontos */
-    .mini-menu {
-        position: relative;
-
-    }
-
-    #trespontos {
-        margin-right: 20px;
-        margin-left: auto;
-        margin-top: 10px
-    }
-
-    .menu {
-        position: absolute;
-        margin-right: 30px;
-        width: 13vh;
-        top: 10%;
-        right: 0;
-        background-color: #fff;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        padding: 5px 0;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        display: none;
-    }
-
-    .menu a {
-        display: block;
-        padding: 5px 10px;
-        color: #333;
-        text-decoration: none;
-    }
-
-    .menu a:hover {
-        background-color: #f0f0f0;
-    }
-
-    input[type="checkbox"] {
-        display: none;
-    }
-
-    input[type="checkbox"]+label {
-        cursor: pointer;
-    }
-
-    input[type="checkbox"]:checked+label+.menu {
-        display: block;
-    }
-</style>
-
 <div class="container mt-4" id="note-ctner">
     <div class="container">
         <div id="select-note">
-            <select id="categorySelect" class="form-select" aria-label="Default select example">
+            <select style="border: 0px; padding: 5px 5px" id="categorySelect" aria-label="Default select example">
                 <option>Todas as categorias</option>
                 <option value="all">Criar Categoria +</option>
             </select>
         </div>
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="myModalLabel">Adicionar Categoria</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="categoryForm" action="salvar_categoria.php" method="post">
-                            <div class="form-group">
-                                <label for="categoryName">Nome da Categoria:</label>
-                                <input type="text" class="form-control" id="categoryName" name="nome_categoria" placeholder="Digite o nome da categoria" required>
-                            </div>
-                            <div class="form-group mt-5">
-                                <label>Cor:</label><br>
-                                <div class="container justify-content-center align-items-center">
-                                    <input type="radio" class="color-checkbox" id="color1" value="#ff0000" name="cor_categoria"><label for="color1">
-                                        <div class="color-option" style="background-color: #ff0000;"></div>
-                                    </label>
-                                    <input type="radio" class="color-checkbox" id="color2" value="#00ff00" name="cor_categoria"><label for="color2">
-                                        <div class="color-option" style="background-color: #00ff00;"></div>
-                                    </label>
-                                    <input type="radio" class="color-checkbox" id="color3" value="#0000ff" name="cor_categoria"><label for="color3">
-                                        <div class="color-option" style="background-color: #0000ff;"></div>
-                                    </label>
-                                    <!-- Adicione mais opções de cores conforme necessário -->
+                <div class="modal-content justify-content-center align-items-center">
+                    <div class="container">
+                        <div class="modal-header" style="border-bottom: none">
+                            <h5 class="modal-title" id="myModalLabel">Adicionar Categoria</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <form id="categoryForm" method="post">
+                                <div class="form-group">
+                                    <label for="categoryName">Nome</label>
+                                    <input type="text" class="form-control" id="categoryName" name="nome_categoria"
+                                        placeholder="Digite o nome da categoria" required>
                                 </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary mt-5">Salvar Categoria</button>
-                        </form>
+                                <div class="form-group mt-4" id="cubo-colors">
+                                    <label>Cor:</label><br>
+                                    <div class="row mt-3">
+                                        <!-- First Row -->
+                                        <div class="col-3 text-center">
+                                            <input type="radio" class="color-checkbox" id="color1" value="#F95B99"
+                                                name="cor_selecionada">
+                                            <label for="color1">
+                                                <div class="color-option" style="background-color: #F95B99;"></div>
+                                            </label>
+                                        </div>
+                                        <div class="col-3 text-center">
+                                            <input type="radio" class="color-checkbox" id="color2" value="#CB6CE6"
+                                                name="cor_selecionada">
+                                            <label for="color2">
+                                                <div class="color-option" style="background-color: #CB6CE6;"></div>
+                                            </label>
+                                        </div>
+                                        <div class="col-3 text-center">
+                                            <input type="radio" class="color-checkbox" id="color3" value="#8C52FF"
+                                                name="cor_selecionada">
+                                            <label for="color3">
+                                                <div class="color-option" style="background-color: #8C52FF;"></div>
+                                            </label>
+                                        </div>
+                                        <div class="col-3 text-center">
+                                            <input type="radio" class="color-checkbox" id="color4" value="#AA8DE4"
+                                                name="cor_selecionada">
+                                            <label for="color4">
+                                                <div class="color-option" style="background-color: #AA8DE4;"></div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <!-- Second Row -->
+                                        <div class="col-3 text-center">
+                                            <input type="radio" class="color-checkbox" id="color5" value="#FF5757"
+                                                name="cor_selecionada">
+                                            <label for="color5">
+                                                <div class="color-option" style="background-color: #FF5757;"></div>
+                                            </label>
+                                        </div>
+                                        <div class="col-3 text-center">
+                                            <input type="radio" class="color-checkbox" id="color6" value="#ffff00"
+                                                name="cor_selecionada">
+                                            <label for="color6">
+                                                <div class="color-option" style="background-color: #ffff00;"></div>
+                                            </label>
+                                        </div>
+                                        <div class="col-3 text-center">
+                                            <input type="radio" class="color-checkbox" id="color7" value="#FFCF52"
+                                                name="cor_selecionada">
+                                            <label for="color7">
+                                                <div class="color-option" style="background-color: #FFCF52;"></div>
+                                            </label>
+                                        </div>
+                                        <div class="col-3 text-center">
+                                            <input type="radio" class="color-checkbox" id="color8" value="#FF914D"
+                                                name="cor_selecionada">
+                                            <label for="color8">
+                                                <div class="color-option" style="background-color: #FF914D;"></div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <!-- Third Row -->
+                                        <div class="col-3 text-center">
+                                            <input type="radio" class="color-checkbox" id="color9" value="#36DF32"
+                                                name="cor_selecionada">
+                                            <label for="color9">
+                                                <div class="color-option" style="background-color: #36DF32;"></div>
+                                            </label>
+                                        </div>
+                                        <div class="col-3 text-center">
+                                            <input type="radio" class="color-checkbox" id="color10" value="#397D1D"
+                                                name="cor_selecionada">
+                                            <label for="color10">
+                                                <div class="color-option" style="background-color: #397D1D;"></div>
+                                            </label>
+                                        </div>
+                                        <div class="col-3 text-center">
+                                            <input type="radio" class="color-checkbox" id="color11" value="#000"
+                                                name="cor_selecionada">
+                                            <label for="color11">
+                                                <div class="color-option" style="background-color: #000;"></div>
+                                            </label>
+                                        </div>
+                                        <div class="col-3 text-center">
+                                            <input type="radio" class="color-checkbox" id="color12" value="#bababa"
+                                                name="cor_selecionada">
+                                            <label for="color12">
+                                                <div class="color-option" style="background-color: #bababa;"></div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="push-cat justify-content-center mb-2 text-center align-items-center">
+                                    <button type="submit" class="btn mt-3" id="change-info-btn">Finalizar</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -152,10 +134,7 @@
 
 
             // Conexão com o banco de dados
-            $conn = mysqli_connect('127.0.0.1', 'root', '', 'tcc');
-            if ($conn->connect_error) {
-                die("Erro de conexão: " . $conn->connect_error);
-            }
+            include_once 'conexao.php';
 
             $id_usuario = $_SESSION['idUsuario'];
 
@@ -173,7 +152,7 @@
                     echo "<div class='card-body' style='margin-top: 7px'>";
                     echo "<h5 class='card-title fw-bold fs-4'>" . $row['titulo'] . "</h5>";
                     echo "<p class='card-text'  style='font-size: 18px'>" . $row['subtitulo'] . "</p>";
-                    echo "<p class='card-text text-muted'>" . $row['conteudo'] . "</p>";
+                    echo "<p class='card-text textmuted'>" . $row['conteudo'] . "</p>";
 
                     echo "</div>";
                     echo "</div>";
@@ -186,12 +165,12 @@
                     // botão de edição
                     echo "<form method='get' action='editar_nota.php'>";
                     echo "<input type='hidden' name='nota_id' value='" . $row['id'] . "'>";
-                    echo "<button type='submit' class='btn'>Editar</button>";
+                    echo "<button type='submit' class='btn mini-menu-action'>Editar</button>";
                     echo "</form>";
                     // botão de excluir
                     echo "<form method='post' action='excluir_nota.php'>";
                     echo "<input type='hidden' name='nota_id' value='" . $row['id'] . "'>";
-                    echo "<button type='submit' class='btn'>Excluir</button>";
+                    echo "<button type='submit' class='btn mini-menu-action'>Excluir</button>";
                     echo "</form>";
                     echo "</div>";
                     echo "</div>";
@@ -200,7 +179,7 @@
                     echo "</div>";
                 }
             } else {
-                echo "<div class='mt-2'>Nenhuma nota encontrada.";
+                echo "<div class='mt-2 no-note'>Nenhuma nota encontrada.";
             }
 
             $conn->close();
@@ -208,8 +187,8 @@
         </div>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
-            $(document).ready(function() {
-                $('#categorySelect').change(function() {
+            $(document).ready(function () {
+                $('#categorySelect').change(function () {
                     var selectedOption = $(this).children("option:selected").val();
                     if (selectedOption === 'all') {
                         $('#myModal').modal('show');

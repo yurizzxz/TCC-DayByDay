@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="pt-br">
 
@@ -12,7 +11,125 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <link href="../css/style.css" rel="stylesheet">
+    <style>
+        * {
+            transition: 0.3s ease-in-out;
+        }
+
+        .form-signin {
+            width: 50vh;
+            max-width: 430px;
+            font-size: 18px;
+            padding: 23px;
+        }
+
+        .form-signin .form-control {
+            position: relative;
+            height: auto;
+            margin-left: auto;
+            padding: 10px 35px 10px;
+            font-size: 22px;
+            border-radius: 0px;
+        }
+
+        .fullWidth {
+            width: 100%;
+            margin-left: -3.5px;
+            text-align: center;
+            padding: 10px;
+            border-radius: 0px;
+        }
+
+        #form-layout {
+            height: 97vh;
+        }
+
+        /* roxo */
+        .purple-space {
+            background-color: #cc5dfc;
+            background: linear-gradient(to left, #aa57fa, #cc5dfc);
+            color: white;
+        }
+
+        #purple-space {
+            height: 100vh
+        }
+
+        #titulo-purple {
+            font-size: 60px;
+            width: 60%;
+            margin-top: -80px;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* */
+
+        .btn-btn-login {
+            background-color: #cc5dfc;
+            background: linear-gradient(to left, #aa57fa, #cc5dfc);
+            color: white;
+            font-size: 25px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn-btn-login:hover {
+            background-color: #A843F6;
+            color: white;
+            font-size: 25px;
+            transition: 0.3s ease-in-out;
+        }
+
+        /* icon */
+
+        #icon {
+            margin-right: -55px;
+            margin-left: 10px;
+            color: black;
+            font-size: 18px;
+            z-index: 99;
+        }
+
+        .forgot-password a {
+            list-style: none;
+            text-decoration: none;
+            color: black;
+            transition: 0.3s ease-in-out;
+
+        }
+
+        .forgot-password a:hover {
+            border-bottom: 1px solid;
+            color: #A843F6;
+            transition: 0.3s ease-in-out;
+        }
+
+        /* outline */
+        .outline-btn-transition {
+            border: 1px solid white;
+            background-color: white;
+            color: #A843F6;
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-size: 35px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn-transition {
+            margin-top: 40px;
+        }
+
+        /* responsive */
+
+        .mobile-aviso {
+            display: NONE;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -39,32 +156,32 @@
                                 <div class="container-fluid">
                                     <!--titulo-->
                                     <div class="titulo-heading text-center">
-                                        <h3 class="text-dark mt-4 mb-4">Entrar</h3>
+                                        <h3 class="text-dark fs-2 mt-4 mb-4">Entrar</h3>
                                     </div>
                                     <div class="form-infos" style=" margin-left: -5px">
                                         <div class="form-group d-flex align-items-center mb-1">
                                             <ion-icon name="mail-outline" id="icon"></ion-icon>
                                             <!--email-->
-                                            <input type="email" id="inputEmail" class="form-control" placeholder="Seu email"
-                                                required name="txtemail">
+                                            <input type="email" id="inputEmail" class="form-control"
+                                                placeholder="Insira seu email..." required name="txtemail">
                                         </div>
                                         <div class="form-group d-flex align-items-center mb-3">
                                             <ion-icon name="lock-closed-outline" id="icon"></ion-icon>
                                             <!--senha-->
                                             <input type="password" id="inputPassword" class="form-control"
-                                                placeholder="Senha" required name="txtsenha">
+                                                placeholder="Insira sua senha..." required name="txtsenha">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="forgot-password container mb-3">
-                                    <a href="#" style="margin-left: auto">Esqueceu a senha?</a>
+                                    <a href="#" class="text-muted" style="margin-left: auto">Esqueceu a senha?</a>
                                 </div>
                                 <!--enviar-->
                                 <div class="container text-center" style="margin-bottom: 35px">
                                     <input type="submit" class="btn btn-btn-login fullWidth" name="btnlogar"
                                         value="Entrar" />
                                 </div>
-                                <div class="container text-center">
+                                <div class="container text-center d-none">
                                     <p class="d-none" style="margin-bottom: 2px">powered by:</p>
                                     <img src="../img/logopng.png" height="25" alt="">
                                 </div>
@@ -88,7 +205,6 @@
                     <div class="mx-auto">
                         <div id="desktop-aviso">
                             <h1 class="fw-bold" id="titulo-purple">JÁ POSSUI UMA CONTA?</h1>
-                            <p class="d-none">🏦 de 🎲 @MATHEUSVIEIRAPERES</p>
                             <div class="btn-transition">
                                 <a href="#" class="outline-btn-transition" id="entrar">ENTRAR</a>
                             </div>
@@ -135,7 +251,7 @@
                                     <input type="submit" class="btn btn-btn-login fullWidth" name="btnsalvar"
                                         value="Criar Conta" />
                                 </div>
-                                <div class="container text-center">
+                                <div class="container text-center d-none">
                                     <p class="d-none" style="margin-bottom: 2px">powered by:</p>
                                     <img src="../img/logopng.png" height="25" alt="">
                                 </div>

@@ -15,20 +15,10 @@ if (empty($pagina) || $pagina == "index") {
 <head>
     <?php include_once 'header.php'; ?>
     <style>
-        body::-webkit-scrollbar {
-            width: 8px;
-
-        }
-
-        body::-webkit-scrollbar-track {
-            background: gray
-        }
-
-        body::-webkit-scrollbar-thumb {
-            background-color: purple;
-            height: 10vh;
-        }
+        
     </style>
+   <link rel="stylesheet" href="../css/css.css">
+
 </head>
 
 <body>

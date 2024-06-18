@@ -125,7 +125,7 @@
                     <a class="login-hub me-2" aria-current="page" href="../pages/login.php">Entrar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="sign-up" href="../pages/login.php #second-column">Cadastrar</a>
+                    <a class="sign-up" href="../pages/login.php" id="cadastrar-link">Cadastrar</a>
                 </li>
             </ul>
         </div>
