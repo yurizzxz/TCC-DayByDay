@@ -8,7 +8,7 @@
     --sidebar-active: #fafafa;
     --site-background: #fefaff;
     --switch: #777;
-    --text-muted: #b9b9b9;
+    --text-muted: #111111;
     --card: white;
 }
 
@@ -158,6 +158,7 @@ body::-webkit-scrollbar-thumb {
 
 #change-info-btn {
     background: var(--background);
+    color: var(--text-color);
     transition: 0.3s ease-in-out;
 }
 
@@ -240,6 +241,10 @@ body::-webkit-scrollbar-thumb {
     .modal-body {
         margin-left: 0px;
     }
+
+    .modal-escuro {
+        margin-left: 0;
+    }
 }
 
 
@@ -253,6 +258,8 @@ body::-webkit-scrollbar-thumb {
     .modal-body {
         margin-left: 0px;
     }
+
+    
 }
 
 
@@ -516,6 +523,8 @@ body::-webkit-scrollbar-thumb {
     #content-card-note {
         margin-left: 0%
     }
+
+
 }
 
 
@@ -692,8 +701,13 @@ input[type="checkbox"]:checked+label+.menu {
     transform-origin: right;
     animation: slideFromTop 0.3s forwards;
     border: none;
-    height: 23vh;
+    height: 25vh;
     margin-left: -298px;
+}
+
+.menu-user-navbar a{
+    color: var(--text-color);
+    text-decoration: none;
 }
 
 .profile-img {
@@ -819,4 +833,81 @@ ion-icon[name="notifications-outline"] {
 #modalNota .modal-content .modal-body textarea::placeholder {
     background-color: var(--white);
     color: var(--text-color);
+}
+
+#categorySelect {
+    background-color: var(--white);
+    color: var(--text-color);
+    transition: 0.3s ease-in-out;
+}
+
+.modal-escuro {
+    background-color: var(--card);
+    color: var(--text-color);
+}
+
+.modal-escuro a{
+    color: var(--text-color);
+    text-decoration: none;
+    list-style: none;
+}
+
+.modal-escuro input {
+    background-color: var(--background);
+}
+
+.modal-escuro input:focus {
+    background-color: var(--background);
+    outline: none;
+    box-shadow: none;
+}
+
+#myModal .modal-content{
+    background-color: var(--white);
+    color: var(--text-color);
+}
+
+#myModal .modal-content input{
+    background-color: transparent;
+    border: none;
+    margin-top: 10px;
+    padding: 0rem 0rem;
+    color: var(--text-color);
+}
+
+#myModal .modal-content input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+#cubo-colors .color-checkbox {
+    display: none;
+}
+
+#cubo-colors .color-option {
+    width: 50px;
+    height: 50px;
+    border-radius: 10%;
+    display: inline-block;
+    cursor: pointer;
+    margin: 5px;
+}
+
+#cubo-colors .color-checkbox:checked+label .color-option {
+    border: 2px solid var(--text-color);
+}
+
+#myModal .modal-content {
+    max-width: 350px; 
+    margin: 0 auto; 
+    margin-top: 35%;
+}
+
+#myModal .modal-content .modal-body input::placeholder{
+    color: var(--text-muted);
+}
+
+#myModal .modal-content .modal-body {
+    margin-left: 0px;
+    display: flex;
 }

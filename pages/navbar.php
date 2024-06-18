@@ -233,20 +233,20 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
             <!-- MUDAR INFORMAÇÕES --><!-- MUDAR INFORMAÇÕES --><!-- MUDAR INFORMAÇÕES --><!-- MUDAR INFORMAÇÕES -->
             <div class="modal fade" id="modalChanges" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
-                <div class="modal-dialog d-flex justify-content-center align-items-center" style="min-height: 90vh;">
-                    <div class=" modal-content" style="margin-left: -15px">
+                <div class="modal-dialog d-flex  justify-content-center align-items-center" style="min-height: 90vh;">
+                    <div class=" modal-content modal-escuro">
                         <div class="container">
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                                 style="margin-right: 20px; margin-top: 15px;"></button>
                         </div>
-                        <div class="modal-body text-center justify-content-center align-items-center">
+                        <div class="modal-body  text-center justify-content-center align-items-center">
                             <h5 style="margin-top: -15px;">Insira sua senha para prosseguir</h6>
                                 <input type="password" class="form-control mt-3 mb-3" style="margin-left: -6px">
                                 <div class="btn-confirmar-senha">
                                     <div class="forgot-pass mb-3 mt-3">
-                                        <a href="#" class="text-dark">Esqueceu a senha?</a>
+                                        <a href="#">Esqueceu a senha?</a>
                                     </div>
-                                    <button type="button" class="btn btn-primary text-dark" id="change-info-btn"
+                                    <button type="submit" class="btn btn-primary" id="change-info-btn"
                                         style="border:none">Prosseguir</button>
                                 </div>
 

@@ -28,6 +28,7 @@ date_default_timezone_set('America/Sao_Paulo');
                     }
                     ?>
                 </div>
+                <?php include_once 'footer.php'; ?>
         <?php include_once 'scripts.php'; ?>
     </body>
 </html>

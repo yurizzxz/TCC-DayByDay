@@ -104,6 +104,31 @@
             margin-right: auto;
         }
     }
+
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        padding-top: 25px;
+        height: 0;
+    }
+
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .headline-l {
+        font-size: 8vh;
+    }
+
+    @media screen and (max-width: 500px) {
+        .headline-l {
+        font-size: 5vh;
+    }
+    }
 </style>
 
 <section id="home-landing">
@@ -132,29 +157,25 @@
                     <div class="row">
                         <div class="col-lg-3">
                             <img class="bd-placeholder-img rounded-circle mt-4" width="200" height="200"
-                                src="../img/1.jpeg" role="img" aria-label="Placeholder: 140x140"
-                                focusable="false">
+                                src="../img/1.jpeg" role="img" aria-label="Placeholder: 140x140" focusable="false">
                             </img>
                             <h2 class="fw-bold mt-3" id="title-circle">Organização eficiente</h2>
                         </div>
                         <div class="col-lg-3">
                             <img class="bd-placeholder-img rounded-circle mt-4" width="200" height="200"
-                                src="../img/2.jpeg" role="img" aria-label="Placeholder: 140x140"
-                                focusable="false">
+                                src="../img/2.jpeg" role="img" aria-label="Placeholder: 140x140" focusable="false">
                             </img>
                             <h2 class="fw-bold mt-3" id="title-circle">Gestão do tempo</h2>
                         </div>
                         <div class="col-lg-3">
                             <img class="bd-placeholder-img rounded-circle mt-4" width="200" height="200"
-                                src="../img/4.jpeg" role="img" aria-label="Placeholder: 140x140"
-                                focusable="false">
+                                src="../img/4.jpeg" role="img" aria-label="Placeholder: 140x140" focusable="false">
                             </img>
                             <h2 class="fw-bold mt-3" id="title-circle">Produtividade aprimorada</h2>
                         </div>
                         <div class="col-lg-3">
                             <img class="bd-placeholder-img rounded-circle mt-4" width="200" height="200"
-                                src="../img/5.jpeg" role="img" aria-label="Placeholder: 140x140"
-                                focusable="false">
+                                src="../img/5.jpeg" role="img" aria-label="Placeholder: 140x140" focusable="false">
                             </img>
                             <h2 class="fw-bold mt-3" id="title-circle">Facilidade de uso</h2>
                         </div>
@@ -166,7 +187,7 @@
                 <hr class="featurette-divider" id="divider">
             </div>
 
-            <div class="bg-roxo" >
+            <div class="bg-roxo">
                 <div class="row featurette justify-content-center align-items-center" id="leading">
 
                     <div class="col-md-6 order-md-1">
@@ -178,7 +199,8 @@
                         </p>
                     </div>
                     <div class="col-md-6 order-md-1">
-                        <img src="../img/3.jpeg" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                        <img src="../img/3.jpeg"
+                            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
                             width="500" height="500" focusable="false">
                         </img>
                     </div>
@@ -189,7 +211,8 @@
                 <hr class="featurette-divider" id="divider">
             </div>
 
-            <div class="row featurette justify-content-center align-items-center" style="margin-bottom: 100px" id="leading">
+            <div class="row featurette justify-content-center align-items-center" style="margin-bottom: 100px"
+                id="leading">
 
                 <div class="col-md-6 order-md-2">
                     <h2 class="featurette-heading" id="texto-lateral-l">Qual nosso <br> principal objetivo?</h2>
@@ -198,11 +221,25 @@
                     </p>
                 </div>
                 <div class="col-md-6 order-md-1">
-                    <img src="" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                    <img src="../img/logo.png"
+                        class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
                         height="500" focusable="false">
                     </img>
                 </div>
             </div>
+            <div class="container">
+                <hr class="featurette-divider" id="divider">
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h1 class="text-center fw-bold headline-l mb-5">Como nosso sistema funciona?</h1>
+                    <div class="video-container mb-5">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 </section>
