@@ -180,7 +180,7 @@ body::-webkit-scrollbar-thumb {
 .color-bar-nota {
     background-color: var(--color-bar-nota);
     height: 60vh;
-    width: 30%;
+    width: 1.5vh;
 }
 
 
@@ -471,10 +471,17 @@ body::-webkit-scrollbar-thumb {
     border: 2px solid var(--text-color);
 }
 
+.color-checkbox:checked+l.color-option {
+    border: 2px solid var(--text-color);
+}
+
+
 #colors-dropdown {
     margin-left: 0px;
     margin-top: -20px
 }
+
+/* fim nav*/
 
 /* nota*/
 
@@ -486,15 +493,17 @@ body::-webkit-scrollbar-thumb {
     background-color: var(--color-bar-nota);
 }
 
-#content-card-note {
-    margin-left: -5%
-}
 
 @media (min-width: 601px) {
     .color-bar {
-        width: 30%;
+        width: 1.5vh;
         height: 150px;
     }
+
+    #content-card-note {
+        margin-left: -3vh
+    }
+    
 
     #note-ctner {
         margin-left: 10px;
@@ -507,10 +516,23 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
+@media (min-width: 992px) {
+
+    #content-card-note {
+        margin-left: -6vh
+    }
+}
+
+@media (min-width: 2048px) {
+
+    #content-card-note {
+        margin-left: -5vh
+    }
+}
+
 @media (max-width: 600px) {
     .color-bar {
-        width: 100%;
-        height: 100px;
+        height: 16vh;
     }
 }
 
@@ -531,7 +553,7 @@ body::-webkit-scrollbar-thumb {
 /* 3 pontos */
 .mini-menu {
     position: relative;
-
+    
 }
 
 #trespontos {
@@ -548,7 +570,8 @@ body::-webkit-scrollbar-thumb {
 .menu {
     position: absolute;
     margin-right: 30px;
-    width: 13vh;
+    width: 25vh;
+    z-index: 99;
     top: 10%;
     right: 0;
     background-color: var(--white);
@@ -582,7 +605,7 @@ input[type="checkbox"]:checked+label+.menu {
     display: block;
 }
 
-/*sidebar e navbar*/
+/*sidebar*/
 
 
 #sidebar {
@@ -590,7 +613,7 @@ input[type="checkbox"]:checked+label+.menu {
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--white);
-    height: 94vh;
+    height: 94.2vh;
     position: relative;
     transition: 0.3s ease-in-out;
     min-width: 82px;
@@ -609,6 +632,18 @@ input[type="checkbox"]:checked+label+.menu {
     list-style: none;
 }
 
+@media (max-width: 575px){
+    #sidebar  {
+        position: fixed;
+    }
+
+    #note-ctner {
+        max-width: 50vh;
+        display: flex;
+        margin-left: 90px;
+    }
+}
+
 .side-item a {
     border-radius: 8px;
     font-size: 20px;
@@ -619,9 +654,7 @@ input[type="checkbox"]:checked+label+.menu {
 .side-item.active a {
     background-color: var(--sidebar-active);
     transition: 0.3s ease-in-out;
-
 }
-
 
 .side-item a {
     text-decoration: none;
@@ -653,6 +686,49 @@ input[type="checkbox"]:checked+label+.menu {
     height: 0px;
 }
 
+.hr-muted {
+    color: var(--text-muted);
+}
+
+/*categoria*/
+
+#categoria-layout .head{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#categoria-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--text-color);
+}
+
+.title-categorias{
+    display: none;
+    margin-bottom: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+.category-item {
+    margin-bottom: 15px;
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+
+.category-list{
+    list-style: none;
+    width: 0px;
+    margin-top: 0px;
+    overflow: hidden;
+    font-size: 13px;
+    white-space: nowrap;
+    transition: width .6s;
+    text-overflow: ellipsis;
+}
+
 #sidebar.open-sidebar {
     min-width: 11vh;
 }
@@ -660,6 +736,22 @@ input[type="checkbox"]:checked+label+.menu {
 #sidebar.open-sidebar .item-description {
     width: 150px;
     height: auto;
+}
+
+/*categoria*/
+
+#sidebar.open-sidebar #categoria-layout ion-icon {
+        justify-content: flex-end;
+        padding-right: 17px;
+        margin-left: 3px;
+}
+
+#sidebar.open-sidebar .category-list {
+    width: 150px;
+}
+
+#sidebar.open-sidebar .title-categorias {
+    display: block;
 }
 
 #sidebar.open-sidebar .side-item a {
@@ -675,6 +767,8 @@ input[type="checkbox"]:checked+label+.menu {
 #open_btn ion-icon {
     color: var(--text-color);
 }
+
+/*fim sidebar*/
 
 /* MODAL */
 
@@ -702,7 +796,7 @@ input[type="checkbox"]:checked+label+.menu {
     animation: slideFromTop 0.3s forwards;
     border: none;
     height: 25vh;
-    margin-left: -298px;
+    margin-left: -310px;
 }
 
 .menu-user-navbar a{
@@ -822,7 +916,10 @@ ion-icon[name="notifications-outline"] {
 
 #modalNota .modal-content .modal-body .form-control {
     background-color: var(--white);
-    color: var(--text-color);
+}
+
+input::selection {
+    color: var(--text-color) !important;
 }
 
 #modalNota .modal-content .modal-body input::placeholder {
