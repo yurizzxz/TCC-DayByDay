@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+$msg = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+unset($_SESSION['msg']);
+
 if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
     $nomeUsuario = $_SESSION['nomeUsuario'];
     $emailUsuario = $_SESSION['emailUsuario'];
@@ -9,7 +12,6 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
     exit;
 }
 ?>
-
 
 <nav class="navbar">
     <div class="container-fluid">
@@ -175,7 +177,7 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
             <a id="notifications" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
                 aria-controls="offcanvasWithBothOptions">
                 <ion-icon name="notifications-outline"
-                    style="z-index: 99; font-size: 25px; margin-top: 08px; ">
+                    style="z-index: 99; font-size: 25px; margin-top: 08px; cursor:pointer">
                 </ion-icon>
             </a>
             <div class="dropdown">
@@ -214,7 +216,7 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                                 <div class="" style="margin-top: 10px">
                                     <div class="a me-5">
                                         <ion-icon name="help-outline" style="padding-right: 10px"></ion-icon> <a
-                                            href="#">Ajuda</a>
+                                            href="../landingpage/index.php?p=home">Ajuda</a>
                                     </div>
                                 </div>
                             </div>
@@ -231,27 +233,27 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
 
             <!-- MUDAR INFORMAÇÕES --><!-- MUDAR INFORMAÇÕES --><!-- MUDAR INFORMAÇÕES --><!-- MUDAR INFORMAÇÕES -->
             <!-- MUDAR INFORMAÇÕES --><!-- MUDAR INFORMAÇÕES --><!-- MUDAR INFORMAÇÕES --><!-- MUDAR INFORMAÇÕES -->
-            <div class="modal fade" id="modalChanges" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog d-flex  justify-content-center align-items-center" style="min-height: 90vh;">
-                    <div class=" modal-content modal-escuro">
+            <div class="modal fade" id="modalChanges" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+                    <div class="modal-content modal-escuro">
                         <div class="container">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                style="margin-right: 20px; margin-top: 15px;"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-right: 20px; margin-top: 15px;"></button>
                         </div>
-                        <div class="modal-body  text-center justify-content-center align-items-center">
-                            <h5 style="margin-top: -15px;">Insira sua senha para prosseguir</h6>
-                                <input type="password" class="form-control mt-3 mb-3" style="margin-left: -6px">
+                        <div class="modal-body text-center justify-content-center align-items-center">
+                            <h5 style="margin-top: -15px;">Insira sua senha para prosseguir</h5>
+                            <form id="passwordForm" method="post" action="validarsenha.php">
+                                <input type="password" class="form-control mt-3 mb-3" style="margin-left: -6px" id="inputPassword" name="password">
+                                <?php if ($msg): ?>
+                                        <p class="text-danger"><?php echo $msg; ?></p>
+                                <?php endif; ?>
                                 <div class="btn-confirmar-senha">
                                     <div class="forgot-pass mb-3 mt-3">
                                         <a href="#">Esqueceu a senha?</a>
                                     </div>
-                                    <button type="submit" class="btn btn-primary" id="change-info-btn"
-                                        style="border:none">Prosseguir</button>
+                                    <button type="submit" class="btn btn-primary" id="change-info-btn" style="border:none">Prosseguir</button>
                                 </div>
-
+                            </form>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -284,6 +286,11 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
     </div>
 </nav>
 
+<div class='popup-overlay' id='popup-overlay'></div>
+        <div class='popup' id='popup'>
+            <p id='popup-message'></p>
+        </div>
+
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         // event listener para os checkbox
@@ -308,6 +315,7 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
             });
         });
     });
+    
 
     document.querySelectorAll('.color-checkbox').forEach(function (checkbox) {
         checkbox.addEventListener('change', function () {

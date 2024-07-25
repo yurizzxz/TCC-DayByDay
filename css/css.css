@@ -180,7 +180,7 @@ body::-webkit-scrollbar-thumb {
 .color-bar-nota {
     background-color: var(--color-bar-nota);
     height: 60vh;
-    width: 30%;
+    width: 1.5vh;
 }
 
 
@@ -259,7 +259,7 @@ body::-webkit-scrollbar-thumb {
         margin-left: 0px;
     }
 
-    
+
 }
 
 
@@ -471,10 +471,17 @@ body::-webkit-scrollbar-thumb {
     border: 2px solid var(--text-color);
 }
 
+.color-checkbox:checked+l.color-option {
+    border: 2px solid var(--text-color);
+}
+
+
 #colors-dropdown {
     margin-left: 0px;
     margin-top: -20px
 }
+
+/* fim nav*/
 
 /* nota*/
 
@@ -486,15 +493,17 @@ body::-webkit-scrollbar-thumb {
     background-color: var(--color-bar-nota);
 }
 
-#content-card-note {
-    margin-left: -5%
-}
 
 @media (min-width: 601px) {
     .color-bar {
-        width: 30%;
+        width: 1.5vh;
         height: 150px;
     }
+
+    #content-card-note {
+        margin-left: -3vh
+    }
+
 
     #note-ctner {
         margin-left: 10px;
@@ -507,10 +516,23 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
+@media (min-width: 992px) {
+
+    #content-card-note {
+        margin-left: -6vh
+    }
+}
+
+@media (min-width: 2048px) {
+
+    #content-card-note {
+        margin-left: -5vh
+    }
+}
+
 @media (max-width: 600px) {
     .color-bar {
-        width: 100%;
-        height: 100px;
+        height: 16vh;
     }
 }
 
@@ -548,7 +570,8 @@ body::-webkit-scrollbar-thumb {
 .menu {
     position: absolute;
     margin-right: 30px;
-    width: 13vh;
+    width: 25vh;
+    z-index: 99;
     top: 10%;
     right: 0;
     background-color: var(--white);
@@ -557,6 +580,12 @@ body::-webkit-scrollbar-thumb {
     padding: 5px 0;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     display: none;
+    transition: 0.3s ease-in-out;
+}
+
+.menu button:hover {
+    color: #8C52FF;
+    transition: 0.3s ease-in-out;
 }
 
 .menu a {
@@ -582,7 +611,7 @@ input[type="checkbox"]:checked+label+.menu {
     display: block;
 }
 
-/*sidebar e navbar*/
+/*sidebar*/
 
 
 #sidebar {
@@ -590,7 +619,7 @@ input[type="checkbox"]:checked+label+.menu {
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--white);
-    height: 94vh;
+    height: 94.2vh;
     position: relative;
     transition: 0.3s ease-in-out;
     min-width: 82px;
@@ -609,6 +638,18 @@ input[type="checkbox"]:checked+label+.menu {
     list-style: none;
 }
 
+@media (max-width: 575px) {
+    #sidebar {
+        position: fixed;
+    }
+
+    #note-ctner {
+        max-width: 50vh;
+        display: flex;
+        margin-left: 90px;
+    }
+}
+
 .side-item a {
     border-radius: 8px;
     font-size: 20px;
@@ -619,9 +660,7 @@ input[type="checkbox"]:checked+label+.menu {
 .side-item.active a {
     background-color: var(--sidebar-active);
     transition: 0.3s ease-in-out;
-
 }
-
 
 .side-item a {
     text-decoration: none;
@@ -653,6 +692,61 @@ input[type="checkbox"]:checked+label+.menu {
     height: 0px;
 }
 
+.hr-muted {
+    color: var(--text-muted);
+}
+
+/*categoria*/
+
+#categoria-layout .head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#categoria-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.title-categorias {
+    display: none;
+    margin-bottom: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+.category-item {
+    margin-bottom: 15px;
+    border-radius: 10px;
+    padding: 10px 15px;
+    display: flex;  
+    justify-content: space-between; 
+}
+
+.category-item a {
+    padding: 0px;
+    font-size: 15px;
+    color: #000;
+}
+
+.buttons-acao{ 
+    display: flex;
+}
+
+
+.category-list {
+    list-style: none;
+    width: 0px;
+    margin-top: 0px;
+    overflow: hidden;
+    font-size: 13px;
+    white-space: nowrap;
+    transition: width .6s;
+    text-overflow: ellipsis;
+}
+
 #sidebar.open-sidebar {
     min-width: 11vh;
 }
@@ -660,6 +754,22 @@ input[type="checkbox"]:checked+label+.menu {
 #sidebar.open-sidebar .item-description {
     width: 150px;
     height: auto;
+}
+
+/*categoria*/
+
+#sidebar.open-sidebar #categoria-layout ion-icon {
+    justify-content: flex-end;
+    padding-right: 17px;
+    margin-left: 3px;
+}
+
+#sidebar.open-sidebar .category-list {
+    width: 200px;
+}
+
+#sidebar.open-sidebar .title-categorias {
+    display: block;
 }
 
 #sidebar.open-sidebar .side-item a {
@@ -675,6 +785,8 @@ input[type="checkbox"]:checked+label+.menu {
 #open_btn ion-icon {
     color: var(--text-color);
 }
+
+/*fim sidebar*/
 
 /* MODAL */
 
@@ -702,10 +814,10 @@ input[type="checkbox"]:checked+label+.menu {
     animation: slideFromTop 0.3s forwards;
     border: none;
     height: 25vh;
-    margin-left: -298px;
+    margin-left: -310px;
 }
 
-.menu-user-navbar a{
+.menu-user-navbar a {
     color: var(--text-color);
     text-decoration: none;
 }
@@ -818,11 +930,15 @@ ion-icon[name="notifications-outline"] {
 
 #modalNota .modal-content {
     background-color: var(--white);
+    animation: fadeIn .3s ease-out forwards;
 }
 
 #modalNota .modal-content .modal-body .form-control {
     background-color: var(--white);
-    color: var(--text-color);
+}
+
+input::selection {
+    color: var(--text-color) !important;
 }
 
 #modalNota .modal-content .modal-body input::placeholder {
@@ -838,15 +954,25 @@ ion-icon[name="notifications-outline"] {
 #categorySelect {
     background-color: var(--white);
     color: var(--text-color);
-    transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in;
+    padding: 7px 10px;
+    border-radius: 3px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%238C52FF" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M6.293 7.293a1 1 0 011.414 0L10 9.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px top 50%;
+    padding-right: 50px;
 }
+
 
 .modal-escuro {
     background-color: var(--card);
     color: var(--text-color);
 }
 
-.modal-escuro a{
+.modal-escuro a {
     color: var(--text-color);
     text-decoration: none;
     list-style: none;
@@ -862,12 +988,12 @@ ion-icon[name="notifications-outline"] {
     box-shadow: none;
 }
 
-#myModal .modal-content{
+#myModal .modal-content {
     background-color: var(--white);
     color: var(--text-color);
 }
 
-#myModal .modal-content input{
+#myModal .modal-content input {
     background-color: transparent;
     border: none;
     margin-top: 10px;
@@ -898,16 +1024,195 @@ ion-icon[name="notifications-outline"] {
 }
 
 #myModal .modal-content {
-    max-width: 350px; 
-    margin: 0 auto; 
+    max-width: 350px;
+    margin: 0 auto;
     margin-top: 35%;
 }
 
-#myModal .modal-content .modal-body input::placeholder{
+#myModal .modal-content .modal-body input::placeholder {
     color: var(--text-muted);
 }
 
 #myModal .modal-content .modal-body {
     margin-left: 0px;
     display: flex;
+}
+
+/*POPUP*/
+
+.popup {
+    display: none;
+    border-radius: 3px;
+    border: 0.5px solid #777;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    color: var(--text-color);
+    transform: translate(-50%, -50%);
+    padding: 20px 20px 12px 20px;
+    background-color: var(--white);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    text-align: center;
+    overflow: hidden;
+}
+
+.popup::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #8C52FF;
+    transform: translateX(-100%);
+    animation: slideIn 3s forwards;
+    box-shadow: 0 0 10px 2px #8C52FF;
+}
+
+@keyframes slideIn {
+    to {
+        transform: translateX(100%);
+    }
+}
+
+.offcanvas.show {
+    animation: slideLeft 0.5s ease-out forwards;
+}
+
+@keyframes slideLeft {
+    from {
+        transform: translateX(50%);
+    }
+    to {
+        transform: translateX(-0%);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        transform: translateY(50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(-0%);
+        opacity: 1;
+    }
+}
+
+
+.select-categoria {
+    background-color: var(--white);
+    color: var(--text-color);
+    transition: 0.3s ease-in;
+    padding: 7px 50px 7px 10px;
+    border-radius: 3px;
+    margin-top: 5px;
+    margin-left: 12px;
+    margin-bottom: 10px;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%238C52FF" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M6.293 7.293a1 1 0 011.414 0L10 9.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px top 50%;
+    padding-right: 130px;
+    appearance: none;
+}
+
+.text-else {
+    color: var(--text-color);
+}
+
+#inputPassword {
+    color: var(--text-color);
+}
+
+/*cat*/
+.modal-cat {
+    display: none;
+    border-radius: 3px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    color: var(--text-color);
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: var(--white);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.modal-cat .modal-body {
+    margin-left: 0px;
+}
+
+.head-modal {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 605px) {
+    .modal-cat .modal-body {
+    margin-left: 0px !important;
+}
+}
+
+
+.modal-overlayy {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.modal-cat .form-control {
+    margin-top: 5px;
+    background-color: var(--background);
+    border: none;
+    color: var(--text-color);
+    padding: 10px;
+}
+
+.modal-cat .form-control::placeholder {
+    color: var(--text-color);
+}
+
+.modal-footer {
+    justify-content: center;
+    display: flex;
+    gap: 10px;
+}
+
+.category-item .button-container {
+   font-size: 15px;
+}
+
+.button-container ion-icon {
+    padding-right: 0 !important;
+}
+
+.btn-cat-action {
+    margin-top: 20px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+}
+
+#btn-confirm {
+    background-color: #8C52FF;
+    color: white;
+}
+
+#btn-cancel{
+    background-color: var(--background);
+    color: var(--text-color);
+}
+
+.ion-icon-btn {
+    background-color: transparent;
+    border: none;
+    padding: 0;
 }

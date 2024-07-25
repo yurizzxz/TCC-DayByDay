@@ -234,8 +234,8 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <h1 class="text-center fw-bold headline-l mb-5">Como nosso sistema funciona?</h1>
-                    <div class="video-container mb-5">
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0"
+                    <div class="video-container d-none mb-5">
+                        <iframe src="#" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                     </div>

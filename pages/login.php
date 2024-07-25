@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="pt-br">
 
@@ -12,123 +13,118 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <style>
-        * {
-            transition: 0.3s ease-in-out;
-        }
+    * {
+        transition: 0.3s ease-in-out;
+    }
 
-        .form-signin {
-            width: 50vh;
-            max-width: 430px;
-            font-size: 18px;
-            padding: 23px;
-        }
+    .form-signin {
+        width: 50vh;
+        max-width: 430px;
+        font-size: 18px;
+        padding: 23px;
+    }
 
-        .form-signin .form-control {
-            position: relative;
-            height: auto;
-            margin-left: auto;
-            padding: 10px 35px 10px;
-            font-size: 22px;
-            border-radius: 0px;
-        }
+    .form-signin .form-control {
+        position: relative;
+        height: auto;
+        margin-left: auto;
+        padding: 10px 35px 10px;
+        font-size: 22px;
+        border-radius: 0px;
+    }
 
-        .fullWidth {
-            width: 100%;
-            margin-left: -3.5px;
-            text-align: center;
-            padding: 10px;
-            border-radius: 0px;
-        }
+    .fullWidth {
+        width: 100%;
+        margin-left: -3.5px;
+        text-align: center;
+        padding: 10px;
+        border-radius: 0px;
+    }
 
-        #form-layout {
-            height: 97vh;
-        }
+    #form-layout {
+        height: 97vh;
+    }
 
-        /* roxo */
-        .purple-space {
-            background-color: #cc5dfc;
-            background: linear-gradient(to left, #aa57fa, #cc5dfc);
-            color: white;
-        }
+    /* roxo */
+    .purple-space {
+        background-color: #cc5dfc;
+        background: linear-gradient(to left, #aa57fa, #cc5dfc);
+        color: white;
 
-        #purple-space {
-            height: 100vh
-        }
+    }
 
-        #titulo-purple {
-            font-size: 60px;
-            width: 60%;
-            margin-top: -80px;
-            text-align: center;
-            justify-content: center;
-            align-items: center;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    #purple-space {
+        height: 100vh;
+    }
 
-        /* */
+    #titulo-purple {
+        font-size: 60px;
+        width: 60%;
+        margin-top: -80px;
+    }
 
-        .btn-btn-login {
-            background-color: #cc5dfc;
-            background: linear-gradient(to left, #aa57fa, #cc5dfc);
-            color: white;
-            font-size: 25px;
-            transition: 0.3s ease-in-out;
-        }
+    /* */
 
-        .btn-btn-login:hover {
-            background-color: #A843F6;
-            color: white;
-            font-size: 25px;
-            transition: 0.3s ease-in-out;
-        }
+    .btn-btn-login {
+        background-color: #cc5dfc;
+        background: linear-gradient(to left, #aa57fa, #cc5dfc);
+        color: white;
+        font-size: 25px;
+        transition: 0.3s ease-in-out;
+    }
 
-        /* icon */
+    .btn-btn-login:hover {
+        background-color: #A843F6;
+        color: white;
+        font-size: 25px;
+        transition: 0.3s ease-in-out;
+    }
 
-        #icon {
-            margin-right: -55px;
-            margin-left: 10px;
-            color: black;
-            font-size: 18px;
-            z-index: 99;
-        }
+    /* icon */
 
-        .forgot-password a {
-            list-style: none;
-            text-decoration: none;
-            color: black;
-            transition: 0.3s ease-in-out;
+    #icon {
+        margin-right: -55px;
+        margin-left: 10px;
+        color: black;
+        font-size: 18px;
+        z-index: 99;
+    }
 
-        }
+    .forgot-password a {
+        list-style: none;
+        text-decoration: none;
+        color: black;
+        transition: 0.3s ease-in-out;
 
-        .forgot-password a:hover {
-            border-bottom: 1px solid;
-            color: #A843F6;
-            transition: 0.3s ease-in-out;
-        }
+    }
 
-        /* outline */
-        .outline-btn-transition {
-            border: 1px solid white;
-            background-color: white;
-            color: #A843F6;
-            padding: 15px 20px;
-            border-radius: 10px;
-            font-size: 35px;
-            text-decoration: none;
-            font-weight: bold;
-        }
+    .forgot-password a:hover {
+        border-bottom: 1px solid;
+        color: #A843F6;
+        transition: 0.3s ease-in-out;
+    }
 
-        .btn-transition {
-            margin-top: 40px;
-        }
+    /* outline */
+    .outline-btn-transition {
+        border: 1px solid white;
+        background-color: white;
+        color: #A843F6;
+        padding: 15px 20px;
+        border-radius: 10px;
+        font-size: 35px;
+        text-decoration: none;
+        font-weight: bold;
+    }
 
-        /* responsive */
+    .btn-transition {
+        margin-top: 40px;
+    }
 
-        .mobile-aviso {
-            display: NONE;
-        }
+    /* responsive */
 
+    .mobile-aviso {
+        display: NONE;
+    }
     </style>
 </head>
 
@@ -138,7 +134,13 @@
             <div class="col-md-5 col-sm-12 purple-space">
                 <div class="container d-flex text-center align-items-center" id="purple-space">
                     <div class="mx-auto">
-                        <div id="desktop-aviso">
+                        <div id="desktop-aviso" style="
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    text-align: center;
+                    align-items: center;
+                ">
                             <h1 class="fw-bold" id="titulo-purple">É NOVO POR AQUI?</h1>
                             <div class="btn-transition">
                                 <a href="#" class="outline-btn-transition" id="criar-conta">CRIAR CONTA</a>
@@ -203,7 +205,13 @@
             <div class="col-md-5 col-sm-12 purple-space order-md-2">
                 <div class="container d-flex text-center align-items-center" id="purple-space">
                     <div class="mx-auto">
-                        <div id="desktop-aviso">
+                    <div id="desktop-aviso" style="
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    text-align: center;
+                    align-items: center;
+                ">
                             <h1 class="fw-bold" id="titulo-purple">JÁ POSSUI UMA CONTA?</h1>
                             <div class="btn-transition">
                                 <a href="#" class="outline-btn-transition" id="entrar">ENTRAR</a>
@@ -286,6 +294,7 @@
             firstColumn.classList.remove('d-none');
         });
     </script>
+    
 
     <?php include_once 'scripts.php' ?>
 

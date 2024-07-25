@@ -21,6 +21,7 @@ if ($result_check_email->num_rows > 0) {
         header('location: login.php'); 
     } else {
         echo "Erro ao cadastrar o usuário: " . $conn->error;
+        header('location: login.php'); 
     }
 }
 
