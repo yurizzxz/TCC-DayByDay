@@ -11,29 +11,26 @@ if ($conn->connect_error) {
 
 $id_usuario = $_SESSION['idUsuario'];
 
-// Consulta para obter todas as categorias do usuário
 $sql = "SELECT id, nome FROM categoria WHERE id_usuario = '$id_usuario'";
 $result = $conn->query($sql);
 
 $options = '';
 
-// Montando as opções de categoria, se existirem
 if ($result->num_rows > 0) {
     $options .= "<option value='todas'>Todas as Categorias</option>";
     while ($row = $result->fetch_assoc()) {
         $options .= "<option value='{$row['id']}'>{$row['nome']}</option>";
     }
 } else {
-    $options = "<option value=''>Nenhuma categoria encontrada</option>";
+    $options = "<option value='all'>Todas as categorias</option>";
 }
 
-// Adicionando opção para mostrar todas as categorias
-
-
-// Adicionando opção para criar uma nova categoria
 $options .= "<option value='all'>Criar Nova Categoria +</option>";
 
 $conn->close();
+
+$mensagem = isset($_SESSION['mensagem']) ? $_SESSION['mensagem'] : '';
+unset($_SESSION['mensagem']);
 ?>
 
 <script>
@@ -61,7 +58,7 @@ function validateForm() {
 <div class="container mt-4" id="note-ctner">
     <div class="container">
         <div id="select-note">
-            <select class="p-1 mb-3" id="categorySelect" name="categorySelect">
+            <select class="mb-3" id="categorySelect" name="categorySelect">
                 <?php echo $options; ?>
             </select>
         </div>
@@ -192,11 +189,11 @@ function validateForm() {
                     echo "<button type='submit' class='btn mini-menu-action'>Excluir</button>";
                     echo "</form>";
                     // atribuiçao
-                    // Dropdown para selecionar categoria existente
+                    // categoria existente
                     echo "<form method='post' action='atribuir_nota.php'>";
-                    echo "<input type='hidden' name='nota_id' value='" . $row['id'] . "'>";
                     echo "<button type='submit' class='btn mini-menu-action'>Adicionar a Categoria</button>";
-                    echo "<select class='p-1' name='id_categoria'>";
+                    echo "<input type='hidden' name='nota_id' value='" . $row['id'] . "'>";
+                    echo "<select class='select-categoria' name='id_categoria'>";
 
                     // Consulta para obter todas as categorias do usuário
                     $sql_categorias = "SELECT id, nome FROM categoria WHERE id_usuario = '$id_usuario'";
@@ -205,7 +202,7 @@ function validateForm() {
                     // Adicionar opções de categorias ao dropdown
                     if ($result_categorias->num_rows > 0) {
                         while ($categoria = $result_categorias->fetch_assoc()) {
-                            echo "<option value='" . $categoria['id'] . "'>" . $categoria['nome'] . "</option>";
+                            echo "<option class='category-option' value='" . $categoria['id'] . "'>" . $categoria['nome'] . "</option>";
                         }
                     } else {
                         echo "<option value=''>Não há categorias</option>";
@@ -226,6 +223,29 @@ function validateForm() {
             $conn->close();
             ?>
         </div>
+
+        <!--popup success-->
+        <div class='popup-overlay' id='popup-overlay'></div>
+        <div class='popup' id='popup'>
+            <p id='popup-message'></p>
+        </div>
+
+        <?php if (!empty($mensagem)): ?>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var message = <?php echo json_encode($mensagem); ?>;
+            document.getElementById('popup-message').innerText = message;
+            document.getElementById('popup-overlay').style.display = 'block';
+            document.getElementById('popup').style.display = 'block';
+            setTimeout(function() {
+                document.getElementById('popup-overlay').style.display = 'none';
+                document.getElementById('popup').style.display = 'none';
+            }, 3000);
+        });
+        </script>
+        <?php endif; ?>
+
+        <!--jquery-->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
         $(document).ready(function() {
@@ -237,6 +257,8 @@ function validateForm() {
             });
         });
         </script>
+
+        <!--buscar id da cor-->
         <script>
         function selectColor(colorId) {
             document.querySelectorAll('.color-option').forEach(el => el.classList.remove('selected'));
@@ -244,12 +266,13 @@ function validateForm() {
             document.getElementById(colorId).checked = true;
         }
         </script>
+
+        <!--busca e filtra as notas de acordo com a categoria-->
         <script>
         $(document).ready(function() {
             $('#categorySelect').change(function() {
                 var categoriaId = $(this).val();
 
-                // Requisição AJAX para obter as notas da categoria selecionada
                 $.ajax({
                     type: 'POST',
                     url: 'buscar_notas.php',
@@ -266,5 +289,6 @@ function validateForm() {
             });
         });
         </script>
+
     </div>
 </div>

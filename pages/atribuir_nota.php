@@ -11,23 +11,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['nota_id']) && isset($_
     $nota_id = $_POST['nota_id'];
     $id_categoria = $_POST['id_categoria'];
 
-    // Conexão com o banco de dados
     include_once 'conexao.php';
 
-    // Verifica se a categoria pertence ao usuário
     $sql_verifica = "SELECT id FROM categoria WHERE id = '$id_categoria' AND id_usuario = '$id_usuario'";
     $result_verifica = $conn->query($sql_verifica);
 
-    if ($result_verifica->num_rows > 0) {
-        // Associa a nota à categoria
-        $sql_associar = "UPDATE nota SET id_categoria = '$id_categoria' WHERE id = '$nota_id'";
-        if ($conn->query($sql_associar) === TRUE) {
-            echo "Nota associada à categoria com sucesso!";
-        } else {
-            echo "Erro ao associar nota à categoria: " . $conn->error;
-        }
-    } else {
-        echo "Categoria não encontrada ou não pertence ao usuário.";
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $nota_id = $_POST['nota_id'];
+        $id_categoria = $_POST['id_categoria'];
+    
+        // Verifique a categoria e a associação da nota
+        $sql_verifica = "SELECT * FROM categoria WHERE id = '$id_categoria' AND id_usuario = '$id_usuario'";
+        $result_verifica = $conn->query($sql_verifica);
+    
+        if ($result_verifica->num_rows > 0) {
+            $sql_associar = "UPDATE nota SET id_categoria = '$id_categoria' WHERE id = '$nota_id'";
+            if ($conn->query($sql_associar) === TRUE) {
+                $_SESSION['mensagem'] = "Nota atribuida com sucesso";
+            } 
+        } 
+        
+        header('Location: index.php?p=notas');
+        exit;
     }
 
     $conn->close();
