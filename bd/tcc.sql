@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 31/05/2024 às 05:37
+-- Tempo de geração: 30/07/2024 às 20:21
 -- Versão do servidor: 10.4.24-MariaDB
 -- Versão do PHP: 8.1.6
 
@@ -24,6 +24,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `categoria`
+--
+
+CREATE TABLE `categoria` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(50) DEFAULT NULL,
+  `id_usuario` int(11) DEFAULT NULL,
+  `id_nota` int(11) DEFAULT NULL,
+  `cor` varchar(7) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Despejando dados para a tabela `categoria`
+--
+
+INSERT INTO `categoria` (`id`, `nome`, `id_usuario`, `id_nota`, `cor`) VALUES
+(51, 'aaaaa', 19, NULL, '#8C52FF'),
+(52, 'dfadf', 19, NULL, '#F95B99');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `nota`
 --
 
@@ -33,8 +55,18 @@ CREATE TABLE `nota` (
   `titulo` varchar(255) NOT NULL,
   `subtitulo` varchar(255) DEFAULT NULL,
   `conteudo` text DEFAULT NULL,
+  `id_categoria` int(11) DEFAULT NULL,
   `cor` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Despejando dados para a tabela `nota`
+--
+
+INSERT INTO `nota` (`id`, `id_usuario`, `titulo`, `subtitulo`, `conteudo`, `id_categoria`, `cor`) VALUES
+(37, 17, 'yuri', 'a', 'aaaaa', 40, '#FF5757'),
+(38, 17, 'Teste', 'teste', 'tester', 41, '#8C52FF'),
+(55, 19, 'afda', 'adfa', 'fadsfadf', 52, '#397D1D');
 
 -- --------------------------------------------------------
 
@@ -46,22 +78,31 @@ CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `senha` varchar(255) NOT NULL
+  `senha` varchar(255) NOT NULL,
+  `profile_pic_url` varchar(255) DEFAULT NULL,
+  `reset_token` varchar(255) DEFAULT NULL,
+  `reset_token_expires_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Despejando dados para a tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`) VALUES
-(8, 'adfadfadfa', 'teste@teste.com', '$2y$10$dyYrjGzoirFJieZRc/B9tuLAVQqxaxe2e.l3TDOn6yeIbq07wHhma'),
-(9, 'matheusbd', 'matheusbd@gmail.com', '$2y$10$S287UbOZnFRmhuMYw.Kdduub7IkUhwM.eAojBGDSLWNAluL1aCZY.'),
-(10, 'mathbicha', 'mathbicha@gmail.com', '$2y$10$2tljHAM9OaaQKEbC/Fx84O9GKu2l9SyB.aJ5izC2GN0UCBCk8tKN2'),
-(12, 'adfadfadfa', 'yuri@gmail.com', '$2y$10$Txsn6GPmlGcSh9NYtiFK2.vv4khPap7ZTj4WZoqkHcUoMYWWjiPCi');
+INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `profile_pic_url`, `reset_token`, `reset_token_expires_at`) VALUES
+(17, 'yurii', 'yuri@gmail.com', '$2y$10$lGEqBp7PHqTt1d3RRCmWr.DOscX4rWzAeovJ26ZnZphvPHXzIpvXK', NULL, NULL, '2024-07-16 23:54:10'),
+(19, 'yurii', 'yuripvd26@gmail.com', '$2y$10$d1l31HcuXSoLbukTNFGOcOyLf/iwCNs8YTh.uGUFJ090enQFHMCzS', 'uploads/fd655a574df0c47a9a0f931b762e66a9.jpg', '0db6b91a60d7ef5c97ee324f4c0eb72c9bf7e4a51571587b8eaca8cbfd120927', '2024-07-30 18:19:13');
 
 --
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices de tabela `categoria`
+--
+ALTER TABLE `categoria`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `categoria_ibfk_1` (`id_usuario`),
+  ADD KEY `fk_categoria_nota` (`id_nota`);
 
 --
 -- Índices de tabela `nota`
@@ -82,20 +123,33 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de tabela `categoria`
+--
+ALTER TABLE `categoria`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+--
 -- AUTO_INCREMENT de tabela `nota`
 --
 ALTER TABLE `nota`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Restrições para tabelas despejadas
 --
+
+--
+-- Restrições para tabelas `categoria`
+--
+ALTER TABLE `categoria`
+  ADD CONSTRAINT `categoria_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`),
+  ADD CONSTRAINT `fk_categoria_nota` FOREIGN KEY (`id_nota`) REFERENCES `nota` (`id`);
 
 --
 -- Restrições para tabelas `nota`

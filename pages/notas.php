@@ -168,7 +168,17 @@ function validateForm() {
                     echo "<div class='card-body' style='margin-top: 7px'>";
                     echo "<h5 class='card-title fw-bold fs-4'>" . $row['titulo'] . "</h5>";
                     echo "<p class='card-text'  style='font-size: 18px'>" . $row['subtitulo'] . "</p>";
-                    echo "<p class='card-text textmuted'>" . $row['conteudo'] . "</p>";
+                    $content = $row['conteudo'];
+
+                    $limit = 70;
+
+                    if (strlen($content) > $limit) {
+                        $truncated = substr($content, 0, $limit) . '...';
+                    } else {
+                        $truncated = $content;
+                    }
+
+                    echo "<p class='card-text textmuted'>" . ($truncated) . "</p>";
 
                     echo "</div>";
                     echo "</div>";
@@ -245,8 +255,9 @@ function validateForm() {
         </script>
         <?php endif; ?>
 
-        <!--jquery-->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      
+          <!--jquery-->
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
         $(document).ready(function() {
             $('#categorySelect').change(function() {

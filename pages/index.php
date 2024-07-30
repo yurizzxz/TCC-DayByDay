@@ -9,6 +9,7 @@ if (empty($pagina) || $pagina == "index") {
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="pt-br">
 

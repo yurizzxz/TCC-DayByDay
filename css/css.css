@@ -875,9 +875,10 @@ input[type="checkbox"]:checked+label+.menu {
 }
 
 .dark-mode-layout {
-    width: 24.5vh;
+    width: 235px;
     padding-top: 0px;
     height: 1vh;
+    transition: .3s ease-in-out;
 }
 
 .dark-mode-layout ion-icon {
@@ -895,6 +896,10 @@ input[type="checkbox"]:checked+label+.menu {
 
 ion-icon[name="notifications-outline"] {
     color: var(--text-color);
+}
+
+.dropdown-menu.show {
+    animation: fadeIn .3s ease-in-out forwards;
 }
 
 .dropdown-menu {
