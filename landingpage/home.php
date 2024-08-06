@@ -1,154 +1,190 @@
 <style>
-    :root {
-        --navbar-color: ;
-        --landing-color: ;
-        --content-landing-color: ;
-        --title-color: ;
-        --text-color: ;
-    }
+:root {
+    --navbar-color: ;
+    --landing-color: ;
+    --content-landing-color: ;
+    --title-color: ;
+    --text-color: ;
+}
 
+#text-lg {
+    font-size: 4.4vw;
+    width: 100%;
+    line-height: 90%;
+}
+
+#lead-landing {
+    font-size: 1.3rem;
+}
+
+.landing-page {
+    background: linear-gradient(to bottom, #ffffff 0%, #ffffff 70%, #FCFCFC 100%);
+}
+
+.content-landing {
+    background-color: #FCFCFC;
+}
+
+.landing-button #login-hub {
+    display: inline-block;
+    text-align: center;
+    padding: 0.6rem 1.5rem;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    border: 2px solid #8C52FF;
+    font-size: 25px;
+    border-radius: 3px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: 0.3s ease-in-out;
+}
+
+.landing-button #login-hub:hover {
+    display: inline-block;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    background: #A200FF;
+    transition: 0.3s ease-in-out;
+}
+
+#title-circle {
+    font-size: 28px;
+    font-weight: 400;
+}
+
+#divider {
+    margin-bottom: 10%;
+    margin-top: 10%;
+    opacity: 0.05;
+}
+
+#texto-lateral-l {
+    font-size: 3.3vw;
+    font-weight: bolder;
+}
+
+
+
+/* responsive details */
+
+@media screen and (max-width: 768px) {
     #text-lg {
-        font-size: 5vw;
-        text-align: center;
-        line-height: 90%;
-    }
-
-    #lead-landing {
-        font-size: 1.3rem;
-    }
-
-    .landing-button #login-hub {
-        display: inline-block;
-        text-align: center;
-        padding: 0.6rem 1.5rem;
-        font-weight: bold;
-        color: black;
-        text-decoration: none;
-        border: 2px solid #8C52FF;
-        font-size: 28px;
-        margin-left: auto;
-        margin-right: auto;
-        transition: 0.3s ease-in-out;
-    }
-
-    .landing-button #login-hub:hover {
-        display: inline-block;
-        font-weight: bold;
-        color: white;
-        text-decoration: none;
-        background: #A200FF;
-        transition: 0.3s ease-in-out;
-    }
-
-    #title-circle {
-        font-size: 28px;
-        font-weight: 400;
-    }
-
-    #divider {
-        margin-bottom: 10%;
-        margin-top: 10%;
-        opacity: 0.05;
+        font-size: 9.5vw;
+        line-height: 8vw;
     }
 
     #texto-lateral-l {
-        font-size: 3.3vw;
+        font-size: 5.3vw;
+        width: 100%;
         font-weight: bolder;
     }
 
     #leading {
-        width: 82%;
-        margin-left: auto;
+        width: 100%;
         margin-right: auto;
     }
+}
 
-    /* responsive details */
-
-    @media screen and (max-width: 768px) {
-        #text-lg {
-            font-size: 9.5vw;
-            line-height: 8vw;
-        }
-
-        #texto-lateral-l {
-            font-size: 5.3vw;
-            width: 100%;
-            font-weight: bolder;
-        }
-
-        #leading {
-            width: 100%;
-            margin-right: auto;
-        }
+@media screen and (max-width: 637px) {
+    #text-lg {
+        font-size: 11vw;
+        line-height: 11vw;
     }
 
-    @media screen and (max-width: 637px) {
-        #text-lg {
-            font-size: 11vw;
-            line-height: 11vw;
-        }
-
-        #divider {
-            margin-bottom: 15%;
-            margin-top: 15%;
-        }
-
-        #texto-lateral-l {
-            font-size: 9vw;
-            width: 100%;
-            font-weight: bolder;
-        }
-
-        #leading {
-            width: 100%;
-            margin-right: auto;
-        }
+    #divider {
+        margin-bottom: 15%;
+        margin-top: 15%;
     }
 
-    .video-container {
-        position: relative;
-        padding-bottom: 56.25%;
-        padding-top: 25px;
-        height: 0;
-    }
-
-    .video-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
+    #texto-lateral-l {
+        font-size: 9vw;
         width: 100%;
-        height: 100%;
+        font-weight: bolder;
     }
 
+    #leading {
+        width: 100%;
+        margin-right: auto;
+    }
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.headline-l {
+    font-size: 4rem;
+}
+
+@media screen and (max-width: 500px) {
     .headline-l {
-        font-size: 8vh;
-    }
-
-    @media screen and (max-width: 500px) {
-        .headline-l {
         font-size: 5vh;
     }
-    }
+}
 </style>
 
 <section id="home-landing">
     <div class="landing-page d-flex align-items-center justify-content-center" id="ctner-landing"
-        style="z-index:-99; height: 88vh">
-        <section class="py-5 text-center container">
-            <div class="col-lg-6 col-md-8 mx-auto">
-                <h1 class="fw-bold mb-4" id="text-lg">Maximize sua <br>produtividade!</h1>
-                <p class="lead" id="lead-landing">Aumente sua eficiência o <strong>DayByDay</strong>, simplificando sua
-                    vida
-                    e otimizando sua
-                    rotina!</p>
-                <div class="landing-button mt-3">
-                    <a href="#" class="my-2" id="login-hub">Começar Agora!</a>
+        style="z-index:-99; height: 85vh">
+        <section class="py-5 container">
+            <div class="row justify-content-center">
+
+                <div class="col-md-6 order-md-2">
+                    <h1 class="fw-bold mb-4" id="text-lg">Planeje. Organize. Conquiste </h1>
+                    <p class="lead" id="lead-landing">Transforme suas ideias e alcance seus objetivos de estudo com eficiência. DayByDay simplifica sua vida, otimiza sua rotina e ajuda você a crescer em sua jornada de aprendizado!</p>
+                    <div class="landing-button mt-3">
+                        <a href="../pages/login.php" class="my-2" id="login-hub">Começar Agora</a>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex align-items-center justify-content-center order-md-1">
+                    <img src="../img/mockupsite.png"
+                        class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="800"
+                        height="500" focusable="false">
+                    </img>
                 </div>
             </div>
         </section>
     </div>
-    <div class="content-landing align-items-center justify-content-center" style="margin-top: 5%">
-        <div class="container">
+    <div class="content-landing d-flex align-items-center justify-content-center" >
+        <div class="container" style="margin-top: 5%">
+
+            <div class="bg-roxo d-flex justify-content-center">
+                <div class="row featurette justify-content-center align-items-center" id="leading">
+
+                    <div class="col-md-6 order-md-1">
+                        <h2 class="featurette-heading mb-3" id="texto-lateral-l">Estamos com você!</h2>
+                        <p class="lead" id="text-leading">Estamos comprometidos em promover sua excelência acadêmica e
+                            pessoal. Com DayByDay, oferecemos mais do que apenas organização e oferecemos um caminho
+                            claro para o seu sucesso (profissional e pessoal), ajudando você a gerenciar suas tarefas e
+                            compromissos de forma eficaz!
+                        </p>
+                    </div>
+                    <div class="col-md-6 order-md-1 d-flex align-items-center justify-content-center">
+                        <img src="../img/3.jpeg"
+                            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                            width="500" height="500" focusable="false">
+                        </img>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <hr class="featurette-divider" id="divider">
+            </div>
+
             <section class="text-center">
                 <div class="container">
                     <h1 class="fw-bold mb-4" id="text-content-landing">O que o DayByDay te ajuda?</h1>
@@ -187,30 +223,6 @@
                 <hr class="featurette-divider" id="divider">
             </div>
 
-            <div class="bg-roxo">
-                <div class="row featurette justify-content-center align-items-center" id="leading">
-
-                    <div class="col-md-6 order-md-1">
-                        <h2 class="featurette-heading mb-3" id="texto-lateral-l">Estamos com você!</h2>
-                        <p class="lead" id="text-leading">Estamos comprometidos em promover sua excelência acadêmica e
-                            pessoal. Com DayByDay, oferecemos mais do que apenas organização e oferecemos um caminho
-                            claro para o seu sucesso (profissional e pessoal), ajudando você a gerenciar suas tarefas e
-                            compromissos de forma eficaz!
-                        </p>
-                    </div>
-                    <div class="col-md-6 order-md-1">
-                        <img src="../img/3.jpeg"
-                            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                            width="500" height="500" focusable="false">
-                        </img>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container">
-                <hr class="featurette-divider" id="divider">
-            </div>
-
             <div class="row featurette justify-content-center align-items-center" style="margin-bottom: 100px"
                 id="leading">
 
@@ -220,10 +232,10 @@
                         experimente a diferença na sua organização pessoal e profissional!
                     </p>
                 </div>
-                <div class="col-md-6 order-md-1">
+                <div class="col-md-6 d-flex align-items-center justify-content-center order-md-1">
                     <img src="../img/logo.png"
-                        class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                        height="500" focusable="false">
+                        class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="600"
+                        height="600" focusable="false">
                     </img>
                 </div>
             </div>

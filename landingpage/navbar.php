@@ -27,6 +27,7 @@
         background: #8C52FF;
         text-align: center;
         border: 0;
+        border-radius: 3px;
         transition: 0.3s ease-in-out;
     }
 
@@ -45,7 +46,8 @@
     .login-hub {
         display: block;
         text-align: center;
-        padding: 0.4rem 1.2rem;
+        border-radius: 3px;
+        padding: 0.4rem 1.8rem;
         font-size: var(--bs-nav-link-font-size);
         font-weight: bold;
         color: black;

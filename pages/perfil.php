@@ -231,11 +231,11 @@ $profile_image = isset($user['profile_pic_url']) && !empty($user['profile_pic_ur
         <p class='text-muted mt-3' style='font-size: 12px'>// clique para alterar sua foto de exibição</p>
         <div class='user-name'>
             <h6 style='margin-bottom: -2px'>Nome</h6>
-            <input type='text' name='nome' value="<?php echo htmlspecialchars($nome); ?>" required>
+            <input type='text' name='nome' value="<?php echo ($nome); ?>" required>
         </div>
         <div class='user-email mt-3'>
             <h6 style='margin-bottom: -2px'>Email</h6>
-            <input type='email' name='email' value="<?php echo htmlspecialchars($email); ?>" required>
+            <input type='email' name='email' value="<?php echo ($email); ?>" required>
         </div>
         <div class='user-pass mt-3'>
             <h6 style='margin-bottom: -2px'>Nova Senha</h6>

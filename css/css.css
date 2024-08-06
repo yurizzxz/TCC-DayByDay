@@ -628,8 +628,13 @@ input[type="checkbox"]:checked+label+.menu {
 }
 
 #sidebar_content {
-    padding: 12px;
+    padding: 4px;
 }
+
+#sidebar_content.open-sidebar {
+    padding-left: 6px;
+}
+
 
 #side_items {
     display: flex;
@@ -721,8 +726,8 @@ input[type="checkbox"]:checked+label+.menu {
     margin-bottom: 15px;
     border-radius: 10px;
     padding: 10px 15px;
-    display: flex;  
-    justify-content: space-between; 
+    display: flex;
+    justify-content: space-between;
 }
 
 .category-item a {
@@ -731,7 +736,7 @@ input[type="checkbox"]:checked+label+.menu {
     color: #000;
 }
 
-.buttons-acao{ 
+.buttons-acao {
     display: flex;
 }
 
@@ -813,7 +818,7 @@ input[type="checkbox"]:checked+label+.menu {
     transform-origin: right;
     animation: slideFromTop 0.3s forwards;
     border: none;
-    height: 25vh;
+    height: 250px;
     margin-left: -310px;
 }
 
@@ -1050,10 +1055,10 @@ input::selection {
     border-radius: 3px;
     border: 0.5px solid #777;
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 90%;
+    right: 30px;
     color: var(--text-color);
-    transform: translate(-50%, -50%);
+    transform: translate(0, 0);
     padding: 20px 20px 12px 20px;
     background-color: var(--white);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -1089,6 +1094,7 @@ input::selection {
     from {
         transform: translateX(50%);
     }
+
     to {
         transform: translateX(-0%);
     }
@@ -1099,6 +1105,7 @@ input::selection {
         transform: translateY(50%);
         opacity: 0;
     }
+
     to {
         transform: translateY(-0%);
         opacity: 1;
@@ -1131,6 +1138,9 @@ input::selection {
 }
 
 /*cat*/
+/*cat*/
+/*cat*/
+
 .modal-cat {
     display: none;
     border-radius: 3px;
@@ -1157,8 +1167,8 @@ input::selection {
 
 @media (min-width: 605px) {
     .modal-cat .modal-body {
-    margin-left: 0px !important;
-}
+        margin-left: 0px !important;
+    }
 }
 
 
@@ -1192,7 +1202,7 @@ input::selection {
 }
 
 .category-item .button-container {
-   font-size: 15px;
+    font-size: 15px;
 }
 
 .button-container ion-icon {
@@ -1211,7 +1221,7 @@ input::selection {
     color: white;
 }
 
-#btn-cancel{
+#btn-cancel {
     background-color: var(--background);
     color: var(--text-color);
 }

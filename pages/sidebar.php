@@ -78,7 +78,8 @@ $result = $conn->query($sql);
                             <?php if ($result->num_rows > 0): ?>
                             <ul class="category-list mt-2">
                                 <?php while ($row = $result->fetch_assoc()): ?>
-                                <li class='category-item' style='background-color: <?php echo $row['cor']; ?>; color: black;'>
+                                <li class='category-item'
+                                    style='background-color: <?php echo $row['cor']; ?>; color: black;'>
                                     <?php echo $row['nome']; ?>
                                     <div class="button-container">
                                         <button class="ion-icon-btn"
@@ -93,7 +94,7 @@ $result = $conn->query($sql);
                                 </li>
                                 <?php endwhile; ?>
                             </ul>
-            
+
                             <?php endif; ?>
                         </a>
                     </li>
@@ -108,6 +109,7 @@ $result = $conn->query($sql);
     <!-- Modal Categoria -->
     <div id="modal-overlayy" class="modal-overlayy"></div>
     <div id="modal-cat" class="modal-cat">
+        
         <form id="modal-form" method="POST" action="editar_categoria.php">
             <input type="hidden" name="action" id="modal-action">
             <input type="hidden" name="id_categoria" id="modal-id_categoria">
@@ -123,6 +125,7 @@ $result = $conn->query($sql);
     <!-- SCRIPTS -->
     <!-- SCRIPTS -->
     <script>
+
     function openModal(action, id_categoria, nome_categoria = '', cor_escolhida = '') {
         var modal = document.getElementById('modal-cat');
         var overlay = document.getElementById('modal-overlayy');
@@ -137,7 +140,7 @@ $result = $conn->query($sql);
             content.innerHTML = `
             <div class="head-modal">
              <h5 class="modal-title" id="myModalLabel">Edite sua Categoria</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal-overlayy" aria-label="Close"></button>
                    </div><div class="modal-body">
                             <form id="categoryForm" action="salvar_categoria.php" onsubmit="return validateForm()"
                                 method="post">
