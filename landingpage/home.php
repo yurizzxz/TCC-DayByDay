@@ -8,9 +8,8 @@
 }
 
 #text-lg {
-    font-size: 4.4vw;
+    font-size: 4.5rem;
     width: 100%;
-    line-height: 90%;
 }
 
 #lead-landing {
@@ -19,6 +18,7 @@
 
 .landing-page {
     background: linear-gradient(to bottom, #ffffff 0%, #ffffff 70%, #FCFCFC 100%);
+    height: 85vh;
 }
 
 .content-landing {
@@ -33,7 +33,7 @@
     color: black;
     text-decoration: none;
     border: 2px solid #8C52FF;
-    font-size: 25px;
+    font-size: 23px;
     border-radius: 3px;
     margin-left: auto;
     margin-right: auto;
@@ -69,28 +69,30 @@
 
 /* responsive details */
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
     #text-lg {
-        font-size: 9.5vw;
-        line-height: 8vw;
+        font-size: 3rem;
     }
 
     #texto-lateral-l {
-        font-size: 5.3vw;
+        font-size: 4vw;
         width: 100%;
         font-weight: bolder;
     }
 
-    #leading {
+    #lead-landing {
+        font-size: 1.2rem;
+    }
+
+    .landing-button #login-hub {
+        max-width: 600px;
         width: 100%;
-        margin-right: auto;
     }
 }
 
-@media screen and (max-width: 637px) {
+@media (max-width: 637px) {
     #text-lg {
-        font-size: 11vw;
-        line-height: 11vw;
+        font-size: 3rem;
     }
 
     #divider {
@@ -103,12 +105,30 @@
         width: 100%;
         font-weight: bolder;
     }
+}
 
-    #leading {
-        width: 100%;
-        margin-right: auto;
+@media (max-width: 500px) {
+    #text-lg {
+        font-size: 2.5rem;
     }
 }
+
+@media (max-width: 365px) {
+    #text-lg {
+        font-size: 2.4rem;
+    }
+    #lead-landing {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 345px) {
+    #text-lg {
+        font-size: 2rem;
+    }
+}
+
+
 
 .video-container {
     position: relative;
@@ -129,28 +149,81 @@
     font-size: 4rem;
 }
 
-@media screen and (max-width: 500px) {
-    .headline-l {
-        font-size: 5vh;
+.content-landing .container {
+    margin-top: 50px;
+}
+
+@media (max-height: 960px) {
+    .landing-page {
+        height: 90dvh;
+    }
+}
+
+@media (max-height: 930px) {
+    .landing-page {
+        margin-top: 30px;
+    }
+}
+
+@media (max-height: 860px) {
+    .landing-page {
+        margin-top: 30px;
+    }
+}
+
+@media (max-height: 810px) {
+    .landing-page {
+        margin-top: 45px;
+    }
+
+
+}
+
+@media (max-height: 775px) {
+    .landing-page {
+        margin-top: 135px;
+    }
+
+    .img-fluid {
+        margin-bottom: 130px;
+    }
+}
+
+@media (max-height: 715px) {
+    .landing-page {
+        margin-top: 155px;
+    }
+}
+
+@media (max-height: 665px) {
+    .landing-page {
+        margin-top: 170px;
+    }
+}
+
+@media (max-height: 645px) {
+    .landing-page {
+        margin-top: 185px;
     }
 }
 </style>
 
 <section id="home-landing">
-    <div class="landing-page d-flex align-items-center justify-content-center" id="ctner-landing"
-        style="z-index:-99; height: 85vh">
+    <div class="landing-page d-flex align-items-center justify-content-center" id="ctner-landing" style="z-index:-99;">
         <section class="py-5 container">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center" id="rowlanding">
 
-                <div class="col-md-6 order-md-2">
+                <div class="col-md-6 order-md-1 mb-5">
                     <h1 class="fw-bold mb-4" id="text-lg">Planeje. Organize. Conquiste </h1>
-                    <p class="lead" id="lead-landing">Transforme suas ideias e alcance seus objetivos de estudo com eficiência. DayByDay simplifica sua vida, otimiza sua rotina e ajuda você a crescer em sua jornada de aprendizado!</p>
+                    <p class="lead" id="lead-landing">Transforme suas ideias e alcance seus objetivos de estudo com
+                        eficiência. DayByDay simplifica sua vida, otimiza sua rotina e ajuda você a crescer em sua
+                        jornada de aprendizado!</p>
                     <div class="landing-button mt-3">
                         <a href="../pages/login.php" class="my-2" id="login-hub">Começar Agora</a>
                     </div>
                 </div>
                 <div class="col-md-6 d-flex align-items-center justify-content-center order-md-1">
-                    <img src="../img/mockupsite.png"
+                    <img src="../img/apdaybyday.png"
                         class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="800"
                         height="500" focusable="false">
                     </img>
@@ -158,9 +231,10 @@
             </div>
         </section>
     </div>
-    <div class="content-landing d-flex align-items-center justify-content-center" >
-        <div class="container" style="margin-top: 5%">
-
+    
+    <div class="content-landing d-flex align-items-center justify-content-center">
+        <div class="container">
+     
             <div class="bg-roxo d-flex justify-content-center">
                 <div class="row featurette justify-content-center align-items-center" id="leading">
 
