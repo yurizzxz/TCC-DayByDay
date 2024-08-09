@@ -27,7 +27,7 @@ $result = $conn->query($sql);
                 <!--LINKS-->
                 <ul id="side_items">
                     <li class="side-item active">
-                        <a href="?p=calendar ">
+                        <a href="?p=calendario">
                             <ion-icon name="calendar-outline" style="z-index: 99; font-size: 25px; color: #8C52FF">
                             </ion-icon>
                             <span class="item-description">
