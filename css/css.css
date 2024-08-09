@@ -62,7 +62,6 @@ body::-webkit-scrollbar-thumb {
 }
 
 .modal-body {
-
     max-height: 90vh;
 
 }
@@ -628,7 +627,7 @@ input[type="checkbox"]:checked+label+.menu {
 }
 
 #sidebar_content {
-    padding: 4px;
+    padding: 7px;
 }
 
 #sidebar_content.open-sidebar {

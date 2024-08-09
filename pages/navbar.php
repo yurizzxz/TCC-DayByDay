@@ -7,9 +7,10 @@ unset($_SESSION['msg']);
 if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
     $nomeUsuario = $_SESSION['nomeUsuario'];
     $emailUsuario = $_SESSION['emailUsuario'];
+    $profilePicUrl = isset($_SESSION['profilePicUrl']) ? $_SESSION['profilePicUrl'] : 'img/1.jpeg'; 
 } else {
-    header('location:login.php');
-    exit;
+    header('Location: login.php');
+    exit();
 }
 ?>
 
@@ -181,7 +182,7 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                 </ion-icon>
             </a>
             <div class="dropdown">
-                <img src="../img/5.jpeg" class="mini-profile-img" height="40" class="" type="button"
+                <img src="../img/1.jpeg" class="mini-profile-img" height="40" class="" type="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
                 </img>
                 <ul class="dropdown-menu menu-user-navbar">
@@ -192,11 +193,11 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                         <!--USER--> <!--USER--> <!--USER--> <!--USER--> <!--USER--> <!--USER-->
                         <!--USER--> <!--USER--> <!--USER--> <!--USER--> <!--USER--> <!--USER-->
                         <div class="modal-head d-flex mt-3">
-                            <img src="../img/5.jpeg" class="profile-img" height="80" class="" type="button"
+                            <img src="../img/1.jpeg" class="profile-img" height="80" class="" type="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
 
-                            <div class="d-flex flex-column" style="margin-left: 10px">
-                                <div class="d-flex align-items-center" style="width: 23vh">
+                            <div class="d-flex flex-column" style="margin-left: 15px; width: 100%;">
+                                <div class="d-flex align-items-center" style="width: 100%; justify-content: space-around    ">
                                     <h4 class="user-name mt-2" id="username"><?php echo $nomeUsuario; ?></h4>
                                     <a href="logout.php" class="logout-btn-dropdown"
                                         style="margin-left: auto; text-decoration: none; color:#8C52FF">Logout</a>

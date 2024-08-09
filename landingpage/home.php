@@ -313,9 +313,7 @@
                     </img>
                 </div>
             </div>
-            <div class="container">
-                <hr class="featurette-divider" id="divider">
-            </div>
+     
 
             <div class="row justify-content-center">
                 <div class="col-md-8">
