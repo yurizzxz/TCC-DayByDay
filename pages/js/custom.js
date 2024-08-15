@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const formCadEvento = document.getElementById("formCadEvento");
-    const msg = document.getElementById("msg");
+    const msg = document.getElementById("mensagem");
     const msgCadEvento = document.getElementById("msgCadEvento");
     const btnCadEvento = document.getElementById("btnCadEvento");
 
@@ -124,9 +124,9 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             const resposta = await dados.json();
             if (!resposta['status']) {
-                msgCadEvento.innerHTML = `<div class="alert alert-danger" role="alert">${resposta['msg']}</div>`;
+
             } else {
-                msg.innerHTML = `<div class="alert alert-success" role="alert">${resposta['msg']}</div>`;
+
                 msgCadEvento.innerHTML = "";
                 formCadEvento.reset();
                 const novoEvento = {
@@ -146,9 +146,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function removerMsg() {
-        setTimeout(() => {
-            document.getElementById('msg').innerHTML = "";
-        }, 3000)
+        document.addEventListener('DOMContentLoaded', function () {
+            var message = 'vai toma no cu yuri';
+            document.getElementById('popup-message').innerText = message;
+            document.getElementById('popup-overlay').style.display = 'block';
+            document.getElementById('popup').style.display = 'block';
+            setTimeout(function () {
+                document.getElementById('popup-overlay').style.display = 'none';
+                document.getElementById('popup').style.display = 'none';
+            }, 3000);
+        });
     }
 
     const btnViewEditEvento = document.getElementById("btnViewEditEvento");
@@ -186,9 +193,9 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             const resposta = await dados.json();
             if (!resposta['status']) {
-                msgEditEvento.innerHTML = `<div class="alert alert-danger" role="alert">${resposta['msg']}</div>`;
+                msgEditEvento.innerHTML = w;
             } else {
-                msg.innerHTML = `<div class="alert alert-success" role="alert">${resposta['msg']}</div>`;
+
                 msgEditEvento.innerHTML = "";
                 formEditEvento.reset();
                 const eventoExiste = calendar.getEventById(resposta['id']);

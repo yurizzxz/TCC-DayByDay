@@ -1,12 +1,12 @@
 <?php
 
-include_once './conexao.php';
+include_once './conexaocalendar.php';
 
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 $query_edit_event = "UPDATE events SET title=:title, color=:color, start=:start, end=:end, obs=:obs WHERE id=:id";
 
-$edit_event = $conn->prepare($query_edit_event);
+$edit_event = $conne->prepare($query_edit_event);
 
 $edit_event->bindParam(':title', $dados['edit_title']);
 $edit_event->bindParam(':color', $dados['edit_color']);

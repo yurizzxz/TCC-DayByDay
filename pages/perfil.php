@@ -28,6 +28,9 @@ if ($result->num_rows == 1) {
     exit();
 }
 
+$mensagem = isset($_SESSION['mensagem']) ? $_SESSION['mensagem'] : '';
+unset($_SESSION['mensagem']);
+
 $conn->close();
 ?>
 
@@ -180,21 +183,30 @@ $profile_image = isset($user['profile_pic_url']) && !empty($user['profile_pic_ur
                     </div>
                 </div>
 
-                <!-- Mensagem de Sucesso -->
-                <?php if (isset($_SESSION['message_success'])): ?>
-                <div class='alert alert-success mt-3' role='alert'>
-                    <?php echo $_SESSION['message_success']; unset($_SESSION['message_success']); ?>
-                </div>
-                <script>
-                // setTimeout(function() {
-                //  window.location.href = 'index.php?p=notas';
-                // }, 5000);
-                </script>
-                <?php endif; ?>
+                <div class='popup-overlay' id='popup-overlay'></div>
+        <div class='popup' id='popup'>
+            <p id='popup-message'></p>
+        </div>
+
+        <?php if (!empty($mensagem)): ?>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var message = <?php echo json_encode($mensagem); ?>;
+            document.getElementById('popup-message').innerText = message;
+            document.getElementById('popup-overlay').style.display = 'block';
+            document.getElementById('popup').style.display = 'block';
+            setTimeout(function() {
+                document.getElementById('popup-overlay').style.display = 'none';
+                document.getElementById('popup').style.display = 'none';
+            }, 3000);
+        });
+        </script>
+        <?php endif; ?>
+
 
                 <!-- Exibir a mensagem de erro, se existir -->
                 <?php if (isset($_SESSION['message_error'])): ?>
-                <div class='alert alert-danger mt-3' role='alert'>
+                <div class='alert mt-3' role='alert' style="color: red">
                     <?php echo $_SESSION['message_error']; unset($_SESSION['message_error']); ?>
                 </div>
                 <?php endif; ?>
@@ -203,7 +215,7 @@ $profile_image = isset($user['profile_pic_url']) && !empty($user['profile_pic_ur
     </div>
 
     <script>
-    // Função para pré-visualizar a imagem selecionada
+    // pré-visualizar a imagem selecionada
     function previewImage(event) {
         const input = event.target;
         if (input.files && input.files[0]) {

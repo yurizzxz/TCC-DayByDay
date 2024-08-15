@@ -1,11 +1,11 @@
 <?php
 
-include_once './conexao.php';
+include_once './conexaocalendar.php';
 
 $query_events = "SELECT id, title, color, start, end, obs
                 FROM events";
 
-$result_events = $conn->prepare($query_events);
+$result_events = $conne->prepare($query_events);
 
 $result_events->execute();
 

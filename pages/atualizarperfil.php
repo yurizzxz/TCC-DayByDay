@@ -62,9 +62,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['emailUsuario'] = $email;
         $_SESSION['profilePicUrl'] = $file_path;
 
-        $_SESSION['message_success'] = 'Perfil atualizado com sucesso.';
+        $_SESSION['mensagem'] = 'Perfil atualizado com sucesso.';
     } else {
-        $_SESSION['message_error'] = 'Erro ao atualizar o perfil: ' . $stmt->error;
+        $_SESSION['mensagem'] = 'Erro ao atualizar o perfil: ' . $stmt->error;
     }
     $stmt->close();
     $conn->close();

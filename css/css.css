@@ -10,6 +10,18 @@
     --switch: #777;
     --text-muted: #111111;
     --card: white;
+    --calendar-tittle: #ffffff;
+    --calendar-background: #ffffff;
+    --calendar-purple: #aa8de4;
+    --calendar-day-other: #f8f6f6;
+    --calendar-day-today-tittle: #000000;
+    --calendar-day-today-background: #DAD4E6;
+    --event-title: #000000;
+    --event-background: #ffffff;
+    --multimonth-title: #000000;
+    --modal-background: #ffffff;
+    --popover-background: #ffffff;
+    --popover-title: #000000;
 }
 
 .dark-theme {
@@ -22,6 +34,17 @@
     --switch: #888;
     --white: #141414;
     --text-muted: #acacac;
+    --calendar-background: #000000;
+    --calendar-purple: #aa57fa;
+    --calendar-day-other: #231f20;
+    --calendar-day-today-tittle: #ffffff;
+    --calendar-day-today-background: #1b1b1b;
+    --event-title: #ffffff;
+    --event-background: #000000;
+    --multimonth-title: #ffffff;
+    --modal-background: #212529;
+    --popover-background: #212529;
+    --popover-title: #ffffff;
 }
 
 body {
@@ -66,13 +89,14 @@ body::-webkit-scrollbar-thumb {
 
 }
 
-
 .modal-body input[name="txttitulo"] {
-    font-size: 30px;
+    font-size: 30px !important;
     font-weight: bold;
     border: none;
     margin-bottom: 10px;
     width: 100%;
+    color: var(--text-color);
+
 }
 
 .modal-body input[name="txtsubtitulo"] {
@@ -80,6 +104,7 @@ body::-webkit-scrollbar-thumb {
     margin-bottom: 10px;
     border: none;
     width: 100%;
+    color: var(--text-color);
 
 }
 
@@ -89,7 +114,7 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
     resize: none;
     height: 26vh;
-
+    color: var(--text-color);
 }
 
 .modal-body input[name="txttitulo"]:focus {
@@ -98,18 +123,24 @@ body::-webkit-scrollbar-thumb {
     border: none;
     box-shadow: none;
     outline: none;
+    color: var(--text-color);
+    
 }
 
 .modal-body input[name="txtsubtitulo"]:focus {
     border: none;
     box-shadow: none;
     outline: none;
+    color: var(--text-color);
+
 }
 
 .modal-body textarea[name="txtconteudo"]:focus {
     box-shadow: none;
     outline: none;
     border: none;
+    color: var(--text-color);
+
 }
 
 .modal-width {
@@ -155,6 +186,38 @@ body::-webkit-scrollbar-thumb {
     transition: 0.3s ease-in-out;
 }
 
+.nota-content {
+    position: relative;
+    padding-left: 10px; 
+}
+
+.nota-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 100%;
+    background-color: var(--color-bar-nota); 
+    z-index: 1;
+}
+
+@media (max-width: 767px) {
+    .nota-content {
+        padding-left: 0;
+        padding-top: 20px; 
+    }
+    
+    .nota-content::before {
+        width: 100%;
+        height: 15px;
+        left: 0;
+        top: 0;
+        background-color: var(--color-bar-nota);  
+        z-index: 1;
+    }
+}
+
 #change-info-btn {
     background: var(--background);
     color: var(--text-color);
@@ -174,12 +237,6 @@ body::-webkit-scrollbar-thumb {
     to {
         transform: translateY(0);
     }
-}
-
-.color-bar-nota {
-    background-color: var(--color-bar-nota);
-    height: 60vh;
-    width: 1.5vh;
 }
 
 
@@ -569,7 +626,7 @@ body::-webkit-scrollbar-thumb {
 .menu {
     position: absolute;
     margin-right: 30px;
-    width: 25vh;
+    width: 300px !important;
     z-index: 99;
     top: 10%;
     right: 0;
@@ -912,7 +969,9 @@ ion-icon[name="notifications-outline"] {
     transition: 0.3s ease-in-out;
 }
 
-.no-note, .dark-mode-layout, .change-infos {
+.no-note,
+.dark-mode-layout,
+.change-infos {
     color: var(--text-color);
 }
 
@@ -1234,16 +1293,25 @@ input::selection {
 /*calendario*/
 
 #calendar {
-    padding-top: 10dvh;
+    max-width: 850px;
+    margin: 0 auto;
+    padding-top: 8dvh;
+}
+
+@media (width <= 500px) {
+    #calendar {
+        max-width: 750px;
+       
+    }
+    
+}
+
+.calendar {
+    border: 0px;
 }
 
 .hidden {
     display: none !important;
-    /* Adicionando !important para garantir que a regra seja aplicada */
-}
-
-.fc .fc-toolbar-title.dark-mode {
-    background-image: linear-gradient(to right, #ff7e5f, #feb47b);
 }
 
 .bolinhas {
@@ -1266,7 +1334,8 @@ input::selection {
 .fc .fc-toolbar-title {
     font-size: 1.75em;
     margin: 0px;
-    background-color: #AA8DE4;
+    background-color: var(--calendar-purple);
+    color: var(--calendar-tittle);
     height: 50px;
     width: 280px;
     text-align: center;
@@ -1283,47 +1352,61 @@ input::selection {
     text-transform: capitalize;
 }
 
-
-#calendar {
-    max-width: 850px;
-    margin: 0 auto;
-}
-
-.calendar {
-    border: 0px;
-}
-
 .fc-col-header-cell {
     text-transform: capitalize;
-    background-color: #AA8DE4;
-    color: var(--text-color);
+    background-color: var(--calendar-purple);
+    color: var(--calendar-tittle);
 }
 
 .fc .fc-daygrid-day.fc-day-other {
-    background-color: var(--site-background);
-    color: var(--text-color);
+    background-color: var(--calendar-purple);
+    color: var(--white);
 }
 
 .fc .fc-daygrid-day.fc-day-other {
-    background-color: var(--button-hover);
-    color: var(--text-color);
+    background-color: var(--calendar-day-other);
+    color: var(--switch);
+}
+
+.fc .fc-daygrid-day-top {
+    color: var(--calendar-day-today-tittle);
 }
 
 .fc .fc-daygrid-day.fc-day-today {
-    background-color: var(--switch);
-    color: var(--text-color);
+    background-color: var(--calendar-day-today-background);
+    color: var(--calendar-day-today-tittle);
 }
-
-
 
 .fc .fc-toolbar.fc-header-toolbar {
     margin-bottom: 0px;
-    background-color: var(--white);
+    background-color: var(--calendar-background);
     padding-top: 1%;
     padding-right: 1%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    color: var(--text-color);
+    color: var(--calendar-background);
+}
+
+.fc-event-title {
+    background-color: var(--popover-background);
+    color: var(--event-title);
+    border-radius: 20px;
+}
+
+.fc-event-time {
+    background-color: var(--popover-background);
+    color: var(--event-title);
+    border-radius: 20px;
+}
+
+.fc-multimonth-title {
+    background-color: var(--calendar-background);
+    color: var(--multimonth-title);
+}
+
+.fc-multimonth-month .fc-daygrid-day-frame {
+    background-color: var(--calendar-background);
+    color: var(--calendar-day-today-tittle);
 }
 
 .btn-group {
@@ -1333,80 +1416,80 @@ input::selection {
 }
 
 .fc-today-button {
-    background-color: var(--text-color);
+    background-color: var(--calendar-background);
     border: 0px;
     color: #AA8DE4;
 }
 
 .fc-today-button:hover {
-    background-color: var(--text-color);
+    background-color: var(--calendar-background);
     border: 0px;
     color: #8C52FF;
 }
 
 .fc-today-button:disabled {
-    background-color: var(--text-color);
+    background-color: var(--calendar-background);
     border: 0px;
     color: #DAD4E6;
 }
 
 .fc-next-button {
-    background-color: var(--text-color);
+    background-color: var(--calendar-background);
     border: 0px;
     color: #AA8DE4;
 }
 
 .fc-next-button:hover {
-    background-color: var(--text-color);
+    background-color: var(--calendar-background);
     border: 0px;
     color: #8C52FF;
 }
 
 .fc-prev-button {
-    background-color: var(--text-color);
+    background-color: var(--calendar-background);
     border: 0px;
     color: #AA8DE4;
 }
 
 .fc-prev-button:hover {
-    background-color: var(--text-color);
+    background-color: var(--calendar-background);
     border: 0px;
     color: #8C52FF;
 }
 
 .fc-dayGridMonth-button {
-    background-color: var(--text-color);
+    background-color: var(--calendar-background);
     border: 0px;
     color: #AA8DE4;
 }
 
 .fc-dayGridMonth-button:hover {
-    background-color: var(--text-color);
+    background-color: var(--calendar-background);
     border: 0px;
     color: #8C52FF;
 }
 
 .fc-dayGridMonth-button.btn.active {
-    background-color: var(--text-color);
+    background-color: var(--calendar-background);
     border: 0px;
     color: #AA8DE4;
 }
 
 .fc-multiMonthYear-button {
-    background-color: var(--text-color);
+    background-color: var(--calendar-background);
     border: 0px;
     color: #AA8DE4;
     font-size: 0px;
 }
 
 .fc-multiMonthYear-button.btn.active {
-    background-color: var(--text-color);
+    background-color: var(--calendar-background);
     border: 0px;
     color: #AA8DE4;
 }
 
 .fc-multiMonthYear-button:hover {
-    background-color: var(--text-color);
+    background-color: var(--calendar-background);
     border: 0px;
     color: #8C52FF;
 }
@@ -1424,14 +1507,14 @@ input::selection {
 }
 
 .fc-dayGridMonth-button {
-    background-color: var(--text-color);
+    background-color: var(--calendar-background);
     border: 0px;
     color: #AA8DE4;
     font-size: 0px;
 }
 
 .fc-next-button {
-    background-color: var(--text-color);
+    background-color: var(--calendar-background);
     border: 0px;
     color: #AA8DE4;
     font-size: 0px;
@@ -1444,7 +1527,7 @@ input::selection {
 }
 
 .fc-prev-button {
-    background-color: var(--text-color);
+    background-color: var(--calendar-background);
     border: 0px;
     color: #AA8DE4;
     font-size: 0px;
@@ -1454,4 +1537,70 @@ input::selection {
     content: 'arrow_left_alt';
     font-family: 'Material Symbols Outlined';
     font-size: 20px;
+}
+
+.modal-content {
+    background-color: var(--white);
+    color: var(--event-title);
+}
+
+.btn-cl {
+    content: 'close';
+    font-family: 'Material Symbols Outlined';
+    font-size: 30px;
+    background-color: var(--white);
+    background: transparent;
+    border: none;
+    color: var(--event-title);
+}
+
+.brush {
+    color: var(--event-title);
+}
+
+.back {
+    color: var(--event-title);
+}
+
+.fc-daygrid-day-bottom {
+    color: var(--event-title);
+}
+
+.fc-more-popover {
+    background-color: var(--white);
+}
+
+.fc-popover-close {
+    color: var(--popover-title);
+}
+
+.fc-popover-header {
+    background-color: var(--white);
+    color: var(--popover-title);
+}
+
+.fc-more-popover.fc-event-title {
+    background-color: var(--white);
+}
+
+.fc-daygrid-event-harness {
+    background-color: var(--white);
+    border-radius: 20px;
+}
+
+#dropdownMenu {
+    position: absolute;
+    top: 100%;
+}
+
+.file-add {
+    color: var(--text-color);
+    text-align: center;
+    display: none;
+}
+
+.form-control {
+    transition: none;
+    background: var(--white);
+    color: var(--text-color);
 }

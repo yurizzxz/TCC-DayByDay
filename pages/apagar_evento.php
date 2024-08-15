@@ -1,6 +1,6 @@
 <?php
 
-include_once './conexao.php';
+include_once './conexaocalendar.php';
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
@@ -8,7 +8,7 @@ if (!empty($id)) {
 
     $query_apagar_event = "DELETE FROM events WHERE id=:id";
 
-    $apagar_event = $conn->prepare($query_apagar_event);
+    $apagar_event = $conne->prepare($query_apagar_event);
 
     $apagar_event->bindParam(':id', $id);
 

@@ -1,5 +1,5 @@
 <?php
-include_once './conexao.php';
+include_once './conexaocalendar.php';
 
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
@@ -7,7 +7,7 @@ $query_cad_event = "INSERT INTO events (title, color, start, end, obs) VALUES (:
 
 try {
 
-    $cad_event = $conn->prepare($query_cad_event);
+    $cad_event = $conne->prepare($query_cad_event);
     // Substitue os placeholders pelos valores recebidos
     $cad_event->bindParam(':title', $dados['cad_title']);
     $cad_event->bindParam(':color', $dados['cad_color']);
@@ -17,12 +17,13 @@ try {
     
     $cad_event->execute();
 
-    $lastInsertId = $conn->lastInsertId();
+    $lastInsertId = $conne->lastInsertId();
 
     if ($lastInsertId) {
         $retorna = [
+            
             'status' => true,
-            'msg' => 'Evento cadastrado com sucesso!',
+            'mensagem' => 'Evento cadastrado com sucesso!',
             'id' => $lastInsertId,
             'title' => $dados['cad_title'],
             'color' => $dados['cad_color'],
@@ -32,11 +33,19 @@ try {
         ];
     } else {
 
-        $retorna = ['status' => false, 'msg' => 'Erro: Não foi possível obter o ID do evento cadastrado!'];
+        $retorna = ['status' => false, 'mensagem' => 'Erro: Não foi possível obter o ID do evento cadastrado!'];
     }
 } catch (PDOException $e) {
 
-    $retorna = ['status' => false, 'msg' => 'Erro: Evento não cadastrado! Detalhes: ' . $e->getMessage()];
+    $retorna = ['status' => false, 'mensagem' => 'Erro: Evento não cadastrado! Detalhes: ' . $e->getMessage()];
+}
+
+if ($stmt->execute()) {
+    $_SESSION['mensagem'] = 'Categoria excluída com sucesso.';
+    header('Location: index.php?p=notas');
+} else {
+    $_SESSION['mensagem'] = 'Erro ao excluir a categoria: ' . $stmt->error;
+    header('Location: index.php?p=editar_categoria&id=' . $id_categoria);
 }
 
 echo json_encode($retorna);
