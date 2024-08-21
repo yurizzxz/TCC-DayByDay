@@ -10,16 +10,39 @@
         --text-color: ;
     }
 
-    .navbar.scrolled {
-        background-color: white !important;
-        transition: background-color 0.3s ease-in-out;
-        box-shadow: 0.5px 0px 8px 2px #F9F9F9;
-        transition: 0.3s ease-in-out;
+    #topnavbar {
+        padding-block: 30px;
     }
 
-    .sign-up {
+    .width-nav {
+        width: 86%;
+        display: flex;
+        padding: 15px 35px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        background-color: #fcfcfc;
+    }
+
+    .navbar-nav {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .link-nav {
+        text-decoration: none;
+        color: black;
+    }
+
+    .link-nav:hover {
+        color: #8C52FF;
+    }
+   
+
+    .login-hub {
         display: block;
-        padding: 0.5rem 1.5rem;
+        padding: 0.5rem 2rem;
         font-size: var(--bs-nav-link-font-size);
         font-weight: bold;
         color: white;
@@ -27,13 +50,13 @@
         background: #8C52FF;
         text-align: center;
         border: 0;
-        border-radius: 3px;
+        border-radius: 6px;
         transition: 0.3s ease-in-out;
     }
 
-    .sign-up:hover {
+    .login-hub:hover {
         display: block;
-        padding: 0.5rem 1.5rem;
+        padding: 0.6rem 2.1rem;
         font-size: var(--bs-nav-link-font-size);
         font-weight: bold;
         color: white;
@@ -43,24 +66,22 @@
         transition: 0.3s ease-in-out;
     }
 
-    .login-hub {
-        display: block;
-        text-align: center;
-        border-radius: 3px;
-        padding: 0.4rem 1.8rem;
-        font-size: var(--bs-nav-link-font-size);
-        font-weight: bold;
-        color: black;
-        text-decoration: none;
-        border: 2px solid #8C52FF;
-    }
-
     /* responsive details */
 
     @media screen and (max-width: 768px) {
-        #topnavbar{
-            box-shadow: 0.5px 0px 8px 2px F9F9F9;
-        }
+        #topnavbar {
+        padding-block: 0;
+    }
+
+    .width-nav {
+        width: 100%;
+        display: flex;
+        padding: 15px 35px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        background-color: #fdfdfd;
+    }
         #topnavbar.container {
             width: 100%;
         }
@@ -113,9 +134,11 @@
         outline: 0;
         box-shadow: 0 0 0 0;
     }
+
+    
 </style>
-<nav class="navbar navbar-expand-md fixed-top p-3" id="topnavbar" style="transition: 0.3s ease-in-out;">
-    <div class="container" style="margin-top: 5px; margin-bottom: 5px" style="transition: 0.3s ease-in-out;">
+<nav class="navbar navbar-expand-md fixed-top" id="topnavbar" style="transition: 0.3s ease-in-out;">
+    <div class="container-fluid width-nav">
         <a class="navbar-brand" href="?p=home"><img src="../img/logopng.png" width="135" alt=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -124,10 +147,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent" style=" transition: 0.3s ease-in-out;">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="login-hub me-2" aria-current="page" href="../pages/login.php">Entrar</a>
+                    <a class="link-nav" href="#">Calendário</a>
                 </li>
                 <li class="nav-item">
-                    <a class="sign-up" href="../pages/login.php" id="cadastrar-link">Cadastrar</a>
+                    <a class="link-nav" href="#">Anotações</a>
+                </li>
+                <li class="nav-item">
+                    <a class="link-nav" href="#">Sobre nós</a>
+                </li>
+                <li class="nav-item">
+                    <a class="link-nav" href="#">Perguntas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="login-hub me-2" href="../pages/login.php">Entrar</a>
                 </li>
             </ul>
         </div>

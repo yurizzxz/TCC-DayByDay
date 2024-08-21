@@ -7,9 +7,8 @@
     --text-color: ;
 }
 
-#text-lg {
-    font-size: 4.5rem;
-    width: 100%;
+.home-landing #text-lg {
+    font-size: 4rem;
 }
 
 #lead-landing {
@@ -18,11 +17,8 @@
 
 .landing-page {
     background: linear-gradient(to bottom, #ffffff 0%, #ffffff 70%, #FCFCFC 100%);
-    height: 85vh;
-}
+    height: 93vh;
 
-.content-landing {
-    background-color: #FCFCFC;
 }
 
 .landing-button #login-hub {
@@ -49,29 +45,91 @@
     transition: 0.3s ease-in-out;
 }
 
-#title-circle {
-    font-size: 28px;
-    font-weight: 400;
+.content-landing #text-lg,
+.calendar-content #text-lg,
+.create-note #text-lg,
+.about-us #text-lg,
+.questions #text-lg {
+    font-size: 3.3rem;
 }
 
-#divider {
-    margin-bottom: 10%;
-    margin-top: 10%;
-    opacity: 0.05;
+.content-landing {
+    background: #A200FF;
+    padding-block: 65px;
+    color: white;
 }
 
-#texto-lateral-l {
-    font-size: 3.3vw;
-    font-weight: bolder;
+.content-landing .color-slide {
+    color: orange;
 }
 
+.content-landing .lead {
+    font-size: 1.3rem;
+}
+
+.content-landing .sliders {
+    display: flex;
+    justify-content: flex-start;
+    padding-block: 7px;
+    gap: 10px;
+}
+
+.content-landing .sliders .color-carousel-button {
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.color-carousel-button:nth-child(1) {
+    background-color: #FF914D;
+    padding: 15px;
+}
+
+.color-carousel-button:nth-child(2) {
+    background-color: #FF5757;
+}
+
+.color-carousel-button:nth-child(3) {
+    background-color: #36DF32;
+}
+
+.calendar-content {
+    padding-block: 65px;
+}
+
+.about-us {
+    padding-block: 75px;
+}
+
+.student {
+    color: #8C52FF;
+}
+
+.create-note {
+    background: url(../img/pattern-lapis.jpg);  
+    padding-block: 30px;
+    background-color: rgba(255, 255, 255, 0.95);
+    filter: grayscale(100%); 
+    background-blend-mode: lighten;
+}
+
+.create-note .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 /* responsive details */
 
 @media (max-width: 768px) {
     #text-lg {
-        font-size: 3rem;
+        font-size: 3.2rem;
+    }
+
+    .content-landing #text-lg {
+        font-size: 2.5rem;
+        padding-top: 25px;
     }
 
     #texto-lateral-l {
@@ -91,9 +149,7 @@
 }
 
 @media (max-width: 637px) {
-    #text-lg {
-        font-size: 3rem;
-    }
+
 
     #divider {
         margin-bottom: 15%;
@@ -109,16 +165,25 @@
 
 @media (max-width: 500px) {
     #text-lg {
-        font-size: 2.5rem;
+        font-size: 2.7rem;
+    }
+
+    .content-landing #text-lg {
+        font-size: 2rem;
     }
 }
 
 @media (max-width: 365px) {
     #text-lg {
-        font-size: 2.4rem;
+        font-size: 2.5rem;
     }
+
     #lead-landing {
         font-size: 1.1rem;
+    }
+
+    .content-landing #text-lg {
+        font-size: 1.8rem;
     }
 }
 
@@ -126,31 +191,10 @@
     #text-lg {
         font-size: 2rem;
     }
-}
 
-
-
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 25px;
-    height: 0;
-}
-
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.headline-l {
-    font-size: 4rem;
-}
-
-.content-landing .container {
-    margin-top: 50px;
+    .content-landing #text-lg {
+        font-size: 1.5rem;
+    }
 }
 
 @media (max-height: 960px) {
@@ -175,8 +219,6 @@
     .landing-page {
         margin-top: 45px;
     }
-
-
 }
 
 @media (max-height: 775px) {
@@ -206,104 +248,84 @@
         margin-top: 185px;
     }
 }
+
+
 </style>
 
-<section id="home-landing">
-    <div class="landing-page d-flex align-items-center justify-content-center" id="ctner-landing" style="z-index:-99;">
-        <section class="py-5 container">
-            <div class="row justify-content-center" id="rowlanding">
 
-                <div class="col-md-6 order-md-1 mb-5">
-                    <h1 class="fw-bold mb-4" id="text-lg">Planeje. Organize. Conquiste </h1>
-                    <p class="lead" id="lead-landing">Transforme suas ideias e alcance seus objetivos de estudo com
-                        eficiência. DayByDay simplifica sua vida, otimiza sua rotina e ajuda você a crescer em sua
-                        jornada de aprendizado!</p>
-                    <div class="landing-button mt-3">
-                        <a href="../pages/login.php" class="my-2" id="login-hub">Começar Agora</a>
-                    </div>
-                </div>
-                <div class="col-md-6 d-flex align-items-center justify-content-center order-md-1">
-                    <img src="../img/apdaybyday.png"
-                        class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="800"
-                        height="500" focusable="false">
-                    </img>
-                </div>
-            </div>
-        </section>
-    </div>
-    
-    <div class="content-landing d-flex align-items-center justify-content-center">
-        <div class="container">
-     
-            <div class="bg-roxo d-flex justify-content-center">
-                <div class="row featurette justify-content-center align-items-center" id="leading">
+<section class="principal" id="home-landing">
+    <main class="home-landing">
+        <div class="landing-page d-flex align-items-center justify-content-center" id="ctner-landing"
+            style="z-index:-99;">
+            <section class="py-5 container">
+                <div class="row justify-content-center" id="rowlanding">
 
-                    <div class="col-md-6 order-md-1">
-                        <h2 class="featurette-heading mb-3" id="texto-lateral-l">Estamos com você!</h2>
-                        <p class="lead" id="text-leading">Estamos comprometidos em promover sua excelência acadêmica e
-                            pessoal. Com DayByDay, oferecemos mais do que apenas organização e oferecemos um caminho
-                            claro para o seu sucesso (profissional e pessoal), ajudando você a gerenciar suas tarefas e
-                            compromissos de forma eficaz!
-                        </p>
+                    <div class="col-md-6 order-md-1 mb-4">
+                        <h1 class="fw-bold mb-2" id="text-lg">Seu bloco de notas em um clique!</h1>
+                        <p class="lead" id="lead-landing">Anotar se torna fácil, faça suas anotações, gerencie suas
+                            datas
+                            importantes e organize seu dia com o DayByDay.</p>
+                        <div class="landing-button mt-3">
+                            <a href="../pages/login.php" class="my-2" id="login-hub">Começar Agora</a>
+                        </div>
                     </div>
-                    <div class="col-md-6 order-md-1 d-flex align-items-center justify-content-center">
-                        <img src="../img/3.jpeg"
+                    <div class="col-md-6 d-flex align-items-center justify-content-center order-md-1">
+                        <img src="../img/apdaybyday.png"
                             class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-                            width="500" height="500" focusable="false">
+                            width="800" height="500" focusable="false">
+                        </img>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <!--landing-content-->
+    <article class="content-landing">
+        <section class="d-flex align-items-center justify-content-center">
+
+            <div class="container">
+                <div class="row featurette justify-content-center align-items-center">
+                    <div class="col-md-6 order-md-1">
+                        <h1 class="fw-bold mb-2" id="text-lg"><span class="color-slide">#</span>Categoria Dividida por
+                            <span class="color-slide">Cores</span>
+                        </h1>
+                        <p class="lead color-slide-text">Laranja,</p>
+                        <p class="lead mb-5" id="text-leading">Suspendisse congue ullamcorper nisl quis dictum. Donec
+                            vitae
+                            ex sed arcu ultricies pretium.
+                        </p>
+                        <h4 class="fw-bold">Qual cor é a próxima?</h4>
+                        <div class="sliders">
+                            <div class="color-carousel-button active-button"></div>
+                            <div class="color-carousel-button"></div>
+                            <div class="color-carousel-button"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 d-flex align-items-center justify-content-center order-md-2">
+                        <img src="../img/logo.png"
+                            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                            width="800" height="600" focusable="false">
                         </img>
                     </div>
                 </div>
             </div>
+        </section>
+    </article>
 
-            <div class="container">
-                <hr class="featurette-divider" id="divider">
-            </div>
-
-            <section class="text-center">
-                <div class="container">
-                    <h1 class="fw-bold mb-4" id="text-content-landing">O que o DayByDay te ajuda?</h1>
-                </div>
-                <div class="container" id="circle-beneficios">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <img class="bd-placeholder-img rounded-circle mt-4" width="200" height="200"
-                                src="../img/1.jpeg" role="img" aria-label="Placeholder: 140x140" focusable="false">
-                            </img>
-                            <h2 class="fw-bold mt-3" id="title-circle">Organização eficiente</h2>
-                        </div>
-                        <div class="col-lg-3">
-                            <img class="bd-placeholder-img rounded-circle mt-4" width="200" height="200"
-                                src="../img/2.jpeg" role="img" aria-label="Placeholder: 140x140" focusable="false">
-                            </img>
-                            <h2 class="fw-bold mt-3" id="title-circle">Gestão do tempo</h2>
-                        </div>
-                        <div class="col-lg-3">
-                            <img class="bd-placeholder-img rounded-circle mt-4" width="200" height="200"
-                                src="../img/4.jpeg" role="img" aria-label="Placeholder: 140x140" focusable="false">
-                            </img>
-                            <h2 class="fw-bold mt-3" id="title-circle">Produtividade aprimorada</h2>
-                        </div>
-                        <div class="col-lg-3">
-                            <img class="bd-placeholder-img rounded-circle mt-4" width="200" height="200"
-                                src="../img/5.jpeg" role="img" aria-label="Placeholder: 140x140" focusable="false">
-                            </img>
-                            <h2 class="fw-bold mt-3" id="title-circle">Facilidade de uso</h2>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <div class="container">
-                <hr class="featurette-divider" id="divider">
-            </div>
-
-            <div class="row featurette justify-content-center align-items-center" style="margin-bottom: 100px"
+    <article class="calendar-content">
+        <section class="container">
+            <div class="row featurette justify-content-center align-items-center"
                 id="leading">
-
                 <div class="col-md-6 order-md-2">
-                    <h2 class="featurette-heading" id="texto-lateral-l">Qual nosso <br> principal objetivo?</h2>
-                    <p class="lead" id="text-leading">Nosso objetivo é ajudá-lo a prosperar. Teste agora o DayByDay e
-                        experimente a diferença na sua organização pessoal e profissional!
+                    <h1 class="fw-bold mb-3" id="text-lg">Calendário</h1>
+                    <p class="lead mb-3" id="text-leading">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                    <p class="lead mb-3">
+                        Suspendisse congue ullamcorper nisl quis dictum. Donec vitae ex sed arcu ultricies pretium.
+                    </p>
+
+                    <p class="lead mb-3">
+                        Suspendisse congue ullamcorper nisl quis dictum. Donec vitae ex sed arcu ultricies pretium.
                     </p>
                 </div>
                 <div class="col-md-6 d-flex align-items-center justify-content-center order-md-1">
@@ -313,17 +335,44 @@
                     </img>
                 </div>
             </div>
-     
+        </section>
+    </article>
 
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <h1 class="text-center fw-bold headline-l mb-5">Como nosso sistema funciona?</h1>
-                    <div class="video-container d-none mb-5">
-                        <iframe src="#" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                    </div>
+    <article class="create-note">
+        <section class="container">
+            <h1 class="fw-bold mb-3" id="text-lg">Crie Notas do Seu Jeito!</h1>
+        </section>
+    </article>
+
+    <article class="about-us">
+        <section class="container">
+            <div class="row featurette justify-content-center align-items-center" style="margin-block: 50px"
+                id="leading">
+                <div class="col-md-6 order-md-1">
+                    <h5 class="student">#SobreNós</h5>
+                    <h1 class="fw-bold mb-3" id="text-lg">Alunos <span class="student">por</span> Alunos</h1>
+                    <p class="lead mb-3" id="text-leading">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Suspendisse congue ullamcorper nisl quis dictum. Donec vitae ex sed arcu ultricies pretium.
+                    </p>
+                    <p class="lead mb-3">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse congue ullamcorper nisl
+                        quis dictum. Donec vitae ex sed arcu ultricies pretium.
+                    </p>
+
+                </div>
+                <div class="col-md-6 d-flex align-items-center justify-content-center order-md-2">
+                    <img src="../img/logo.png"
+                        class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="600"
+                        height="600" focusable="false">
+                    </img>
                 </div>
             </div>
-        </div>
+        </section>
+    </article>
+
+    <article class="questions">
+        <section class="container">
+            <h1 class="fw-bold mb-3" id="text-lg">Perguntas Frequentes</h1>
+        </section>
+    </article>
 </section>

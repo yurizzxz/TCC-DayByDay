@@ -1,8 +1,5 @@
 <style>
-    #footer{
-        margin-top: 100px;
-        background-color: #fcfcfc;
-    }
+    
 </style>
 
 <div class="container border-top" id="footer">
