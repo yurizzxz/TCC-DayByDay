@@ -550,19 +550,20 @@ body::-webkit-scrollbar-thumb {
 }
 
 
-@media (min-width: 601px) {
+@media (min-width: 575px) {
     .color-bar {
         width: 1.5vh;
         height: 150px;
     }
 
     #content-card-note {
-        margin-left: -3vh
+        margin-left: -2vh
     }
 
 
     #note-ctner {
-        margin-left: 10px;
+        padding-top: 65px;
+        margin-left: 90px;
     }
 
     #card-layout-note {
@@ -603,6 +604,14 @@ body::-webkit-scrollbar-thumb {
     }
 
 
+}
+
+.modal-content {
+    z-index: 9999 !important;
+}
+
+.modal-backdrop {
+    z-index: 1 !important;
 }
 
 
@@ -674,9 +683,10 @@ input[type="checkbox"]:checked+label+.menu {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-top: 50px;
     background-color: var(--white);
     height: 94.2vh;
-    position: relative;
+    position: fixed;
     transition: 0.3s ease-in-out;
     min-width: 82px;
     z-index: 2;
@@ -705,9 +715,10 @@ input[type="checkbox"]:checked+label+.menu {
     }
 
     #note-ctner {
+        padding-top: 50px;
         max-width: 50vh;
         display: flex;
-        margin-left: 90px;
+        padding-left: 75px;
     }
 }
 
@@ -1193,6 +1204,10 @@ input::selection {
 
 #inputPassword {
     color: var(--text-color);
+}
+
+.offcanvas-header {
+    justify-content: space-between;
 }
 
 /*cat*/

@@ -54,13 +54,13 @@ $profile_image = isset($user['profile_pic_url']) && !empty($user['profile_pic_ur
 
 <style>
 .profile-content {
-    color: var(--text-color);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    height: 90dvh;
-}
+        color: var(--text-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        margin-top: 15dvh;
+    }
 
 .button-close {
     padding-top: 70px;

@@ -14,7 +14,7 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
 }
 ?>
 
-<nav class="navbar">
+<nav class="navbar fixed-top">
     <div class="container-fluid">
         <div class="bg">
             <button id="open_btn">
@@ -60,11 +60,11 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                                             <a href="" class="icon-nota">
                                                 <ion-icon name="calendar-outline"></ion-icon>
                                             </a>
-                                            <button type="button" class="icon-nota" id="dropdownTrigger"
+                                            <button type="button" class="icon-nota" id="dropdownTriggerColor"
                                                 style="border: none; background: transparent" >
                                                 <ion-icon name="color-palette-outline"></ion-icon>
                                             </button>
-                                            <ul id="dropdownMenu" class="dropdown-menu" id="colors-dropdown"
+                                            <ul id="dropdownMenuColor" class="dropdown-menu" id="colors-dropdown"
                                                 style="height: 170px; width: 320px; border: none">
                                                 <div class="container p-3">
                                                     <div class="title-colors text-center">
@@ -325,6 +325,25 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+        const dropdownTrigger = document.getElementById('dropdownTriggerColor');
+        const dropdownMenu = document.getElementById('dropdownMenuColor');
+
+        function toggleDropdown() {
+            dropdownMenu.classList.toggle('show');
+        }
+
+        dropdownTrigger.addEventListener('click', function() {
+            toggleDropdown();
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!dropdownTrigger.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
+    });
 
 
 document.addEventListener("DOMContentLoaded", function() {
