@@ -49,6 +49,7 @@
 
     #form-layout {
         height: 97vh;
+
     }
 
     /* roxo */
@@ -133,6 +134,32 @@
         display: NONE;
     }
 
+    .background-form {
+        background: url(../img/texturagray.jpg);
+        background-size: cover;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .background-form:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -99;
+    }
+
+    .form-control:focus {
+        border: 1px solid #A843F6;
+        outline: none;
+        box-shadow: 0 0 0 0 !important;
+    }
+
+    .form-control {
+        background-color: rgba(0, 0, 0, 0.01) !important
+    }
     
     </style>
 </head>
@@ -159,7 +186,7 @@
                 </div>
             </div>
 
-            <div class="col-md-7 col-sm-12">
+            <div class="col-md-7 col-sm-12 background-form">
                 <div class="container" id="form-layout-ctner">
                     <div id="form-layout" class="d-flex justify-content-center align-items-center">
                         <div>
@@ -211,7 +238,7 @@
         <!--second column-->
         <!--second column-->
         <div class="row d-none" id="second-column">
-            <div class="col-md-5 col-sm-12 purple-space order-md-2">
+            <div class="col-md-5 col-sm-12 purple-space order-md-2 ">
                 <div class="container d-flex text-center align-items-center" id="purple-space">
                     <div class="mx-auto">
                         <div id="desktop-aviso" style="
@@ -232,7 +259,7 @@
             </div>
 
             <!--cadastro-->
-            <div class="col-md-7 col-sm-12">
+            <div class="col-md-7 col-sm-12 background-form">
                 <div class="container" id="form-layout-ctner">
                     <div id="form-layout" class="d-flex justify-content-center align-items-center">
                         <div>
