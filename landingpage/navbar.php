@@ -10,8 +10,16 @@
         --text-color: ;
     }
 
-    #topnavbar {
+    .navbar.scrolled {
+        background-color: #fcfcfc;
+        padding: 0;
+        transition: 0.5s ease-in-out;
+    }
+
+
+    .navbar {
         padding-block: 30px;
+        transition: 0.5s ease-in-out;
     }
 
     .width-nav {
@@ -69,7 +77,7 @@
     /* responsive details */
 
     @media screen and (max-width: 768px) {
-        #topnavbar {
+        .navbar {
         padding-block: 0;
     }
 
@@ -137,7 +145,7 @@
 
     
 </style>
-<nav class="navbar navbar-expand-md fixed-top" id="topnavbar" style="transition: 0.3s ease-in-out;">
+<nav class="navbar navbar-expand-lg fixed-top" id="topnavbar" style="transition: 0.3s ease-in-out;">
     <div class="container-fluid width-nav">
         <a class="navbar-brand" href="?p=home"><img src="../img/logopng.png" width="135" alt=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"

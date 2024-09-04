@@ -2,7 +2,7 @@
     
 </style>
 
-<div class="container border-top" id="footer">
+<div class="container border-top mt-5" id="footer">
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 ">
     <p class="col-md-4 mb-0 text-muted ,t">&copy; 2024 TCC</p>
 
