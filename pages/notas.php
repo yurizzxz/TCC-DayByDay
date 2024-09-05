@@ -25,8 +25,6 @@ if ($result->num_rows > 0) {
     $options = "<option value='all'>Todas as categorias</option>";
 }
 
-$options .= "<option value='all'>Criar Nova Categoria +</option>";
-
 $conn->close();
 
 $mensagem = isset($_SESSION['mensagem']) ? $_SESSION['mensagem'] : '';
@@ -62,87 +60,89 @@ function validateForm() {
                 <?php echo $options; ?>
             </select>
         </div>
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content justify-content-center align-items-center">
-                    <div class="container">
-                        <div class="modal-header" style="border-bottom: none">
-                            <h5 class="modal-title" id="myModalLabel">Adicionar Categoria</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
+            <div class="modal-dialog modal-create-cat" role="document">
+                <div class="modal-content my-modal">
 
-                        <div class="modal-body">
-                            <form id="categoryForm" action="salvar_categoria.php" onsubmit="return validateForm()"
-                                method="post">
-                                <div class="form-group">
-                                    <label for="categoryName">Nome</label>
-                                    <input type="text" class="form-control" id="categoryName" name="nome_categoria"
-                                        placeholder="Digite o nome da categoria" required>
-                                </div>
-                                <div class="form-group mt-4" id="cubo-colors">
-                                    <label>Cor:</label><br>
-                                    <div class="row mt-3">
-                                        <!-- First Row -->
-                                        <div class="col-3 text-center">
-                                            <input type="radio" class="color-checkbox" id="colorF95B99" value="#F95B99"
-                                                name="cor_escolhida">
-                                            <label for="colorF95B99">
-                                                <div class="color-option" style="background-color: #F95B99;"
-                                                    onclick="selectColor('colorF95B99')"></div>
-                                            </label>
-                                        </div>
-                                        <div class="col-3 text-center">
-                                            <input type="radio" class="color-checkbox" id="colorCB6CE6" value="#CB6CE6"
-                                                name="cor_escolhida">
-                                            <label for="colorCB6CE6">
-                                                <div class="color-option" style="background-color: #CB6CE6;"
-                                                    onclick="selectColor('colorCB6CE6')"></div>
-                                            </label>
-                                        </div>
-                                        <div class="col-3 text-center">
-                                            <input type="radio" class="color-checkbox" id="color8C52FF" value="#8C52FF"
-                                                name="cor_escolhida">
-                                            <label for="color8C52FF">
-                                                <div class="color-option" style="background-color: #8C52FF;"
-                                                    onclick="selectColor('color8C52FF')"></div>
-                                            </label>
-                                        </div>
-                                        <div class="col-3 text-center">
-                                            <input type="radio" class="color-checkbox" id="colorAA8DE4" value="#AA8DE4"
-                                                name="cor_escolhida">
-                                            <label for="colorAA8DE4">
-                                                <div class="color-option" style="background-color: #AA8DE4;"
-                                                    onclick="selectColor('colorAA8DE4')"></div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <!-- Second Row -->
-                                        <div class="col-3 text-center">
-                                            <input type="radio" class="color-checkbox" id="colorFF5757" value="#FF5757"
-                                                name="cor_escolhida">
-                                            <label for="colorFF5757">
-                                                <div class="color-option" style="background-color: #FF5757;"
-                                                    onclick="selectColor('colorFF5757')"></div>
-                                            </label>
-                                        </div>
-                                        <div class="col-3 text-center">
-                                            <input type="radio" class="color-checkbox" id="colorFFFF00" value="#FFFF00"
-                                                name="cor_escolhida">
-                                            <label for="colorFFFF00">
-                                                <div class="color-option" style="background-color: #FFFF00;"
-                                                    onclick="selectColor('colorFFFF00')"></div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="push-cat justify-content-center mb-2 text-center align-items-center">
-                                    <button type="submit" class="btn mt-3" id="change-info">Finalizar</button>
-                                </div>
-                            </form>
-                        </div>
+                    <div class="head-modal" style="border-bottom: none">
+                        <h5 class="modal-title" id="myModalLabel">Adicionar Categoria</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+
+                    <div class="modal-body p-0">
+                        <form id="categoryForm" action="salvar_categoria.php" onsubmit="return validateForm()"
+                            method="post">
+                            <div class="form-group">
+                                <label for="categoryName">Nome</label>
+                                <input type="text" class="form-control" id="categoryName" name="nome_categoria"
+                                    placeholder="Digite o nome da categoria" required>
+                            </div>
+                            <div class="form-group mt-4" id="cubo-colors">
+                                <label>Cor:</label><br>
+                                <div class="row mt-3">
+                                    <!-- First Row -->
+                                    <div class="col-3 text-center">
+                                        <input type="radio" class="color-checkbox" id="colorF95B99" value="#F95B99"
+                                            name="cor_escolhida">
+                                        <label for="colorF95B99">
+                                            <div class="color-option" style="background-color: #F95B99;"
+                                                onclick="selectColor('colorF95B99')"></div>
+                                        </label>
+                                    </div>
+                                    <div class="col-3 text-center">
+                                        <input type="radio" class="color-checkbox" id="colorCB6CE6" value="#CB6CE6"
+                                            name="cor_escolhida">
+                                        <label for="colorCB6CE6">
+                                            <div class="color-option" style="background-color: #CB6CE6;"
+                                                onclick="selectColor('colorCB6CE6')"></div>
+                                        </label>
+                                    </div>
+                                    <div class="col-3 text-center">
+                                        <input type="radio" class="color-checkbox" id="color8C52FF" value="#8C52FF"
+                                            name="cor_escolhida">
+                                        <label for="color8C52FF">
+                                            <div class="color-option" style="background-color: #8C52FF;"
+                                                onclick="selectColor('color8C52FF')"></div>
+                                        </label>
+                                    </div>
+                                    <div class="col-3 text-center">
+                                        <input type="radio" class="color-checkbox" id="colorAA8DE4" value="#AA8DE4"
+                                            name="cor_escolhida">
+                                        <label for="colorAA8DE4">
+                                            <div class="color-option" style="background-color: #AA8DE4;"
+                                                onclick="selectColor('colorAA8DE4')"></div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!-- Second Row -->
+                                    <div class="col-3 text-center">
+                                        <input type="radio" class="color-checkbox" id="colorFF5757" value="#FF5757"
+                                            name="cor_escolhida">
+                                        <label for="colorFF5757">
+                                            <div class="color-option" style="background-color: #FF5757;"
+                                                onclick="selectColor('colorFF5757')"></div>
+                                        </label>
+                                    </div>
+                                    <div class="col-3 text-center">
+                                        <input type="radio" class="color-checkbox" id="colorFFFF00" value="#FFFF00"
+                                            name="cor_escolhida">
+                                        <label for="colorFFFF00">
+                                            <div class="color-option" style="background-color: #FFFF00;"
+                                                onclick="selectColor('colorFFFF00')"></div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="push-cat justify-content-center mb-2 text-center align-items-center d-flex" style="gap: 10px">
+                                <button class="btn-cat-action" id="btn-confirm" type="submit">Confirmar</button>
+                                <button class="btn-cat-action" id="btn-cancel" type="button"
+                                data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -255,9 +255,9 @@ function validateForm() {
         </script>
         <?php endif; ?>
 
-      
-          <!--jquery-->
-          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <!--jquery-->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
         $(document).ready(function() {
             $('#categorySelect').change(function() {

@@ -8,7 +8,7 @@ if (!isset($_SESSION['idUsuario'])) {
     exit();
 }
 
-include_once'conexao.php';
+include_once 'conexao.php';
 
 $id_usuario = $_SESSION['idUsuario'];
 

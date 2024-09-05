@@ -17,10 +17,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['nota_id'])) {
 
     $sql = "DELETE FROM nota WHERE id_usuario = '$id_usuario' AND id = '$nota_id'";
     if ($conn->query($sql) === TRUE) {
-        echo "Nota excluída com sucesso!";
+        $_SESSION['mensagem'] = "Nota excluída com sucesso!";
         header('Location: index.php?p=notas');
     } else {
-        echo "Erro ao excluir a nota: " . $conn->error;
+        $_SESSION['mensagem'] = "Erro ao excluir a nota";
+        header('Location: index.php?p=notas');
     }
 
     $conn->close();

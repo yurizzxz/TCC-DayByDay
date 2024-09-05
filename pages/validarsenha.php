@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header('Location: index.php?p=perfil');
             exit();
         } else {
+            header('Location: index.php');
             $_SESSION['msg'] = 'Senha incorreta. Tente novamente.';
         }
     } else {

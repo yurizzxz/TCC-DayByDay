@@ -70,35 +70,40 @@ $result = $conn->query($sql);
                     </li>
                     <hr class="hr-muted">
                     <li class="side-item">
-                        <a class="d-flex" id="categoria-layout">
-                            <div class="head">
+                        <a class="d-flex align-items-center" id="categoria-layout" data-bs-toggle="collapse"
+                            href="#accordion-categorias" role="button" aria-expanded="false"
+                            aria-controls="accordion-categorias">
+                            <div class="head d-flex align-items-center">
                                 <ion-icon name="newspaper-outline"></ion-icon>
                                 <span class="item-description">Categorias</span>
+                                <ion-icon name="chevron-down-outline" class="accordion-toggle"></ion-icon>
                             </div>
-                            <?php if ($result->num_rows > 0): ?>
-                            <ul class="category-list mt-2">
-                                <?php while ($row = $result->fetch_assoc()): ?>
-                                <li class='category-item'
-                                    style='background-color: <?php echo $row['cor']; ?>; color: black;'>
-                                    <?php echo $row['nome']; ?>
-                                    <div class="button-container">
-                                        <button class="ion-icon-btn"
-                                            onclick="openModal('edit', <?php echo $row['id']; ?>, '<?php echo $row['nome']; ?>', '<?php echo $row['cor']; ?>')">
-                                            <ion-icon name='create-outline'></ion-icon>
-                                        </button>
-                                        <button class="ion-icon-btn"
-                                            onclick="openModal('delete', <?php echo $row['id']; ?>)">
-                                            <ion-icon name='trash-outline'></ion-icon>
-                                        </button>
-                                    </div>
-                                </li>
-                                <?php endwhile; ?>
-                            </ul>
-
-                            <?php endif; ?>
                         </a>
+                        <div class="collapse" id="accordion-categorias">
+                            <div class="accordion-body">
+                                <?php if ($result->num_rows > 0): ?>
+                                <ul class="category-list mt-2">
+                                    <?php while ($row = $result->fetch_assoc()): ?>
+                                    <li class='category-item'
+                                        style='background-color: <?php echo $row['cor']; ?>; color: black;'>
+                                        <?php echo $row['nome']; ?>
+                                        <div class="button-container">
+                                            <button class="ion-icon-btn"
+                                                onclick="openModal('edit', <?php echo $row['id']; ?>, '<?php echo $row['nome']; ?>', '<?php echo $row['cor']; ?>')">
+                                                <ion-icon name='create-outline'></ion-icon>
+                                            </button>
+                                            <button class="ion-icon-btn"
+                                                onclick="openModal('delete', <?php echo $row['id']; ?>)">
+                                                <ion-icon name='trash-outline'></ion-icon>
+                                            </button>
+                                        </div>
+                                    </li>
+                                    <?php endwhile; ?>
+                                </ul>
+                                <?php endif; ?>
+                            </div>
+                        </div>
                     </li>
-
 
                 </ul>
             </div>
@@ -109,7 +114,7 @@ $result = $conn->query($sql);
     <!-- Modal Categoria -->
     <div id="modal-overlayy" class="modal-overlayy"></div>
     <div id="modal-cat" class="modal-cat">
-        
+
         <form id="modal-form" method="POST" action="editar_categoria.php">
             <input type="hidden" name="action" id="modal-action">
             <input type="hidden" name="id_categoria" id="modal-id_categoria">
@@ -125,7 +130,6 @@ $result = $conn->query($sql);
     <!-- SCRIPTS -->
     <!-- SCRIPTS -->
     <script>
-
     function openModal(action, id_categoria, nome_categoria = '', cor_escolhida = '') {
         var modal = document.getElementById('modal-cat');
         var overlay = document.getElementById('modal-overlayy');
@@ -140,9 +144,9 @@ $result = $conn->query($sql);
             content.innerHTML = `
             <div class="head-modal">
              <h5 class="modal-title" id="myModalLabel">Edite sua Categoria</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal-overlayy" aria-label="Close"></button>
+                            <button type="button" class="btn-close" onclick="closeModal()"></button>
                    </div><div class="modal-body">
-                            <form id="categoryForm" action="salvar_categoria.php" onsubmit="return validateForm()"
+                            <form id="categoryForm" action="editar_categoria.php" onsubmit="return validateForm()"
                                 method="post">
                                 <div class="form-group">
                                     <label for="categoryName">Nome</label>
@@ -235,18 +239,14 @@ $result = $conn->query($sql);
 
     if (currentTheme) {
         html.classList.add(currentTheme);
+        chk.checked = true;
     }
 
     chk.addEventListener('change', () => {
         html.classList.toggle('dark-theme');
+
         const theme = html.classList.contains('dark-theme') ? 'dark-theme' : '';
         localStorage.setItem('theme', theme);
-
-        if (html.classList.contains('dark-theme')) {
-            document.getElementById('icon').setAttribute('name', 'sunny-outline');
-        } else {
-            document.getElementById('icon').setAttribute('name', 'moon-outline');
-        }
     });
     </script>
 

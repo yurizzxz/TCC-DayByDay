@@ -689,7 +689,7 @@ input[type="checkbox"]:checked+label+.menu {
     position: fixed;
     transition: 0.3s ease-in-out;
     min-width: 82px;
-    z-index: 2;
+    z-index: 99;
     margin-left: -30px;
 }
 
@@ -764,6 +764,11 @@ input[type="checkbox"]:checked+label+.menu {
     height: 0px;
 }
 
+.accordion-toggle {
+    transition: 0.3s ease-in-out;
+    display: none;
+}
+
 .hr-muted {
     color: var(--text-muted);
 }
@@ -824,8 +829,12 @@ input[type="checkbox"]:checked+label+.menu {
 }
 
 #sidebar.open-sidebar .item-description {
-    width: 150px;
+    width: 125px;
     height: auto;
+}
+
+#sidebar.open-sidebar .accordion-toggle{
+   display: block;
 }
 
 /*categoria*/
@@ -862,16 +871,37 @@ input[type="checkbox"]:checked+label+.menu {
 
 /* MODAL */
 
-#modal-btn {
+.modal-btn {
     background: var(--background);
+
     transition: 0.3s ease-in-out;
     color: var(--text-color);
 }
 
-#modal-btn:hover {
+.modal-btn:hover {
     background: var(--button-hover);
+    color: var(--text-color) !important; 
     transition: 0.3s ease-in-out;
 }
+
+.btn.show {
+    color: var(--text-color) !important; 
+    background: var(--button-hover) !important;
+    border: none !important;
+}
+
+.create-bd .dropdown-item{
+    color: var(--text-color);
+    transition: 0.3s ease-in;
+    padding: 10px 20px;
+}
+
+.create-bd .dropdown-item:hover{
+    color: var(--color-bar-nota);
+    background-color: transparent;
+    transition: 0.3s ease-in;
+}
+
 
 #notifications {
     margin-left: 15px;
@@ -885,7 +915,7 @@ input[type="checkbox"]:checked+label+.menu {
     transform-origin: right;
     animation: slideFromTop 0.3s forwards;
     border: none;
-    height: 250px;
+    height: 290px;
     margin-left: -310px;
 }
 
@@ -947,7 +977,8 @@ input[type="checkbox"]:checked+label+.menu {
 }
 
 .dark-mode-layout {
-    width: 235px;
+    padding: 0;
+    width: 100%;
     padding-top: 0px;
     height: 1vh;
     transition: .3s ease-in-out;
@@ -1104,8 +1135,6 @@ input::selection {
 
 #myModal .modal-content {
     max-width: 350px;
-    margin: 0 auto;
-    margin-top: 35%;
 }
 
 #myModal .modal-content .modal-body input::placeholder {
@@ -1618,4 +1647,18 @@ input::selection {
     transition: none;
     background: var(--white);
     color: var(--text-color);
+}
+
+.modal-content {
+    border-radius: 0 !important;
+}
+
+.modal-create-cat {
+    display: flex;
+    top: 22%;
+    justify-content: center;
+}
+
+.my-modal {
+    padding: 20px !important;
 }

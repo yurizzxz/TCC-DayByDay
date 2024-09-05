@@ -27,14 +27,29 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
         <div class="left-items justify-content-center align-items-center d-flex">
             <!--BOTAO MODAL -->
             <div class="create-note">
-                <button type="button" class="btn" id="modal-btn" data-bs-toggle="modal" data-bs-target="#modalNota">+
-                    Criar nota
-                </button>
+                <div class="dropdown" id="modal-btn">
+                    <button class="btn modal-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        + Criar
+                    </button>
+                    <ul class="dropdown-menu create-bd" aria-labelledby="dropdownMenuButton">
+                        <li>
+                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalNota">
+                                Criar Nota
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#myModal">
+                                Criar Categoria
+                            </a>
+                        </li>
+                    </ul>
+                </div>
                 <!-- MODAL NOTA -->
                 <div class="modal fade align-items-center justify-content-center mt-5" id="modalNota" tabindex="-1"
                     aria-labelledby="modalNotaLabel" aria-hidden="true">
                     <div class="container">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog" style="padding-top: 40px">
 
                             <div class="modal-content modal-width justify-content-center nota-content"
                                 style="border: none">
@@ -61,7 +76,7 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                                                 <ion-icon name="calendar-outline"></ion-icon>
                                             </a>
                                             <button type="button" class="icon-nota" id="dropdownTriggerColor"
-                                                style="border: none; background: transparent" >
+                                                style="border: none; background: transparent">
                                                 <ion-icon name="color-palette-outline"></ion-icon>
                                             </button>
                                             <ul id="dropdownMenuColor" class="dropdown-menu" id="colors-dropdown"
@@ -198,11 +213,21 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                             </div>
                         </div>
                         <li class="d-flex mt-3">
-                            <div class="container">
-                                <div class="" style="margin-top: 10px">
+                            <div class="container " >
+                                <div class=" d-flex flex-column" style="gap: 20px; margin-top: 10px">
                                     <div class="a me-5">
                                         <ion-icon name="help-outline" style="padding-right: 10px"></ion-icon> <a
                                             href="../landingpage/index.php?p=home">Ajuda</a>
+                                    </div>
+                                    <div class="form-check dark-mode-layout d-flex">
+                                        <ion-icon name="moon-outline"></ion-icon>
+                                        <p class="dark-mode-text" style="padding-left: 10px; margin-right: auto">Modo
+                                            Escuro
+                                        </p>
+                                        <input type="checkbox" id="chk" />
+                                        <label for="chk" class="switch">
+                                            <span class="slider"></span>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -327,23 +352,23 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-        const dropdownTrigger = document.getElementById('dropdownTriggerColor');
-        const dropdownMenu = document.getElementById('dropdownMenuColor');
+    const dropdownTrigger = document.getElementById('dropdownTriggerColor');
+    const dropdownMenu = document.getElementById('dropdownMenuColor');
 
-        function toggleDropdown() {
-            dropdownMenu.classList.toggle('show');
-        }
+    function toggleDropdown() {
+        dropdownMenu.classList.toggle('show');
+    }
 
-        dropdownTrigger.addEventListener('click', function() {
-            toggleDropdown();
-        });
-
-        document.addEventListener('click', function(event) {
-            if (!dropdownTrigger.contains(event.target) && !dropdownMenu.contains(event.target)) {
-                dropdownMenu.classList.remove('show');
-            }
-        });
+    dropdownTrigger.addEventListener('click', function() {
+        toggleDropdown();
     });
+
+    document.addEventListener('click', function(event) {
+        if (!dropdownTrigger.contains(event.target) && !dropdownMenu.contains(event.target)) {
+            dropdownMenu.classList.remove('show');
+        }
+    });
+});
 
 
 document.addEventListener("DOMContentLoaded", function() {

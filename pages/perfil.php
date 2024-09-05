@@ -2,6 +2,7 @@
 <html lang='pt-br'>
 <?php
 
+
 if (!isset($_SESSION['idUsuario']) || !isset($_SESSION['nomeUsuario'])) {
     header('Location: login.php');
     exit();
@@ -11,10 +12,7 @@ $nomeUsuario = $_SESSION['nomeUsuario'];
 
 $id_usuario = $_SESSION['idUsuario'];
 
-$conn = mysqli_connect('127.0.0.1', 'root', '', 'tcc');
-if ($conn->connect_error) {
-    die('Erro de conexão: ' . $conn->connect_error);
-}
+
 
 $sql = "SELECT nome, email FROM usuarios WHERE id = '$id_usuario'";
 $result = $conn->query($sql);
