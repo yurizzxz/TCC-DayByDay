@@ -219,6 +219,48 @@
     }
 }
 
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1250px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-image {
+    min-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.prev,
+.next {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    opacity: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+/* faq */
 .accordion-button {
     padding-block: 55px;
     font-size: 27px;
@@ -275,7 +317,7 @@
         </div>
     </main>
     <!--landing-content-->
-    <article class="content-landing">
+    <article class="content-landing" id="cat-divisao">
         <section class="d-flex align-items-center justify-content-center">
             <div class="container">
                 <div class="row featurette justify-content-center align-items-center">
@@ -313,7 +355,7 @@
         </section>
     </article>
 
-    <article class="calendar-content">
+    <article class="calendar-content" id="calendario">
         <section class="container mt-5 mb-5">
             <div class="row featurette justify-content-center align-items-center" id="leading">
                 <div class="col-md-6 order-md-2">
@@ -342,55 +384,24 @@
         <section class="container">
             <h1 class="fw-bold mb-3" id="text-lg">Crie Notas do Seu Jeito!</h1>
         </section>
-        <!-- Carrossel de Imagens -->
+
         <section class="container">
-            <div id="carouselExampleIndicators" class="carousel slide">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                        class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
-                        aria-label="Slide 4"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
-                        aria-label="Slide 5"></button>
+            <div class="carousel-container mt-3">
+                <div class="carousel-slide">
+                    <img src="../img/nt1.png" class="carousel-image">
+                    <img src="../img/nt2.png" class="carousel-image">
+                    <img src="../img/nt3.png" class="carousel-image">
+                    <img src="../img/nt4.png" class="carousel-image">
+                    <img src="../img/nt5.png" class="carousel-image">
                 </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="../img/nt1.png" class="d-block w-100" alt="Imagem 1">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../img/nt2.png" class="d-block w-100" alt="Imagem 2">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../img/nt3.png" class="d-block w-100" alt="Imagem 3">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../img/nt4.png" class="d-block w-100" alt="Imagem 4">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../img/nt5.png" class="d-block w-100" alt="Imagem 5">
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+
+                <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="next" onclick="moveSlide(1)">&#10095;</button>
             </div>
         </section>
-
-
     </article>
 
-    <article class="about-us">
+    <article class="about-us" id="about">
         <section class="container">
             <div class="row featurette justify-content-center align-items-center" style="margin-block: 50px"
                 id="leading">
@@ -416,7 +427,7 @@
         </section>
     </article>
 
-    <article class="questions">
+    <article class="questions" id="faq">
         <section class="container">
             <h1 class="fw-bold mb-5" id="text-lg">Perguntas Frequentes</h1>
         </section>
@@ -471,6 +482,30 @@
         </section>
     </article>
 </section>
+
+
+<script>
+let currentSlide = 0;
+
+function moveSlide(direction) {
+    const slides = document.querySelectorAll('.carousel-image');
+    const totalSlides = slides.length;
+
+    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+    const carouselSlide = document.querySelector('.carousel-slide');
+
+    const slideWidth = slides[0].clientWidth;
+    carouselSlide.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+}
+
+window.addEventListener('resize', () => {
+    const slides = document.querySelectorAll('.carousel-image');
+    const carouselSlide = document.querySelector('.carousel-slide');
+
+    const slideWidth = slides[0].clientWidth;
+    carouselSlide.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+});
+</script>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {

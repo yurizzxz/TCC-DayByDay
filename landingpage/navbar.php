@@ -147,7 +147,7 @@
 </style>
 <nav class="navbar navbar-expand-lg fixed-top" id="topnavbar" style="transition: 0.3s ease-in-out;">
     <div class="container-fluid width-nav">
-        <a class="navbar-brand" href="?p=home"><img src="../img/logopng.png" width="135" alt=""></a>
+        <a class="navbar-brand" href="#home-landing"><img src="../img/logopng.png" width="135" alt=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -155,16 +155,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent" style=" transition: 0.3s ease-in-out;">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="link-nav" href="#">Calendário</a>
+                    <a class="link-nav" href="#calendario">Calendário</a>
                 </li>
                 <li class="nav-item">
                     <a class="link-nav" href="#">Anotações</a>
                 </li>
                 <li class="nav-item">
-                    <a class="link-nav" href="#">Sobre nós</a>
+                    <a class="link-nav" href="#about">Sobre nós</a>
                 </li>
                 <li class="nav-item">
-                    <a class="link-nav" href="#">Perguntas</a>
+                    <a class="link-nav" href="#faq">Perguntas</a>
                 </li>
                 <li class="nav-item">
                     <a class="login-hub me-2" href="../pages/login.php">Entrar</a>

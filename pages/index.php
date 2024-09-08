@@ -1,6 +1,6 @@
 <?php
 date_default_timezone_set('America/Sao_Paulo');
-//include_once 'trava.php';
+
 $pagina = filter_input(INPUT_GET, 'p');
 if (empty($pagina) || $pagina == "index") {
     header("Location: ?p=notas");

@@ -25,7 +25,7 @@ if ($conn->query($sql) === TRUE) {
     exit();
 } else {
     $_SESSION['mensagem'] = "Erro ao criar a nota: " . $conn->error;
-    header('Location: index.php?p=criar_nota');
+    header('Location: index.php?p=notas');
     exit();
 }
 

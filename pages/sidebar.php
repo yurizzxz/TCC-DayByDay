@@ -47,7 +47,7 @@ $result = $conn->query($sql);
                         </a>
                     </li>
 
-                    <li class="side-item">
+                    <li class="side-item d-none">
                         <a id="settingsItem" class="dropdown" type="button" href="#">
                             <ion-icon name="settings-outline" style="z-index: 99; font-size: 25px; color: #8C52FF">
                             </ion-icon>
@@ -56,7 +56,7 @@ $result = $conn->query($sql);
                             </span>
                         </a>
                         <!-- DROPDOWN -->
-                        <div id="myDropdown" class="dropdown-menu " style="border:none;" aria-labelledby="settingsItem">
+                        <div id="myDropdown" class="dropdown-menu" style="border:none;" aria-labelledby="settingsItem">
                             <div class="form-check dark-mode-layout d-flex">
                                 <ion-icon name="moon-outline"></ion-icon>
                                 <p class="dark-mode-text" style="padding-left: 10px; padding-right: 22px">Modo Escuro
@@ -269,31 +269,11 @@ $result = $conn->query($sql);
     </script>
 
     <script>
-    // limitar o número de caracteres
-    function limitarCaracteres() {
-        var btn = document.getElementById("modal-btn");
-        var texto = btn.textContent;
-
-        // Limita o texto a 1 caractere em resoluções menores que 768px
-        if (window.innerWidth < 768) {
-            if (texto.length > 2) {
-                btn.textContent = texto.charAt(0);
-            }
-        }
-    }
-
-    document.addEventListener("DOMContentLoaded", function() {
-        limitarCaracteres();
-        window.addEventListener("resize", limitarCaracteres);
-    });
-    </script>
-
-    <script>
     document.addEventListener("DOMContentLoaded", function() {
         var currentPage = new URLSearchParams(window.location.search).get('p');
 
         if (!currentPage) {
-            currentPage = 'calendar';
+            currentPage = 'calendario';
         }
 
         var menuItems = document.querySelectorAll('.side-item');

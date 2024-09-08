@@ -217,6 +217,37 @@ body::-webkit-scrollbar-thumb {
         z-index: 1;
     }
 }
+.nota-contentt {
+    position: relative;
+    padding-left: 10px; 
+}
+
+.nota-contentt::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 100%;
+    background-color: var(--color-bar-nota); 
+    z-index: 1;
+}
+
+@media (max-width: 767px) {
+    .nota-contentt {
+        padding-left: 0;
+        padding-top: 20px; 
+    }
+    
+    .nota-contentt::before {
+        width: 100%;
+        height: 15px;
+        left: 0;
+        top: 0;
+        background-color: var(--color-bar-nota);  
+        z-index: 1;
+    }
+}
 
 #change-info-btn {
     background: var(--background);
@@ -527,7 +558,27 @@ body::-webkit-scrollbar-thumb {
     border: 2px solid var(--text-color);
 }
 
-.color-checkbox:checked+l.color-option {
+.color-checkbox:checked+label.color-option {
+    border: 2px solid var(--text-color);
+}
+
+.color-checkboxx {
+    display: none;
+}
+
+.color-optionn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.color-checkboxx:checked+label .color-option {
+    border: 2px solid var(--text-color);
+}
+
+.color-checkboxx:checked+label.color-option {
     border: 2px solid var(--text-color);
 }
 
@@ -870,7 +921,6 @@ input[type="checkbox"]:checked+label+.menu {
 /*fim sidebar*/
 
 /* MODAL */
-
 .modal-btn {
     background: var(--background);
 
@@ -1009,6 +1059,10 @@ ion-icon[name="notifications-outline"] {
     background-color: var(--white);
     color: var(--text-color);
     transition: 0.3s ease-in-out;
+}
+
+@media screen {
+    
 }
 
 .no-note,
@@ -1662,3 +1716,20 @@ input::selection {
 .my-modal {
     padding: 20px !important;
 }
+
+.form-control::placeholder {
+    color: var(--text-color) !important;
+}
+
+.form-control:focus {
+    background-color: var(--white) !important; 
+}
+.btn-transparent {
+    background: transparent;
+    border: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+

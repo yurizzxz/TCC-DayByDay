@@ -8,10 +8,7 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
     $nomeUsuario = $_SESSION['nomeUsuario'];
     $emailUsuario = $_SESSION['emailUsuario'];
     $profilePicUrl = isset($_SESSION['profilePicUrl']) ? $_SESSION['profilePicUrl'] : 'img/1.jpeg'; 
-} else {
-    header('Location: login.php');
-    exit();
-}
+} 
 ?>
 
 <nav class="navbar fixed-top">
@@ -27,19 +24,21 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
         <div class="left-items justify-content-center align-items-center d-flex">
             <!--BOTAO MODAL -->
             <div class="create-note">
-                <div class="dropdown" id="modal-btn">
-                    <button class="btn modal-btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                <div class="dropdown">
+                    <button class="btn modal-btn" type="button" id="dropdown" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         + Criar
                     </button>
-                    <ul class="dropdown-menu create-bd" aria-labelledby="dropdownMenuButton">
+                    <ul class="dropdown-menu create-bd" aria-labelledby="dropdown">
                         <li>
                             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalNota">
+                            <ion-icon name="add-outline"></ion-icon>
                                 Criar Nota
                             </a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#myModal">
+                                <ion-icon name="duplicate-outline"></ion-icon>
                                 Criar Categoria
                             </a>
                         </li>
@@ -69,10 +68,10 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                                             style="resize: none;" required rows="10"
                                             placeholder="Começe aqui..."></textarea>
                                     </div>
-                                    <div class="modal-footer d-flex" style="border: none;margin-top: 80px">
+                                    <div class="modal-footer" style="border: none;margin-top: 80px">
 
                                         <div class="icons" style="margin-right: auto;">
-                                            <a href="" class="icon-nota">
+                                            <a href="#" class="icon-nota">
                                                 <ion-icon name="calendar-outline"></ion-icon>
                                             </a>
                                             <button type="button" class="icon-nota" id="dropdownTriggerColor"
@@ -321,7 +320,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Inicializa a visibilidade do elemento
     if (inputArquivo.files.length === 0) {
         fileNameDisplay.style.display = 'none';
     } else {
@@ -333,43 +331,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const dropdownTrigger = document.getElementById('dropdownTrigger');
-    const dropdownMenu = document.getElementById('dropdownMenu');
+    const dropdowns = [
+        { triggerId: 'dropdownTrigger', menuId: 'dropdownMenu' },
+        { triggerId: 'dropdownTriggerEdit', menuId: 'dropdownMenuEdit' },
+        { triggerId: 'dropdownTriggerColor', menuId: 'dropdownMenuColor' }
+    ];
 
-    function toggleDropdown() {
-        dropdownMenu.classList.toggle('show');
-    }
+    dropdowns.forEach(({ triggerId, menuId }) => {
+        const dropdownTrigger = document.getElementById(triggerId);
+        const dropdownMenu = document.getElementById(menuId);
 
-    dropdownTrigger.addEventListener('click', function() {
-        toggleDropdown();
-    });
-
-    document.addEventListener('click', function(event) {
-        if (!dropdownTrigger.contains(event.target) && !dropdownMenu.contains(event.target)) {
-            dropdownMenu.classList.remove('show');
+        function toggleDropdown() {
+            dropdownMenu.classList.toggle('show');
         }
+
+        dropdownTrigger.addEventListener('click', function() {
+            toggleDropdown();
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!dropdownTrigger.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
     });
 });
-
-document.addEventListener('DOMContentLoaded', function() {
-    const dropdownTrigger = document.getElementById('dropdownTriggerColor');
-    const dropdownMenu = document.getElementById('dropdownMenuColor');
-
-    function toggleDropdown() {
-        dropdownMenu.classList.toggle('show');
-    }
-
-    dropdownTrigger.addEventListener('click', function() {
-        toggleDropdown();
-    });
-
-    document.addEventListener('click', function(event) {
-        if (!dropdownTrigger.contains(event.target) && !dropdownMenu.contains(event.target)) {
-            dropdownMenu.classList.remove('show');
-        }
-    });
-});
-
 
 document.addEventListener("DOMContentLoaded", function() {
     var colorCheckboxes = document.querySelectorAll(".color-checkbox");
