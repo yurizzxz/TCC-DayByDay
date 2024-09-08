@@ -8,10 +8,7 @@ if (!isset($_SESSION['idUsuario'])) {
     exit();
 }
 
-$conn = mysqli_connect('127.0.0.1', 'root', '', 'tcc');
-if ($conn->connect_error) {
-    die("Erro de conexão: " . $conn->connect_error);
-}
+include_once 'conexao.php';
 
 $id_usuario = $_SESSION['idUsuario'];
 
@@ -28,7 +25,7 @@ if ($conn->query($sql) === TRUE) {
     exit();
 } else {
     $_SESSION['mensagem'] = "Erro ao criar a nota: " . $conn->error;
-    header('Location: index.php?p=criar_nota');
+    header('Location: index.php?p=notas');
     exit();
 }
 

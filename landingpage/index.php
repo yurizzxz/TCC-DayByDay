@@ -1,12 +1,28 @@
-<?php
-date_default_timezone_set('America/Sao_Paulo');
-//include_once 'trava.php';
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <?php include_once 'header.php'; ?>
+
+        <style>
+              ::-webkit-scrollbar {
+            width: 7px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background-color: #8C52FF;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background-color: #f0f0f0;
+            border-radius: 4px;
+        }
+
+        .scroll-container {
+            scrollbar-width: thin;
+            scrollbar-color: #8C52FF #f0f0f0;
+        }
+        </style>
     </head>
     <body>
         <?php include_once 'navbar.php'; ?>

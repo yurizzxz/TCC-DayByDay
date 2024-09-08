@@ -30,7 +30,17 @@ if ($result->num_rows > 0) {
         echo "<div class='card-body' style='margin-top: 7px'>";
         echo "<h5 class='card-title fw-bold fs-4'>" . $row['titulo'] . "</h5>";
         echo "<p class='card-text'  style='font-size: 18px'>" . $row['subtitulo'] . "</p>";
-        echo "<p class='card-text textmuted'>" . $row['conteudo'] . "</p>";
+        $content = $row['conteudo'];
+
+        $limit = 70;
+
+        if (strlen($content) > $limit) {
+            $truncated = substr($content, 0, $limit) . '...';
+        } else {
+            $truncated = $content;
+        }
+
+        echo "<p class='card-text textmuted'>" . ($truncated) . "</p>";
 
         echo "</div>";
         echo "</div>";

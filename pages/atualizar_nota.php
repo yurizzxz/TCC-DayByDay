@@ -1,42 +1,37 @@
 <?php
 session_start();
+include_once 'conexao.php';
 
-if (!isset($_SESSION['idUsuario'])) {
-    header('Location: login.php');
-    exit();
-}
+if ( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' && isset( $_POST[ 'nota_id' ] ) ) {
+    $nota_id = $_POST[ 'nota_id' ];
+    $titulo = $_POST[ 'txttitulo' ];
+    $subtitulo = $_POST[ 'txtsubtitulo' ];
+    $conteudo = $_POST[ 'txtconteudo' ];
+    $cor = $_POST[ 'txtcor' ];
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['nota_id'])) {
-    $id_usuario = $_SESSION['idUsuario'];
+    // Protege contra SQL Injection
+    $stmt = $conn->prepare( 'UPDATE nota SET titulo=?, subtitulo=?, conteudo=?, cor=? WHERE id=?' );
+    $stmt->bind_param( 'ssssi', $titulo, $subtitulo, $conteudo, $cor, $nota_id );
 
-    $nota_id = $_POST['nota_id'];
-    $titulo = $_POST['txttitulo'];
-    $subtitulo = $_POST['txtsubtitulo'];
-    $conteudo = $_POST['txtconteudo'];
-    $cor = $_POST['cor_selecionada'];
-
-    $conn = mysqli_connect('127.0.0.1', 'root', '', 'tcc');
-    if ($conn->connect_error) {
-        die("Erro de conexão: " . $conn->connect_error);
-    }
-
-    $sql_check = "SELECT * FROM nota WHERE id_usuario = '$id_usuario' AND id = '$nota_id'";
-    $result_check = $conn->query($sql_check);
-
-    if ($result_check->num_rows == 1) {
-        $sql_update = "UPDATE nota SET titulo = '$titulo', subtitulo = '$subtitulo', conteudo = '$conteudo', cor = '$cor' WHERE id = '$nota_id'";
-        if ($conn->query($sql_update) === TRUE) {
-            echo "Nota atualizada com sucesso!";
-            header('Location: index.php?p=notas');
-        } else {
-            echo "Erro ao atualizar a nota: " . $conn->error;
-        }
+    if ( $stmt->execute() ) {
+        $_SESSION[ 'mensagem' ] = 'Edição feita com sucesso!';
+        header( 'location:index.php?p=notas' );
+        exit();
     } else {
-        echo "Nota não encontrada.";
+        $_SESSION[ 'mensagem' ] = 'Erro ao editar nota!' . $stmt->error;
+        header( 'location:index.php?p=notas');
+        exit();
     }
 
+    $mensagem = isset( $_SESSION[ 'mensagem' ] ) ? $_SESSION[ 'mensagem' ] : '';
+    unset( $_SESSION[ 'mensagem' ] );
+
+    echo $mensagem;
+
+    $stmt->close();
     $conn->close();
 } else {
-    header('Location: index.php?p=notas');
+    header( 'Location: index.php?p=notas' );
+
 }
 ?>

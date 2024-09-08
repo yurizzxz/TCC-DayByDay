@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="pt-br">
 
@@ -18,7 +17,14 @@
     }
 
     .form-signin {
-        width: 50vh;
+        display: flex;
+        border-radius: 8px;
+        margin-top: 30px;
+        border: 1px solid #F0F0F0;
+        background-color: #FCFCFC;
+        flex-direction: column;
+        justify-content: center;
+        width: 75vh;
         max-width: 430px;
         font-size: 18px;
         padding: 23px;
@@ -28,9 +34,9 @@
         position: relative;
         height: auto;
         margin-left: auto;
-        padding: 10px 35px 10px;
-        font-size: 22px;
-        border-radius: 0px;
+        padding: 10px 45px 10px;
+        font-size: 20px;
+        border-radius: 4px;
     }
 
     .fullWidth {
@@ -43,6 +49,7 @@
 
     #form-layout {
         height: 97vh;
+
     }
 
     /* roxo */
@@ -59,8 +66,8 @@
 
     #titulo-purple {
         font-size: 60px;
-        width: 60%;
-        margin-top: -80px;
+        width: 65%;
+        margin-top: -0px;
     }
 
     /* */
@@ -71,6 +78,7 @@
         color: white;
         font-size: 25px;
         transition: 0.3s ease-in-out;
+        border-radius: 4px;
     }
 
     .btn-btn-login:hover {
@@ -84,7 +92,7 @@
 
     #icon {
         margin-right: -55px;
-        margin-left: 10px;
+        margin-left: 15px;
         color: black;
         font-size: 18px;
         z-index: 99;
@@ -117,7 +125,7 @@
     }
 
     .btn-transition {
-        margin-top: 40px;
+        margin-top: 20px;
     }
 
     /* responsive */
@@ -125,6 +133,34 @@
     .mobile-aviso {
         display: NONE;
     }
+
+    .background-form {
+        background: url(../img/texturagray.jpg);
+        background-size: cover;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .background-form:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -99;
+    }
+
+    .form-control:focus {
+        border: 1px solid #A843F6;
+        outline: none;
+        box-shadow: 0 0 0 0 !important;
+    }
+
+    .form-control {
+        background-color: rgba(0, 0, 0, 0.01) !important
+    }
+    
     </style>
 </head>
 
@@ -150,7 +186,7 @@
                 </div>
             </div>
 
-            <div class="col-md-7 col-sm-12">
+            <div class="col-md-7 col-sm-12 background-form">
                 <div class="container" id="form-layout-ctner">
                     <div id="form-layout" class="d-flex justify-content-center align-items-center">
                         <div>
@@ -183,7 +219,7 @@
                                     <input type="submit" class="btn btn-btn-login fullWidth" name="btnlogar"
                                         value="Entrar" />
                                 </div>
-                                <div class="container text-center d-none">
+                                <div class="container text-center">
                                     <p class="d-none" style="margin-bottom: 2px">powered by:</p>
                                     <img src="../img/logopng.png" height="25" alt="">
                                 </div>
@@ -202,10 +238,10 @@
         <!--second column-->
         <!--second column-->
         <div class="row d-none" id="second-column">
-            <div class="col-md-5 col-sm-12 purple-space order-md-2">
+            <div class="col-md-5 col-sm-12 purple-space order-md-2 ">
                 <div class="container d-flex text-center align-items-center" id="purple-space">
                     <div class="mx-auto">
-                    <div id="desktop-aviso" style="
+                        <div id="desktop-aviso" style="
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
@@ -223,7 +259,7 @@
             </div>
 
             <!--cadastro-->
-            <div class="col-md-7 col-sm-12">
+            <div class="col-md-7 col-sm-12 background-form">
                 <div class="container" id="form-layout-ctner">
                     <div id="form-layout" class="d-flex justify-content-center align-items-center">
                         <div>
@@ -259,7 +295,7 @@
                                     <input type="submit" class="btn btn-btn-login fullWidth" name="btnsalvar"
                                         value="Criar Conta" />
                                 </div>
-                                <div class="container text-center d-none">
+                                <div class="container text-center">
                                     <p class="d-none" style="margin-bottom: 2px">powered by:</p>
                                     <img src="../img/logopng.png" height="25" alt="">
                                 </div>
@@ -274,27 +310,27 @@
     </div>
 
     <script>
-        var criarContaBtn = document.getElementById('criar-conta');
-        var entrarBtn = document.getElementById('entrar');
+    var criarContaBtn = document.getElementById('criar-conta');
+    var entrarBtn = document.getElementById('entrar');
 
-        var firstColumn = document.getElementById('first-column');
-        var secondColumn = document.getElementById('second-column');
+    var firstColumn = document.getElementById('first-column');
+    var secondColumn = document.getElementById('second-column');
 
-        criarContaBtn.addEventListener('click', function (event) {
-            event.preventDefault();
+    criarContaBtn.addEventListener('click', function(event) {
+        event.preventDefault();
 
-            firstColumn.classList.add('d-none');
-            secondColumn.classList.remove('d-none');
-        });
+        firstColumn.classList.add('d-none');
+        secondColumn.classList.remove('d-none');
+    });
 
-        entrarBtn.addEventListener('click', function (event) {
-            event.preventDefault();
+    entrarBtn.addEventListener('click', function(event) {
+        event.preventDefault();
 
-            secondColumn.classList.add('d-none');
-            firstColumn.classList.remove('d-none');
-        });
+        secondColumn.classList.add('d-none');
+        firstColumn.classList.remove('d-none');
+    });
     </script>
-    
+
 
     <?php include_once 'scripts.php' ?>
 

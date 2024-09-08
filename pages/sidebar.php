@@ -27,7 +27,7 @@ $result = $conn->query($sql);
                 <!--LINKS-->
                 <ul id="side_items">
                     <li class="side-item active">
-                        <a href="?p=calendar ">
+                        <a href="?p=calendario">
                             <ion-icon name="calendar-outline" style="z-index: 99; font-size: 25px; color: #8C52FF">
                             </ion-icon>
                             <span class="item-description">
@@ -47,7 +47,7 @@ $result = $conn->query($sql);
                         </a>
                     </li>
 
-                    <li class="side-item">
+                    <li class="side-item d-none">
                         <a id="settingsItem" class="dropdown" type="button" href="#">
                             <ion-icon name="settings-outline" style="z-index: 99; font-size: 25px; color: #8C52FF">
                             </ion-icon>
@@ -56,7 +56,7 @@ $result = $conn->query($sql);
                             </span>
                         </a>
                         <!-- DROPDOWN -->
-                        <div id="myDropdown" class="dropdown-menu " style="border:none;" aria-labelledby="settingsItem">
+                        <div id="myDropdown" class="dropdown-menu" style="border:none;" aria-labelledby="settingsItem">
                             <div class="form-check dark-mode-layout d-flex">
                                 <ion-icon name="moon-outline"></ion-icon>
                                 <p class="dark-mode-text" style="padding-left: 10px; padding-right: 22px">Modo Escuro
@@ -70,34 +70,40 @@ $result = $conn->query($sql);
                     </li>
                     <hr class="hr-muted">
                     <li class="side-item">
-                        <a class="d-flex" id="categoria-layout">
-                            <div class="head">
+                        <a class="d-flex align-items-center" id="categoria-layout" data-bs-toggle="collapse"
+                            href="#accordion-categorias" role="button" aria-expanded="false"
+                            aria-controls="accordion-categorias">
+                            <div class="head d-flex align-items-center">
                                 <ion-icon name="newspaper-outline"></ion-icon>
                                 <span class="item-description">Categorias</span>
+                                <ion-icon name="chevron-down-outline" class="accordion-toggle"></ion-icon>
                             </div>
-                            <?php if ($result->num_rows > 0): ?>
-                            <ul class="category-list mt-2">
-                                <?php while ($row = $result->fetch_assoc()): ?>
-                                <li class='category-item' style='background-color: <?php echo $row['cor']; ?>; color: black;'>
-                                    <?php echo $row['nome']; ?>
-                                    <div class="button-container">
-                                        <button class="ion-icon-btn"
-                                            onclick="openModal('edit', <?php echo $row['id']; ?>, '<?php echo $row['nome']; ?>', '<?php echo $row['cor']; ?>')">
-                                            <ion-icon name='create-outline'></ion-icon>
-                                        </button>
-                                        <button class="ion-icon-btn"
-                                            onclick="openModal('delete', <?php echo $row['id']; ?>)">
-                                            <ion-icon name='trash-outline'></ion-icon>
-                                        </button>
-                                    </div>
-                                </li>
-                                <?php endwhile; ?>
-                            </ul>
-            
-                            <?php endif; ?>
                         </a>
+                        <div class="collapse" id="accordion-categorias">
+                            <div class="accordion-body">
+                                <?php if ($result->num_rows > 0): ?>
+                                <ul class="category-list mt-2">
+                                    <?php while ($row = $result->fetch_assoc()): ?>
+                                    <li class='category-item'
+                                        style='background-color: <?php echo $row['cor']; ?>; color: black;'>
+                                        <?php echo $row['nome']; ?>
+                                        <div class="button-container">
+                                            <button class="ion-icon-btn"
+                                                onclick="openModal('edit', <?php echo $row['id']; ?>, '<?php echo $row['nome']; ?>', '<?php echo $row['cor']; ?>')">
+                                                <ion-icon name='create-outline'></ion-icon>
+                                            </button>
+                                            <button class="ion-icon-btn"
+                                                onclick="openModal('delete', <?php echo $row['id']; ?>)">
+                                                <ion-icon name='trash-outline'></ion-icon>
+                                            </button>
+                                        </div>
+                                    </li>
+                                    <?php endwhile; ?>
+                                </ul>
+                                <?php endif; ?>
+                            </div>
+                        </div>
                     </li>
-
 
                 </ul>
             </div>
@@ -108,6 +114,7 @@ $result = $conn->query($sql);
     <!-- Modal Categoria -->
     <div id="modal-overlayy" class="modal-overlayy"></div>
     <div id="modal-cat" class="modal-cat">
+
         <form id="modal-form" method="POST" action="editar_categoria.php">
             <input type="hidden" name="action" id="modal-action">
             <input type="hidden" name="id_categoria" id="modal-id_categoria">
@@ -137,9 +144,9 @@ $result = $conn->query($sql);
             content.innerHTML = `
             <div class="head-modal">
              <h5 class="modal-title" id="myModalLabel">Edite sua Categoria</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close" onclick="closeModal()"></button>
                    </div><div class="modal-body">
-                            <form id="categoryForm" action="salvar_categoria.php" onsubmit="return validateForm()"
+                            <form id="categoryForm" action="editar_categoria.php" onsubmit="return validateForm()"
                                 method="post">
                                 <div class="form-group">
                                     <label for="categoryName">Nome</label>
@@ -232,18 +239,14 @@ $result = $conn->query($sql);
 
     if (currentTheme) {
         html.classList.add(currentTheme);
+        chk.checked = true;
     }
 
     chk.addEventListener('change', () => {
         html.classList.toggle('dark-theme');
+
         const theme = html.classList.contains('dark-theme') ? 'dark-theme' : '';
         localStorage.setItem('theme', theme);
-
-        if (html.classList.contains('dark-theme')) {
-            document.getElementById('icon').setAttribute('name', 'sunny-outline');
-        } else {
-            document.getElementById('icon').setAttribute('name', 'moon-outline');
-        }
     });
     </script>
 
@@ -266,31 +269,11 @@ $result = $conn->query($sql);
     </script>
 
     <script>
-    // limitar o número de caracteres
-    function limitarCaracteres() {
-        var btn = document.getElementById("modal-btn");
-        var texto = btn.textContent;
-
-        // Limita o texto a 1 caractere em resoluções menores que 768px
-        if (window.innerWidth < 768) {
-            if (texto.length > 2) {
-                btn.textContent = texto.charAt(0);
-            }
-        }
-    }
-
-    document.addEventListener("DOMContentLoaded", function() {
-        limitarCaracteres();
-        window.addEventListener("resize", limitarCaracteres);
-    });
-    </script>
-
-    <script>
     document.addEventListener("DOMContentLoaded", function() {
         var currentPage = new URLSearchParams(window.location.search).get('p');
 
         if (!currentPage) {
-            currentPage = 'calendar';
+            currentPage = 'calendario';
         }
 
         var menuItems = document.querySelectorAll('.side-item');
