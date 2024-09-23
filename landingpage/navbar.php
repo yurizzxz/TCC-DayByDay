@@ -167,7 +167,7 @@
                     <a class="link-nav" href="#faq">Perguntas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="login-hub me-2" href="../pages/login.php">Entrar</a>
+                    <a class="login-hub" href="../pages/login.php">Entrar</a>
                 </li>
             </ul>
         </div>
