@@ -49,7 +49,7 @@
 .create-note #text-lg,
 .about-us #text-lg,
 .questions #text-lg {
-    font-size: 3.3rem;
+    font-size: 3rem;
 }
 
 .content-landing {
@@ -116,7 +116,7 @@
     }
 
     .content-landing #text-lg {
-        font-size: 2.5rem;
+        font-size: 2.7rem;
         padding-top: 25px;
     }
 
@@ -138,6 +138,15 @@
     .home-landing #text-lg {
         font-size: 3rem;
     }
+
+    .content-landing #text-lg,
+    .calendar-content #text-lg,
+    .create-note #text-lg,
+    .about-us #text-lg,
+    .questions #text-lg {
+        font-size: 2.7rem;
+    }
+
 }
 
 @media (max-width: 637px) {
@@ -161,7 +170,11 @@
     }
 
     .content-landing #text-lg {
-        font-size: 2rem;
+        font-size: 2.5rem;
+    }
+
+    .create-note #text-lg {
+        font-size: 2.7rem;
     }
 }
 
@@ -262,8 +275,9 @@
 /* faq */
 .accordion-button {
     padding-block: 55px;
-    font-size: 27px;
-    font-weight: bold;
+    padding-inline: 0px;
+    font-size: 24px;
+    font-weight: 500;
 }
 
 .accordion-item:not(.collapsed) {
@@ -271,6 +285,7 @@
 }
 
 .accordion-button:not(.collapsed) {
+    padding-inline: 20px;
     padding-block: 35px;
     box-shadow: 0 0 0 0;
     color: white;
@@ -387,7 +402,6 @@
                     <img src="../img/nt2.png" class="carousel-image">
                     <img src="../img/nt3.png" class="carousel-image">
                     <img src="../img/nt4.png" class="carousel-image">
-                    <img src="../img/nt5.png" class="carousel-image">
                 </div>
 
                 <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
@@ -467,7 +481,8 @@
                     </h2>
                     <div id="flush-collapseThree" class="accordion-collapse collapse"
                         data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Sim! O DayByDay permite configurar lembretes para que você nunca perca prazos importantes.</div>
+                        <div class="accordion-body">Sim! O DayByDay permite configurar lembretes para que você nunca
+                            perca prazos importantes.</div>
                     </div>
                 </div>
             </div>
