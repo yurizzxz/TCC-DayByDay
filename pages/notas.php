@@ -388,6 +388,7 @@ function validateForm() {
 
         <!--jquery-->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
         <script>
         $(document).ready(function() {
             $('#categorySelect').change(function() {
@@ -401,6 +402,7 @@ function validateForm() {
 
         <!--buscar valores da nota-->
         <script>
+            
         document.addEventListener("DOMContentLoaded", function() {
             var colorCheckboxes = document.querySelectorAll(".color-checkbox");
             colorCheckboxes.forEach(function(checkbox) {
@@ -426,7 +428,6 @@ function validateForm() {
             });
         });
 
-
         document.querySelectorAll('.color-checkbox').forEach(function(checkbox) {
             checkbox.addEventListener('change', function() {
                 if (this.checked) {
@@ -439,15 +440,24 @@ function validateForm() {
         });
         </script>
         <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const updateNoteModal = new bootstrap.Modal(document.getElementById('updateNoteModal'));
+        $(document).ready(function() {
+            function reassignModalEvents() {
+                document.querySelectorAll('.btn.btn-transparent').forEach(button => {
+                    button.addEventListener('click', function() {
+                        populateModal(this);
+                        const updateNoteModal = new bootstrap.Modal(document.getElementById(
+                            'updateNoteModal'));
+                        updateNoteModal.show();
+                    });
+                });
+            }
 
             function populateModal(button) {
                 const noteId = button.dataset.id;
                 const noteTitle = button.dataset.title;
                 const noteSubtitle = button.dataset.subtitle;
                 const noteContent = button.dataset.content;
-                const noteColor = button.dataset.color; 
+                const noteColor = button.dataset.color;
 
                 document.getElementById('noteTitle').value = noteTitle || '';
                 document.getElementById('noteSubtitle').value = noteSubtitle || '';
@@ -461,34 +471,10 @@ function validateForm() {
 
                 const notaContentElement = document.querySelector('.nota-contentt');
                 if (notaContentElement) {
-                    notaContentElement.style.setProperty('--color-bar-nota', noteColor ||
-                    '#8C52FF'); 
+                    notaContentElement.style.setProperty('--color-bar-nota', noteColor || '#8C52FF');
                 }
             }
 
-            document.querySelectorAll('.btn.btn-transparent').forEach(button => {
-                button.addEventListener('click', function() {
-                    populateModal(this);
-                    const updateNoteModal = new bootstrap.Modal(document.getElementById(
-                        'updateNoteModal'));
-                    updateNoteModal.show();
-                });
-            });
-        });
-        </script>
-
-        <!--buscar id da cor-->
-        <script>
-        function selectColor(colorId) {
-            document.querySelectorAll('.color-option').forEach(el => el.classList.remove('selected'));
-            document.querySelector(`label[for="${colorId}"] .color-option`).classList.add('selected');
-            document.getElementById(colorId).checked = true;
-        }
-        </script>
-
-        <!--busca e filtra as notas de acordo com a categoria-->
-        <script>
-        $(document).ready(function() {
             $('#categorySelect').change(function() {
                 var categoriaId = $(this).val();
 
@@ -500,12 +486,16 @@ function validateForm() {
                     },
                     success: function(response) {
                         $('#notas-container').html(response);
+
+                        reassignModalEvents();
                     },
                     error: function(xhr, status, error) {
                         console.error('Erro na requisição AJAX:', status, error);
                     }
                 });
             });
+
+            reassignModalEvents();
         });
         </script>
 
