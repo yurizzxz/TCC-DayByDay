@@ -9,8 +9,25 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
     $emailUsuario = $_SESSION['emailUsuario'];
     $profilePicUrl = isset($_SESSION['profilePicUrl']) ? $_SESSION['profilePicUrl'] : 'img/1.jpeg'; 
 } 
-?>
 
+$servidor = "localhost";
+$usuario = "root";
+$senha = "";
+$banco = "tcc";
+
+$conexao = mysqli_connect($servidor, $usuario, $senha, $banco);
+
+if (!$conexao) {
+    die("Falha na conexão com o banco de dados: " . mysqli_connect_error());
+}
+
+$query = "SELECT id, nome FROM categoria WHERE id_usuario = '" . $_SESSION['idUsuario'] . "'"; 
+$result = mysqli_query($conexao, $query);
+
+if (!$result) {
+    echo "Erro ao buscar categorias: " . mysqli_error($conexao);
+}
+?>
 <nav class="navbar fixed-top">
     <div class="container-fluid">
         <div class="bg">
@@ -32,7 +49,7 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                     <ul class="dropdown-menu create-bd" aria-labelledby="dropdown">
                         <li>
                             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalNota">
-                            <ion-icon name="add-outline"></ion-icon>
+                                <ion-icon name="add-outline"></ion-icon>
                                 Criar Nota
                             </a>
                         </li>
@@ -69,7 +86,20 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                                             placeholder="Começe aqui..."></textarea>
                                     </div>
                                     <div class="modal-footer" style="border: none;margin-top: 80px">
-
+                                    <select name="id_categoria" id="categoria" class="form-control select-categoria">
+                                        <option value="">Selecione uma categoria</option>
+                                        <?php
+                                        
+                                        if (mysqli_num_rows($result) > 0) {
+                                        
+                                            while ($categoria = mysqli_fetch_assoc($result)) {
+                                                echo "<option value='" . $categoria['id'] . "'>" . htmlspecialchars($categoria['nome']) . "</option>";
+                                            }
+                                        } else {
+                                            echo "<option value=''>Nenhuma categoria encontrada</option>";
+                                        }
+                                        ?>
+                                    </select>
                                         <div class="icons" style="margin-right: auto;">
                                             <a href="#" class="icon-nota">
                                                 <ion-icon name="calendar-outline"></ion-icon>
@@ -212,7 +242,7 @@ if (isset($_SESSION['nomeUsuario']) && isset($_SESSION['emailUsuario'])) {
                             </div>
                         </div>
                         <li class="d-flex mt-3">
-                            <div class="container " >
+                            <div class="container ">
                                 <div class=" d-flex flex-column" style="gap: 20px; margin-top: 10px">
                                     <div class="a me-5">
                                         <ion-icon name="help-outline" style="padding-right: 10px"></ion-icon> <a
@@ -331,13 +361,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const dropdowns = [
-        { triggerId: 'dropdownTrigger', menuId: 'dropdownMenu' },
-        { triggerId: 'dropdownTriggerEdit', menuId: 'dropdownMenuEdit' },
-        { triggerId: 'dropdownTriggerColor', menuId: 'dropdownMenuColor' }
+    const dropdowns = [{
+            triggerId: 'dropdownTrigger',
+            menuId: 'dropdownMenu'
+        },
+        {
+            triggerId: 'dropdownTriggerEdit',
+            menuId: 'dropdownMenuEdit'
+        },
+        {
+            triggerId: 'dropdownTriggerColor',
+            menuId: 'dropdownMenuColor'
+        }
     ];
 
-    dropdowns.forEach(({ triggerId, menuId }) => {
+    dropdowns.forEach(({
+        triggerId,
+        menuId
+    }) => {
         const dropdownTrigger = document.getElementById(triggerId);
         const dropdownMenu = document.getElementById(menuId);
 
@@ -350,7 +391,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         document.addEventListener('click', function(event) {
-            if (!dropdownTrigger.contains(event.target) && !dropdownMenu.contains(event.target)) {
+            if (!dropdownTrigger.contains(event.target) && !dropdownMenu.contains(event
+                    .target)) {
                 dropdownMenu.classList.remove('show');
             }
         });

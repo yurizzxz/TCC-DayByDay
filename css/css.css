@@ -1700,7 +1700,11 @@ input::selection {
 .form-control {
     transition: none;
     background: var(--white);
-    color: var(--text-color);
+    color: var(--text-color)  !important;
+}
+
+.form-control option {
+    color: var(--text-color)  !important;
 }
 
 .modal-content {
@@ -1733,3 +1737,7 @@ input::selection {
     left: 0;
 }
 
+.select-categoria {
+    padding: 10px 15px;
+    border-radius: 10px !important;
+}

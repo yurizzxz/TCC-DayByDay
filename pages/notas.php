@@ -1,4 +1,5 @@
 <?php
+
 if (!isset($_SESSION['idUsuario'])) {
     header('Location: login.php');
     exit();
@@ -17,19 +18,18 @@ $result = $conn->query($sql);
 $options = '';
 
 if ($result->num_rows > 0) {
-    $options .= "<option value='todas'>Todas as Categorias</option>";
+    $options .= "<option class='select-category-note' value='todas'>Todas as Categorias</option>";
     while ($row = $result->fetch_assoc()) {
         $options .= "<option value='{$row['id']}'>{$row['nome']}</option>";
     }
 } else {
-    $options = "<option value='all'>Todas as categorias</option>";
+    $options = "<option value='all'>Nenhuma categoria encontrada</option>";
 }
 
 $conn->close();
 
 $mensagem = isset($_SESSION['mensagem']) ? $_SESSION['mensagem'] : '';
 unset($_SESSION['mensagem']);
-
 ?>
 
 <script>
@@ -265,7 +265,10 @@ function validateForm() {
                                 placeholder="Comece aqui..."></textarea>
                         </div>
                         <div class="modal-footer" style="border: none; margin-top: 80px">
-                            <div class="icons" style="margin-right: auto;">
+                        <select name="id_categoria" id="categoria" class="form-control select-categoria" required>
+                            <?php echo $options; ?>
+                        </select>       
+                        <div class="icons" style="margin-right: auto;">
                                 <a href="#" class="icon-nota">
                                     <ion-icon name="calendar-outline"></ion-icon>
                                 </a>
@@ -390,6 +393,22 @@ function validateForm() {
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
         <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modalElement = document.getElementById('updateNoteModal');
+
+            modalElement.addEventListener('hidden.bs.modal', function() {
+                const backdrop = document.querySelector('.modal-backdrop');
+                if (backdrop) {
+                    backdrop.classList.remove('show');
+                    backdrop.style.position = 'absolulte';
+                    backdrop.style.width = '0'; 
+                    backdrop.style.display = 'none';
+                }
+            });
+        });
+        </script>
+
+        <script>
         $(document).ready(function() {
             $('#categorySelect').change(function() {
                 var selectedOption = $(this).children("option:selected").val();
@@ -402,7 +421,6 @@ function validateForm() {
 
         <!--buscar valores da nota-->
         <script>
-            
         document.addEventListener("DOMContentLoaded", function() {
             var colorCheckboxes = document.querySelectorAll(".color-checkbox");
             colorCheckboxes.forEach(function(checkbox) {
