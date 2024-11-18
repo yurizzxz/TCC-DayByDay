@@ -299,6 +299,7 @@
 .desktop-carousel {
     display: block;
 }
+
 .mobile-carousel {
     display: none;
 }
@@ -307,11 +308,11 @@
     .desktop-carousel {
         display: none;
     }
+
     .mobile-carousel {
         display: block;
     }
 }
-
 </style>
 
 
@@ -408,7 +409,7 @@
             <h1 class="fw-bold mb-3" id="text-lg">Crie Notas do Seu Jeito!</h1>
         </section>
 
-        <section  class="container">
+        <section class="container">
             <div id="desktopCarousel" class="carousel-container mt-3 desktop-carousel">
                 <div class="carousel-slide">
                     <img src="../img/nt1.png" class="carousel-image">
@@ -420,7 +421,7 @@
                 <button class="next" onclick="moveSlide(1, 'desktopCarousel')">&#10095;</button>
             </div>
 
-            <div  id="mobileCarousel" class="carousel-container mt-3 mobile-carousel">
+            <div id="mobileCarousel" class="carousel-container mt-3 mobile-carousel">
                 <div class="carousel-slide">
                     <img src="../img/nt1m.png" class="carousel-image">
                     <img src="../img/nt2m.png" class="carousel-image">
@@ -460,7 +461,7 @@
         </section>
     </article>
 
-    <article class="questions" id="faq">
+    <article class="questions mb-5" id="faq">
         <section class="container">
             <h1 class="fw-bold mb-5" id="text-lg">Perguntas Frequentes</h1>
         </section>
@@ -494,18 +495,45 @@
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item d-none">
+                <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseThree" aria-expanded="false"
                             aria-controls="flush-collapseThree">
-                            O DayByDay envia lembretes para meus compromissos?
+                            Outras pessoas podem acessar as minhas notas?
                         </button>
                     </h2>
                     <div id="flush-collapseThree" class="accordion-collapse collapse"
                         data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Sim! O DayByDay permite configurar lembretes para que você nunca
-                            perca prazos importantes.</div>
+                        <div class="accordion-body">Não, as suas anotações são somente suas, e ninguém além de você pode
+                            acessá-las.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseThree" aria-expanded="false"
+                            aria-controls="flush-collapseThree">
+                            Tenho que pagar algum valor para ter acesso a todas as funcionalidades?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Não! O DayByDay é totalmente de graça, nós não cobramos nenhum valor
+                            e você pode criar quantas notas e eventos quiser, sem tempo limitado.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseThree" aria-expanded="false"
+                            aria-controls="flush-collapseThree">
+                            O sistema possui algum modo noturno?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Sim, você pode ativar e desativar o modo escuro a qualquer momento, sendo de noite ou de dia!</div>
                     </div>
                 </div>
             </div>
@@ -515,7 +543,10 @@
 
 
 <script>
-let currentSlide = { desktopCarousel: 0, mobileCarousel: 0 };
+let currentSlide = {
+    desktopCarousel: 0,
+    mobileCarousel: 0
+};
 
 function moveSlide(direction, carouselId) {
     const carouselSlide = document.querySelector(`#${carouselId} .carousel-slide`);
