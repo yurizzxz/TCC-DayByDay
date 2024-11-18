@@ -144,7 +144,7 @@
     .create-note #text-lg,
     .about-us #text-lg,
     .questions #text-lg {
-        font-size: 2.7rem;
+        font-size: 2.4rem;
     }
 
 }
@@ -165,23 +165,17 @@
 }
 
 @media (max-width: 500px) {
-    #text-lg {
-        font-size: 2.7rem;
-    }
 
     .content-landing #text-lg {
         font-size: 2.5rem;
     }
 
     .create-note #text-lg {
-        font-size: 2.7rem;
+        font-size: 2.4rem;
     }
 }
 
 @media (max-width: 365px) {
-    #text-lg {
-        font-size: 2.5rem;
-    }
 
     #lead-landing {
         font-size: 1.1rem;
@@ -301,6 +295,23 @@
     padding-bottom: 30px;
     background: #8C52FF;
 }
+
+.desktop-carousel {
+    display: block;
+}
+.mobile-carousel {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .desktop-carousel {
+        display: none;
+    }
+    .mobile-carousel {
+        display: block;
+    }
+}
+
 </style>
 
 
@@ -311,7 +322,7 @@
             <section class="py-5 container">
                 <div class="row justify-content-center" id="rowlanding">
 
-                    <div class="col-md-6 order-md-1 mb-4">
+                    <div class="col-md-6 order-md-2 mb-4">
                         <h1 class="fw-bold mb-2" id="text-lg">Seu bloco de notas em cliques!</h1>
                         <p class="lead" id="lead-landing">Com o DayByDay, suas anotações ficam estruturadas com apenas
                             alguns cliques. Crie, categorize e acesse de maneira fácil e rápida. Tudo que você precisa,
@@ -321,7 +332,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 d-flex align-items-center justify-content-center order-md-1">
-                        <img src="../img/apresentação.png"
+                        <img src="../img/mockup.png"
                             class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
                             width="800" height="500" focusable="false">
                         </img>
@@ -390,22 +401,34 @@
         </section>
     </article>
 
+    <div id="anotacoes"></div>
+
     <article class="create-note mt-5">
         <section class="container">
             <h1 class="fw-bold mb-3" id="text-lg">Crie Notas do Seu Jeito!</h1>
         </section>
 
-        <section class="container">
-            <div class="carousel-container mt-3">
+        <section  class="container">
+            <div id="desktopCarousel" class="carousel-container mt-3 desktop-carousel">
                 <div class="carousel-slide">
                     <img src="../img/nt1.png" class="carousel-image">
                     <img src="../img/nt2.png" class="carousel-image">
                     <img src="../img/nt3.png" class="carousel-image">
                     <img src="../img/nt4.png" class="carousel-image">
                 </div>
+                <button class="prev" onclick="moveSlide(-1, 'desktopCarousel')">&#10094;</button>
+                <button class="next" onclick="moveSlide(1, 'desktopCarousel')">&#10095;</button>
+            </div>
 
-                <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-                <button class="next" onclick="moveSlide(1)">&#10095;</button>
+            <div  id="mobileCarousel" class="carousel-container mt-3 mobile-carousel">
+                <div class="carousel-slide">
+                    <img src="../img/nt1m.png" class="carousel-image">
+                    <img src="../img/nt2m.png" class="carousel-image">
+                    <img src="../img/nt3m.png" class="carousel-image">
+                    <img src="../img/nt4m.png" class="carousel-image">
+                </div>
+                <button class="prev" onclick="moveSlide(-1, 'mobileCarousel')">&#10094;</button>
+                <button class="next" onclick="moveSlide(1, 'mobileCarousel')">&#10095;</button>
             </div>
         </section>
     </article>
@@ -428,7 +451,7 @@
 
                 </div>
                 <div class="col-md-6 d-flex align-items-center justify-content-center order-md-2">
-                    <img src="../img/logo.png"
+                    <img src="../img/equipe.png"
                         class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="600"
                         height="600" focusable="false">
                     </img>
@@ -471,7 +494,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item">
+                <div class="accordion-item d-none">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseThree" aria-expanded="false"
@@ -492,27 +515,31 @@
 
 
 <script>
-let currentSlide = 0;
+let currentSlide = { desktopCarousel: 0, mobileCarousel: 0 };
 
-function moveSlide(direction) {
-    const slides = document.querySelectorAll('.carousel-image');
+function moveSlide(direction, carouselId) {
+    const carouselSlide = document.querySelector(`#${carouselId} .carousel-slide`);
+    const slides = carouselSlide.querySelectorAll('.carousel-image');
     const totalSlides = slides.length;
 
-    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-    const carouselSlide = document.querySelector('.carousel-slide');
+    currentSlide[carouselId] = (currentSlide[carouselId] + direction + totalSlides) % totalSlides;
 
     const slideWidth = slides[0].clientWidth;
-    carouselSlide.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+    carouselSlide.style.transform = `translateX(-${currentSlide[carouselId] * slideWidth}px)`;
 }
 
 window.addEventListener('resize', () => {
-    const slides = document.querySelectorAll('.carousel-image');
-    const carouselSlide = document.querySelector('.carousel-slide');
-
-    const slideWidth = slides[0].clientWidth;
-    carouselSlide.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+    ['desktopCarousel', 'mobileCarousel'].forEach(carouselId => {
+        const carouselSlide = document.querySelector(`#${carouselId} .carousel-slide`);
+        if (carouselSlide) {
+            const slides = carouselSlide.querySelectorAll('.carousel-image');
+            const slideWidth = slides[0].clientWidth;
+            carouselSlide.style.transform = `translateX(-${currentSlide[carouselId] * slideWidth}px)`;
+        }
+    });
 });
 </script>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {

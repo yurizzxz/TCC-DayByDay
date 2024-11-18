@@ -1,9 +1,49 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    // Função genérica para exibir o popup com uma mensagem personalizada
+    function showPopupMessage(message) {
+        document.getElementById('popup-message').innerText = message;
+        document.getElementById('popup-overlay').style.display = 'block';
+        document.getElementById('popup').style.display = 'block';
+        setTimeout(function () {
+            document.getElementById('popup-overlay').style.display = 'none';
+            document.getElementById('popup').style.display = 'none';
+        }, 3000); // Oculta o popup após 3 segundos
+    }
+
     var calendarEl = document.getElementById('calendar');
     const cadastrarModal = new bootstrap.Modal(document.getElementById("cadastrarModal"));
     const visualizarModal = new bootstrap.Modal(document.getElementById("visualizarModal"));
     const msgViewEvento = document.getElementById('msgViewEvento');
+
+    function changeSidebarColor(color) {
+        var sidebar = document.getElementById('sidebarcolor');
+        if (sidebar) {
+            sidebar.style.backgroundColor = color;
+        }
+    }
+
+    function loadEventColor() {
+        // Pegando o valor do id e da cor dentro dos elementos <dd>
+        const eventId = document.getElementById("visualizar_id").textContent.trim();
+        const eventColor = document.getElementById("visualizar_color").textContent.trim();
+
+        // Verifica se o id e a cor foram encontrados
+        if (!eventId) {
+            console.error("ID do evento não fornecido.");
+            return;
+        }
+        if (!eventColor) {
+            console.error("Cor do evento não fornecida.");
+            return;
+        }
+
+        // Atualiza a cor da barra lateral
+        changeSidebarColor(eventColor); // Muda a cor da barrinha
+
+        // Atualiza o elemento <dd> com a cor (caso ainda não tenha sido atualizado)
+        document.getElementById("visualizar_color").textContent = eventColor;
+    }
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
         themeSystem: 'bootstrap5',
@@ -30,13 +70,70 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             return [];
         },
+
+        eventDrop: function (info) {
+            // Função para ajustar a data com o fuso horário local
+            function ajustarFusoHorario(date) {
+                // Retorna a data ajustada para o fuso local sem mudar o horário visual
+                return new Date(date.getTime() - (date.getTimezoneOffset() * 60000));
+            }
+
+            // Ajusta a nova data de início e fim considerando o fuso horário local
+            var newStart = ajustarFusoHorario(info.event.start).toISOString().slice(0, 19).replace('T', ' ');
+            var newEnd = info.event.end ? ajustarFusoHorario(info.event.end).toISOString().slice(0, 19).replace('T', ' ') : newStart;
+
+            // Envia a atualização para o servidor
+            $.ajax({
+                url: 'editar_evento.php',
+                type: 'POST',
+                data: {
+                    edit_id: info.event.id, // ID do evento
+                    edit_start: newStart,   // Nova data de início
+                    edit_end: newEnd,       // Nova data de fim
+                    edit_title: info.event.title,  // Título (caso você também queira permitir edição)
+                    edit_color: info.event.backgroundColor, // Cor
+                    edit_obs: info.event.extendedProps.obs  // Observações
+                },
+                success: function (response) {
+                    try {
+                        response = JSON.parse(response);
+                        if (response.status) {
+                            showPopupMessage('Data do evento atualizada com sucesso!');
+                        } else {
+                            showPopupMessage(response.msg);
+                            info.revert(); // Reverte a posição do evento no calendário
+                        }
+                    } catch (e) {
+                        console.error('Erro ao analisar resposta do servidor:', e);
+                        info.revert();
+                    }
+                },
+                error: function () {
+                    showPopupMessage('Erro ao atualizar a data do evento.');
+                    info.revert();
+                }
+            });
+        },
+
+
+
         eventClick: function (info) {
+            const edit_color = info.event.backgroundColor;
+
+            var sidebar = document.getElementById('sidebarcolor');
+            if (sidebar) {
+                sidebar.style.backgroundColor = edit_color;
+            } else {
+                console.error("Elemento 'sidebarcolor' não encontrado.");
+            }
+
             document.getElementById("visualizarEvento").style.display = "block";
             document.getElementById("visualizarModalLabel").style.display = "block";
             document.getElementById("editarEvento").style.display = "none";
             document.getElementById("editarModalLabel").style.display = "none";
             document.getElementById("visualizar_id").innerText = info.event.id;
             document.getElementById("visualizar_title").innerText = info.event.title;
+            document.getElementById("visualizar_color").innerText = info.event.backgroundColor;
             document.getElementById("visualizar_obs").innerText = info.event.extendedProps.obs;
             document.getElementById("visualizar_start").innerText = info.event.start.toLocaleString();
             document.getElementById("visualizar_end").innerText = info.event.end !== null ? info.event.end.toLocaleString() : info.event.start.toLocaleString();
@@ -46,7 +143,42 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById("edit_start").value = converterData(info.event.start);
             document.getElementById("edit_end").value = info.event.end !== null ? converterData(info.event.end) : converterData(info.event.start);
             document.getElementById("edit_color").value = info.event.backgroundColor;
+
+            // Função para carregar a cor do evento do banco de dados
+            loadEventColor(info.event.id);
+
+            // Exibe o modal
             visualizarModal.show();
+
+            // Lógica para atualizar a seleção de cores
+            // Obtém o valor da cor do elemento <dd> com id "visualizar_color"
+            const visualizarColorElement = document.getElementById("visualizar_color");
+
+            // Verifica se o elemento e seu conteúdo existem
+            if (visualizarColorElement) {
+                const selectedColor = visualizarColorElement.textContent.trim();
+                console.log("Valor de cor selecionado:", selectedColor); // Exibe para verificação
+
+                // Seleciona todos os inputs do tipo radio com o nome "edit_color"
+                const colorOptions = document.querySelectorAll('input[name="edit_color"]');
+
+                // Itera sobre as opções de cor e define o checked no valor correspondente
+                let colorFound = false;
+                colorOptions.forEach(option => {
+                    if (option.value === selectedColor) {
+                        option.checked = true;
+                        colorFound = true;
+                    } else {
+                        option.checked = false;
+                    }
+                });
+
+                if (!colorFound) {
+                    console.error("Nenhuma cor correspondente encontrada para:", selectedColor);
+                }
+            } else {
+                console.error("Elemento 'visualizar_color' não encontrado.");
+            }
         },
         select: function (info) {
             document.getElementById("cad_start").value = converterData(info.start);
@@ -56,6 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
         datesSet: function () {
             updateTodayButtonVisibility();
         }
+
     });
 
     function updateTodayButtonVisibility() {
@@ -85,15 +218,19 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Adicionando event listeners para os botões
-    dayGridMonthButton.addEventListener('click', function () {
-        dayGridMonthButton.classList.add('hidden');
-        multiMonthYearButton.classList.remove('hidden');
-    });
+    if (dayGridMonthButton) {
+        dayGridMonthButton.addEventListener('click', function () {
+            dayGridMonthButton.classList.add('hidden');
+            multiMonthYearButton.classList.remove('hidden');
+        });
+    }
 
-    multiMonthYearButton.addEventListener('click', function () {
-        multiMonthYearButton.classList.add('hidden');
-        dayGridMonthButton.classList.remove('hidden');
-    });
+    if (multiMonthYearButton) {
+        multiMonthYearButton.addEventListener('click', function () {
+            multiMonthYearButton.classList.add('hidden');
+            dayGridMonthButton.classList.remove('hidden');
+        });
+    }
 
     // Inicializa a visibilidade do botão "Hoje" ao carregar a página
     updateTodayButtonVisibility();
@@ -109,7 +246,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const formCadEvento = document.getElementById("formCadEvento");
-    const msg = document.getElementById("mensagem");
     const msgCadEvento = document.getElementById("msgCadEvento");
     const btnCadEvento = document.getElementById("btnCadEvento");
 
@@ -124,9 +260,8 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             const resposta = await dados.json();
             if (!resposta['status']) {
-
+                // Trate o erro aqui se necessário
             } else {
-
                 msgCadEvento.innerHTML = "";
                 formCadEvento.reset();
                 const novoEvento = {
@@ -138,23 +273,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     obs: resposta['obs'],
                 }
                 calendar.addEvent(novoEvento);
-                removerMsg();
+                showPopupMessage("Evento cadastrado com sucesso!");
                 cadastrarModal.hide();
             }
             btnCadEvento.value = "Cadastrar";
-        });
-    }
-
-    function removerMsg() {
-        document.addEventListener('DOMContentLoaded', function () {
-            var message = 'vai toma no cu yuri';
-            document.getElementById('popup-message').innerText = message;
-            document.getElementById('popup-overlay').style.display = 'block';
-            document.getElementById('popup').style.display = 'block';
-            setTimeout(function () {
-                document.getElementById('popup-overlay').style.display = 'none';
-                document.getElementById('popup').style.display = 'none';
-            }, 3000);
         });
     }
 
@@ -193,9 +315,8 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             const resposta = await dados.json();
             if (!resposta['status']) {
-                msgEditEvento.innerHTML = w;
+                msgEditEvento.innerHTML = 'Erro ao salvar o evento'; // Corrija conforme necessário
             } else {
-
                 msgEditEvento.innerHTML = "";
                 formEditEvento.reset();
                 const eventoExiste = calendar.getEventById(resposta['id']);
@@ -206,7 +327,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     eventoExiste.setStart(resposta['start']);
                     eventoExiste.setEnd(resposta['end']);
                 }
-                removerMsg();
+                showPopupMessage("Evento editado com sucesso!");
                 visualizarModal.hide();
             }
             btnEditEvento.value = "Salvar";
@@ -224,16 +345,23 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (!resposta['status']) {
                     msgViewEvento.innerHTML = `<div class="alert alert-danger" role="alert">${resposta['msg']}</div>`;
                 } else {
-                    msg.innerHTML = `<div class="alert alert-success" role="alert">${resposta['msg']}</div>`;
                     msgViewEvento.innerHTML = "";
                     const eventoExisteRemover = calendar.getEventById(idEvento);
                     if (eventoExisteRemover) {
                         eventoExisteRemover.remove();
                     }
-                    removerMsg();
+                    showPopupMessage("Evento apagado com sucesso!");
                     visualizarModal.hide();
                 }
             }
         });
     }
+
+    // Ajusta o carregamento da cor do evento ao abrir o modal de visualização
+    $('#visualizarModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Botão que abriu o modal
+        var eventId = button.data('id'); // Id do evento passado no botão
+        loadEventColor(eventId); // Chama a função com o ID do evento
+    });
+
 });

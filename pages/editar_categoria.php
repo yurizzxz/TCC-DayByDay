@@ -3,10 +3,10 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['idUsuario'])) {
     $id_usuario = $_SESSION['idUsuario'];
-    $nome_categoria = $_POST['nome_categoria'] ?? ''; // Use operador de coalescência nula para garantir que haja um valor padrão
-    $cor_escolhida = $_POST['cor_escolhida'] ?? ''; // Use operador de coalescência nula para garantir que haja um valor padrão
+    $nome_categoria = $_POST['nome_categoria'] ?? '';
+    $cor_escolhida = $_POST['cor_escolhida'] ?? ''; 
 
-    $conn = mysqli_connect('127.0.0.1', 'root', '', 'tcc');
+    $conn = mysqli_connect('#', 'root', '', 'tcc');
     if ($conn->connect_error) {
         die('Erro de conexão: ' . $conn->connect_error);
     }
