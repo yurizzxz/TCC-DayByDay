@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['nota_id'])) {
     $id_usuario = $_SESSION['idUsuario'];
     $nota_id = $_POST['nota_id'];
 
-    $conn = mysqli_connect('127.0.0.1', 'root', '', 'tcc');
+    $conn = mysqli_connect('#', 'root', '', 'tcc');
     if ($conn->connect_error) {
         die("Erro de conexão: " . $conn->connect_error);
     }

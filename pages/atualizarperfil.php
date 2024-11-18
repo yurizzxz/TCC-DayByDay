@@ -15,57 +15,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $new_password = $_POST['new_password'];
     $confirm_password = $_POST['confirm_password'];
+    $profile_pic_url = $_POST['profile_pic_url']; // Nova URL da foto de perfil
 
+    // Verifica se as novas senhas coincidem
     if ($new_password !== $confirm_password) {
         $_SESSION['message_error'] = 'As senhas não são iguais.';
         header('Location: index.php?p=perfil');
         exit();
     }
 
-    $upload_dir = 'uploads/';
-    $file_path = '';
-
-    if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] === UPLOAD_ERR_OK) {
-        $arquivo = $_FILES['profile_pic'];
-        $arquivoNovo = explode('.', $arquivo['name']);
-        $extensao = strtolower(end($arquivoNovo));
-
-        $allowed_extensions = ['jpg', 'jpeg', 'png', 'webp'];
-        if (!in_array($extensao, $allowed_extensions)) {
-            $_SESSION['message_error'] = 'Apenas imagens JPG, JPEG, PNG e WEBP são permitidas.';
-            header('Location: index.php?p=perfil');
-            exit();
-        }
-
-        $file_path = $upload_dir . basename($arquivo['name']);
-
-        if (!move_uploaded_file($arquivo['tmp_name'], $file_path)) {
-            $_SESSION['message_error'] = 'Erro ao fazer upload da imagem.';
-            header('Location: index.php?p=perfil');
-            exit();
-        }
-    }
-
-    $sql_update = $file_path ? "UPDATE usuarios SET nome=?, email=?, profile_pic_url=?, senha=? WHERE id=?" : "UPDATE usuarios SET nome=?, email=?, senha=? WHERE id=?";
-    $stmt = $conn->prepare($sql_update);
-
-    if ($file_path) {
+    // Atualiza a senha se a nova senha não estiver vazia
+    if (!empty($new_password)) {
         $hashed_new_password = password_hash($new_password, PASSWORD_DEFAULT);
-        $stmt->bind_param('ssssi', $nome, $email, $file_path, $hashed_new_password, $id_usuario);
+        $sql_update = "UPDATE usuarios SET nome=?, email=?, senha=?, profile_pic_url=? WHERE id=?";
+        $stmt = $conn->prepare($sql_update);
+        $stmt->bind_param('ssssi', $nome, $email, $hashed_new_password, $profile_pic_url, $id_usuario);
     } else {
-        $hashed_new_password = password_hash($new_password, PASSWORD_DEFAULT);
-        $stmt->bind_param('sssi', $nome, $email, $hashed_new_password, $id_usuario);
+        // Atualiza apenas o nome, email e a foto de perfil se a nova senha não for fornecida
+        $sql_update = "UPDATE usuarios SET nome=?, email=?, profile_pic_url=? WHERE id=?";
+        $stmt = $conn->prepare($sql_update);
+        $stmt->bind_param('sssi', $nome, $email, $profile_pic_url, $id_usuario);
     }
 
+    // Executa a atualização
     if ($stmt->execute()) {
         $_SESSION['nomeUsuario'] = $nome;
         $_SESSION['emailUsuario'] = $email;
-        $_SESSION['profilePicUrl'] = $file_path;
-
         $_SESSION['mensagem'] = 'Perfil atualizado com sucesso.';
+        // Atualiza também a URL da foto de perfil na sessão, se necessário
+        $_SESSION['profilePicUrl'] = $profile_pic_url;
     } else {
         $_SESSION['mensagem'] = 'Erro ao atualizar o perfil: ' . $stmt->error;
     }
+
     $stmt->close();
     $conn->close();
 
@@ -76,4 +58,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header('Location: index.php?p=perfil');
     exit();
 }
-?>

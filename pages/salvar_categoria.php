@@ -6,7 +6,7 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] == 'POST' && isset( $_SESSION[ 'idUsuario' ] )
     $nome_categoria = $_POST[ 'nome_categoria' ];
     $cor_escolhida = $_POST[ 'cor_escolhida' ];
 
-    $conn = mysqli_connect( '127.0.0.1', 'root', '', 'tcc' );
+    $conn = mysqli_connect( '#', 'root', '', 'tcc' );
     if ( $conn->connect_error ) {
         die( 'Erro de conexão: ' . $conn->connect_error );
     }

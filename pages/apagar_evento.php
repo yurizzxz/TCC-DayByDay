@@ -12,7 +12,6 @@ if (!empty($id)) {
 
     $apagar_event->bindParam(':id', $id);
 
-    // Verifica se foi possível apagar corretamente
     if($apagar_event->execute()){
         $retorna = ['status' => true, 'msg' => 'Evento apagado com sucesso!'];
     }else{

@@ -19,8 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['nota_id']) && isset($_
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nota_id = $_POST['nota_id'];
         $id_categoria = $_POST['id_categoria'];
-    
-        // Verifique a categoria e a associação da nota
+        
         $sql_verifica = "SELECT * FROM categoria WHERE id = '$id_categoria' AND id_usuario = '$id_usuario'";
         $result_verifica = $conn->query($sql_verifica);
     

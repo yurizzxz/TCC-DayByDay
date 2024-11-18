@@ -1,29 +1,37 @@
 <?php
 
+session_start();
+
+if (!isset($_SESSION['idUsuario'])) {
+    header('Location: login.php');
+    exit();
+}
+
 include_once './conexaocalendar.php';
 
+$id_usuario = $_SESSION['idUsuario']; 
+
 $query_events = "SELECT id, title, color, start, end, obs
-                FROM events";
+                FROM events
+                WHERE id_usuario = :id_usuario";
 
 $result_events = $conne->prepare($query_events);
+$result_events->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
 
 $result_events->execute();
 
 $eventos = [];
 
-// Percorrer a lista de registros retornado do banco de dados
 while ($row_events = $result_events->fetch(PDO::FETCH_ASSOC)) {
-
-    extract($row_events);
-
     $eventos[] = [
-        'id' => $id,
-        'title' => $title,
-        'color' => $color,
-        'start' => $start,
-        'end' => $end,
-        'obs' => $obs
+        'id' => $row_events['id'],
+        'title' => $row_events['title'],
+        'color' => $row_events['color'],
+        'start' => $row_events['start'],
+        'end' => $row_events['end'],
+        'obs' => $row_events['obs']
     ];
 }
 
 echo json_encode($eventos);
+?>

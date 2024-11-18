@@ -4,7 +4,7 @@ date_default_timezone_set('America/Sao_Paulo');
 $pagina = filter_input(INPUT_GET, 'p');
 if (empty($pagina) || $pagina == "index") {
     header("Location: ?p=notas");
-    exit; 
+    exit;
 }
 
 ?>
@@ -16,19 +16,34 @@ if (empty($pagina) || $pagina == "index") {
 <head>
     <?php include_once 'header.php'; ?>
     <style>
-        
+
     </style>
-   <link rel="stylesheet" href="../css/css.css">
+    <link rel="stylesheet" href="../css/css.css">
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            /*background-image: url('../img/texturagray.jpeg'); /* Ajuste o caminho conforme necessário */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+
 
 </head>
 
 <body>
+
+    
+
     <?php include_once 'navbar.php'; ?>
 
     <div class="d-flex">
         <?php include_once 'sidebar.php'; ?>
 
-        
+
         <?php
         $pagina = filter_input(INPUT_GET, 'p');
         if (empty($pagina) || $pagina == "index") {

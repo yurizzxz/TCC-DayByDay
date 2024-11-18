@@ -47,6 +47,9 @@
         color: #8C52FF;
     }
    
+    .logo-navbar {
+        width: 11rem;
+    }
 
     .login-hub {
         display: block;
@@ -84,7 +87,7 @@
     .width-nav {
         width: 100%;
         display: flex;
-        padding: 15px 35px;
+        padding: 15px 15px;
         align-items: center;
         justify-content: center;
         border-radius: 6px;
@@ -102,7 +105,9 @@
             margin-top: 20px;
         }
 
-
+        .logo-navbar {
+        width: 8.2rem;
+    }
     }
 
     /* voltar ao inicio */
@@ -147,7 +152,7 @@
 </style>
 <nav class="navbar navbar-expand-lg fixed-top" id="topnavbar" style="transition: 0.3s ease-in-out;">
     <div class="container-fluid width-nav">
-        <a class="navbar-brand" href="#home-landing"><img src="../img/logopng.png" width="135" alt=""></a>
+        <a class="navbar-brand" href="#home-landing"><img src="../img/logopng.png" class="logo-navbar" alt=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -158,16 +163,16 @@
                     <a class="link-nav" href="#calendario">Calendário</a>
                 </li>
                 <li class="nav-item">
-                    <a class="link-nav" href="#">Anotações</a>
+                    <a class="link-nav" href="#anotacoes">Anotações</a>
                 </li>
                 <li class="nav-item">
                     <a class="link-nav" href="#about">Sobre nós</a>
                 </li>
                 <li class="nav-item">
-                    <a class="link-nav" href="#faq">Perguntas</a>
+                    <a class="link-nav" href="#faq">Perguntas Frequentes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="login-hub me-2" href="../pages/login.php">Entrar</a>
+                    <a class="login-hub" href="../pages/login.php">Entrar</a>
                 </li>
             </ul>
         </div>

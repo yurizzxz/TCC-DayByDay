@@ -1,11 +1,13 @@
 <?php
 session_start();
 
+$msg = ''; 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id_usuario = $_SESSION['idUsuario'];
     $senha = $_POST['password'];
 
-    $conn = mysqli_connect('127.0.0.1', 'root', '', 'tcc');
+    $conn = mysqli_connect('#', 'root', '', 'tcc');
     if ($conn->connect_error) {
         die('Erro de conexão: ' . $conn->connect_error);
     }
@@ -20,20 +22,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $row = $result->fetch_assoc();
         $hashed_password = $row['senha'];
 
+        error_log("Senha fornecida: $senha");
+        error_log("Senha hashada do banco de dados: $hashed_password");
+
         if (password_verify($senha, $hashed_password)) {
             $_SESSION['authenticated'] = true;
             header('Location: index.php?p=perfil');
             exit();
         } else {
-            header('Location: index.php');
-            $_SESSION['msg'] = 'Senha incorreta. Tente novamente.';
+            $msg = 'Senha incorreta. Tente novamente.';
         }
     } else {
-        $_SESSION['msg'] = 'Erro ao verificar a senha. Tente novamente.';
+        $msg = 'Erro ao verificar a senha. Tente novamente.';
     }
 
     $stmt->close();
     $conn->close();
+
+
+    $_SESSION['msg'] = $msg;
+    header('Location: index.php');
     exit();
 }
 ?>

@@ -18,7 +18,6 @@
 .landing-page {
     background: linear-gradient(to bottom, #ffffff 0%, #ffffff 70%, #FCFCFC 100%);
     height: 93vh;
-
 }
 
 .landing-button #login-hub {
@@ -30,7 +29,7 @@
     text-decoration: none;
     border: 2px solid #8C52FF;
     font-size: 23px;
-    border-radius: 3px;
+    border-radius: 6px;
     margin-left: auto;
     margin-right: auto;
     transition: 0.3s ease-in-out;
@@ -50,7 +49,7 @@
 .create-note #text-lg,
 .about-us #text-lg,
 .questions #text-lg {
-    font-size: 3.3rem;
+    font-size: 3rem;
 }
 
 .content-landing {
@@ -117,7 +116,7 @@
     }
 
     .content-landing #text-lg {
-        font-size: 2.5rem;
+        font-size: 2.7rem;
         padding-top: 25px;
     }
 
@@ -139,6 +138,15 @@
     .home-landing #text-lg {
         font-size: 3rem;
     }
+
+    .content-landing #text-lg,
+    .calendar-content #text-lg,
+    .create-note #text-lg,
+    .about-us #text-lg,
+    .questions #text-lg {
+        font-size: 2.4rem;
+    }
+
 }
 
 @media (max-width: 637px) {
@@ -157,19 +165,17 @@
 }
 
 @media (max-width: 500px) {
-    #text-lg {
-        font-size: 2.7rem;
-    }
 
     .content-landing #text-lg {
-        font-size: 2rem;
+        font-size: 2.5rem;
+    }
+
+    .create-note #text-lg {
+        font-size: 2.4rem;
     }
 }
 
 @media (max-width: 365px) {
-    #text-lg {
-        font-size: 2.5rem;
-    }
 
     #lead-landing {
         font-size: 1.1rem;
@@ -263,8 +269,9 @@
 /* faq */
 .accordion-button {
     padding-block: 55px;
-    font-size: 27px;
-    font-weight: bold;
+    padding-inline: 0px;
+    font-size: 24px;
+    font-weight: 500;
 }
 
 .accordion-item:not(.collapsed) {
@@ -272,6 +279,7 @@
 }
 
 .accordion-button:not(.collapsed) {
+    padding-inline: 20px;
     padding-block: 35px;
     box-shadow: 0 0 0 0;
     color: white;
@@ -287,6 +295,24 @@
     padding-bottom: 30px;
     background: #8C52FF;
 }
+
+.desktop-carousel {
+    display: block;
+}
+
+.mobile-carousel {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .desktop-carousel {
+        display: none;
+    }
+
+    .mobile-carousel {
+        display: block;
+    }
+}
 </style>
 
 
@@ -297,17 +323,17 @@
             <section class="py-5 container">
                 <div class="row justify-content-center" id="rowlanding">
 
-                    <div class="col-md-6 order-md-1 mb-4">
-                        <h1 class="fw-bold mb-2" id="text-lg">Seu bloco de notas em um clique!</h1>
-                        <p class="lead" id="lead-landing">Anotar se torna fácil, faça suas anotações, gerencie suas
-                            datas
-                            importantes e organize seu dia com o DayByDay.</p>
+                    <div class="col-md-6 order-md-2 mb-4">
+                        <h1 class="fw-bold mb-2" id="text-lg">Seu bloco de notas em cliques!</h1>
+                        <p class="lead" id="lead-landing">Com o DayByDay, suas anotações ficam estruturadas com apenas
+                            alguns cliques. Crie, categorize e acesse de maneira fácil e rápida. Tudo que você precisa,
+                            na palma da sua mão!</p>
                         <div class="landing-button mt-3">
                             <a href="../pages/login.php" class="my-2" id="login-hub">Começar Agora</a>
                         </div>
                     </div>
                     <div class="col-md-6 d-flex align-items-center justify-content-center order-md-1">
-                        <img src="../img/apresentação.png"
+                        <img src="../img/mockup.png"
                             class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
                             width="800" height="500" focusable="false">
                         </img>
@@ -323,13 +349,12 @@
                 <div class="row featurette justify-content-center align-items-center">
                     <div class="col-md-6 order-md-1">
                         <h1 class="fw-bold mb-2" id="text-lg">
-                            <span class="color-slide">#</span>Categoria Dividida por
-                            <span class="color-slide">Cores</span>
+                            <span class="color-slide"></span>Suas notas com
+                            <span class="color-slide">Categorias!</span>
                         </h1>
-                        <p class="lead color-slide-text">Laranja,</p>
                         <p class="lead mb-5" id="text-leading">
-                            Suspendisse congue ullamcorper nisl quis dictum. Donec vitae
-                            ex sed arcu ultricies pretium.
+                            Agora você pode ver suas notas de forma clara e personalizadas. Separe suas anotações e
+                            eventos por temas, matérias ou projetos, e tenha tudo organizado e acessível.
                         </p>
                         <h4 class="fw-bold">Qual cor é a próxima?</h4>
                         <div class="sliders color-buttons d-flex justify-content-start mt-3 mb-4">
@@ -360,15 +385,12 @@
             <div class="row featurette justify-content-center align-items-center" id="leading">
                 <div class="col-md-6 order-md-2">
                     <h1 class="fw-bold mb-3" id="text-lg">Calendário</h1>
-                    <p class="lead mb-3" id="text-leading">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                    <p class="lead mb-3">
-                        Suspendisse congue ullamcorper nisl quis dictum. Donec vitae ex sed arcu ultricies pretium.
+                    <p class="lead mb-3" id="text-leading">Organize seu dia a dia com calendário do DayByDay! Com ele,
+                        você pode marcar eventos, definir lembretes e visualizar sua semana ou mês com clareza.
+                        Personalize suas atividades com cores e categorias.
+                        <br>Acesse de qualquer lugar e tenha o controle total da sua agenda!
                     </p>
 
-                    <p class="lead mb-3">
-                        Suspendisse congue ullamcorper nisl quis dictum. Donec vitae ex sed arcu ultricies pretium.
-                    </p>
                 </div>
                 <div class="col-md-6 d-flex align-items-center justify-content-center order-md-1">
                     <img src="../img/Calendário.png"
@@ -380,23 +402,34 @@
         </section>
     </article>
 
+    <div id="anotacoes"></div>
+
     <article class="create-note mt-5">
         <section class="container">
             <h1 class="fw-bold mb-3" id="text-lg">Crie Notas do Seu Jeito!</h1>
         </section>
 
         <section class="container">
-            <div class="carousel-container mt-3">
+            <div id="desktopCarousel" class="carousel-container mt-3 desktop-carousel">
                 <div class="carousel-slide">
                     <img src="../img/nt1.png" class="carousel-image">
                     <img src="../img/nt2.png" class="carousel-image">
                     <img src="../img/nt3.png" class="carousel-image">
                     <img src="../img/nt4.png" class="carousel-image">
-                    <img src="../img/nt5.png" class="carousel-image">
                 </div>
+                <button class="prev" onclick="moveSlide(-1, 'desktopCarousel')">&#10094;</button>
+                <button class="next" onclick="moveSlide(1, 'desktopCarousel')">&#10095;</button>
+            </div>
 
-                <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-                <button class="next" onclick="moveSlide(1)">&#10095;</button>
+            <div id="mobileCarousel" class="carousel-container mt-3 mobile-carousel">
+                <div class="carousel-slide">
+                    <img src="../img/nt1m.png" class="carousel-image">
+                    <img src="../img/nt2m.png" class="carousel-image">
+                    <img src="../img/nt3m.png" class="carousel-image">
+                    <img src="../img/nt4m.png" class="carousel-image">
+                </div>
+                <button class="prev" onclick="moveSlide(-1, 'mobileCarousel')">&#10094;</button>
+                <button class="next" onclick="moveSlide(1, 'mobileCarousel')">&#10095;</button>
             </div>
         </section>
     </article>
@@ -408,17 +441,18 @@
                 <div class="col-md-6 order-md-1">
                     <h5 class="student">#SobreNós</h5>
                     <h1 class="fw-bold mb-3" id="text-lg">Alunos <span class="student">por</span> Alunos</h1>
-                    <p class="lead mb-3" id="text-leading">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Suspendisse congue ullamcorper nisl quis dictum. Donec vitae ex sed arcu ultricies pretium.
-                    </p>
-                    <p class="lead mb-3">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse congue ullamcorper nisl
-                        quis dictum. Donec vitae ex sed arcu ultricies pretium.
+                    <p class="lead mb-3" id="text-leading">Somos estudantes do terceiro ano do ensino médio cursando
+                        desenvolvimento de sistemas, nosso projeto de TCC, o DayByDay tem como objetivo criar uma
+                        plataforma que combine um calendário online e blocos de notas personalizados para ajudar os
+                        estudantes a gerenciar suas rotinas de forma mais eficiente, buscamos oferecer uma ferramenta
+                        prática e acessível, pensada para atender às necessidades dos estudantes e facilitar seu dia a
+                        dia.
+                        <br> Estamos animados para compartilhar nossa solução com você.
                     </p>
 
                 </div>
                 <div class="col-md-6 d-flex align-items-center justify-content-center order-md-2">
-                    <img src="../img/logo.png"
+                    <img src="../img/equipe.png"
                         class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="600"
                         height="600" focusable="false">
                     </img>
@@ -427,7 +461,7 @@
         </section>
     </article>
 
-    <article class="questions" id="faq">
+    <article class="questions mb-5" id="faq">
         <section class="container">
             <h1 class="fw-bold mb-5" id="text-lg">Perguntas Frequentes</h1>
         </section>
@@ -437,28 +471,28 @@
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            Accordion Item #1
+                            Como o DayByDay pode me ajudar a me organizar melhor?
                         </button>
                     </h2>
                     <div id="flush-collapseOne" class="accordion-collapse collapse"
                         data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                            demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion
-                            body.</div>
+                        <div class="accordion-body">O DayByDay oferece um calendário online e blocos de notas que
+                            facilitam o planejamento de tarefas e compromissos. Você pode categorizar suas anotações e
+                            visualizar seus prazos de forma clara, ajudando a manter sua rotina organizada.</div>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                            Accordion Item #2
+                            Posso acessar minhas notas e calendário de qualquer lugar?
                         </button>
                     </h2>
                     <div id="flush-collapseTwo" class="accordion-collapse collapse"
                         data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                            demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion
-                            body. Let's imagine this being filled with some actual content.</div>
+                        <div class="accordion-body">Sim! O DayByDay é acessível em qualquer dispositivo com internet, o
+                            que permite que você visualize e edite suas anotações e compromissos em qualquer lugar.
+                        </div>
                     </div>
                 </div>
                 <div class="accordion-item">
@@ -466,16 +500,40 @@
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseThree" aria-expanded="false"
                             aria-controls="flush-collapseThree">
-                            Accordion Item #3
+                            Outras pessoas podem acessar as minhas notas?
                         </button>
                     </h2>
                     <div id="flush-collapseThree" class="accordion-collapse collapse"
                         data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                            demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion
-                            body. Nothing more exciting happening here in terms of content, but just filling up the
-                            space to make it look, at least at first glance, a bit more representative of how this would
-                            look in a real-world application.</div>
+                        <div class="accordion-body">Não, as suas anotações são somente suas, e ninguém além de você pode
+                            acessá-las.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseThree" aria-expanded="false"
+                            aria-controls="flush-collapseThree">
+                            Tenho que pagar algum valor para ter acesso a todas as funcionalidades?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Não! O DayByDay é totalmente de graça, nós não cobramos nenhum valor
+                            e você pode criar quantas notas e eventos quiser, sem tempo limitado.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseThree" aria-expanded="false"
+                            aria-controls="flush-collapseThree">
+                            O sistema possui algum modo noturno?
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Sim, você pode ativar e desativar o modo escuro a qualquer momento, sendo de noite ou de dia!</div>
                     </div>
                 </div>
             </div>
@@ -485,27 +543,34 @@
 
 
 <script>
-let currentSlide = 0;
+let currentSlide = {
+    desktopCarousel: 0,
+    mobileCarousel: 0
+};
 
-function moveSlide(direction) {
-    const slides = document.querySelectorAll('.carousel-image');
+function moveSlide(direction, carouselId) {
+    const carouselSlide = document.querySelector(`#${carouselId} .carousel-slide`);
+    const slides = carouselSlide.querySelectorAll('.carousel-image');
     const totalSlides = slides.length;
 
-    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-    const carouselSlide = document.querySelector('.carousel-slide');
+    currentSlide[carouselId] = (currentSlide[carouselId] + direction + totalSlides) % totalSlides;
 
     const slideWidth = slides[0].clientWidth;
-    carouselSlide.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+    carouselSlide.style.transform = `translateX(-${currentSlide[carouselId] * slideWidth}px)`;
 }
 
 window.addEventListener('resize', () => {
-    const slides = document.querySelectorAll('.carousel-image');
-    const carouselSlide = document.querySelector('.carousel-slide');
-
-    const slideWidth = slides[0].clientWidth;
-    carouselSlide.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+    ['desktopCarousel', 'mobileCarousel'].forEach(carouselId => {
+        const carouselSlide = document.querySelector(`#${carouselId} .carousel-slide`);
+        if (carouselSlide) {
+            const slides = carouselSlide.querySelectorAll('.carousel-image');
+            const slideWidth = slides[0].clientWidth;
+            carouselSlide.style.transform = `translateX(-${currentSlide[carouselId] * slideWidth}px)`;
+        }
+    });
 });
 </script>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
